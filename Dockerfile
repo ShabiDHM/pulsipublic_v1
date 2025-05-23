@@ -1,27 +1,36 @@
-FROM python:3.13-slim
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    sqlite3 \
-    build-essential \
-    python3-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-# Configure environment
-ENV FLASK_ENV=production \
-    PYTHONUNBUFFERED=1 \
-    PYTHONPATH=/app \
-    DATABASE_PATH=/app/pulsi_politik_backend/kcm_data.db
-
+# Set the working directory in the container
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy the backend requirements file first to leverage Docker cache
+# This assumes requirements.txt is inside the pulsi_politik_backend folder
+COPY pulsi_politik_backend/requirements.txt /app/requirements.txt
 
-COPY . .
+# Install any needed packages specified in requirements.txt
+# --no-cache-dir reduces image size
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
-# Fix permissions
-RUN chmod a+w "$DATABASE_PATH"
+# Copy the entire backend application code into the container
+# This creates /app/pulsi_politik_backend/ in the container
+COPY pulsi_politik_backend/ /app/pulsi_politik_backend/
 
+# Copy the entire frontend application code into the container
+# This creates /app/pulsi_politik_frontend/ in the container
+# Your Flask app will need to be configured to serve static files from this path
+COPY pulsi_politik_frontend/ /app/pulsi_politik_frontend/
+
+# Make port 8000 available to the world outside this container (Render will use this)
 EXPOSE 8000
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "pulsi_politik_backend.app:app"]
+
+# Define environment variable for Flask (optional but good practice for clarity)
+# This tells Flask where your app object is.
+ENV FLASK_APP=pulsi_politik_backend.app
+
+# Run the application using Gunicorn when the container launches
+# This assumes:
+# 1. Your Flask app instance is named 'app' in 'pulsi_politik_backend/app.py'
+# 2. Gunicorn is installed (from requirements.txt)
+# Gunicorn will listen on all interfaces (0.0.0.0) on port 8000 inside the container.
+CMD ["gunicorn", "--workers", "2", "--bind", "0.0.0.0:8000", "pulsi_politik_backend.app:app"]
