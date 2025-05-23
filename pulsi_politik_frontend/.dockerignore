@@ -1,0 +1,27 @@
+# macOS metadata
+.DS_Store
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+
+# Version control
+.git/
+
+# Log files
+*.log
+
+# Local databases (except your kcm_data.db)
+*.db
+*.sqlite3
+!pulsi_politik_backend/kcm_data.db  # Keep this specific file
+
+# IDE files
+.vscode/
+.idea/

@@ -1,0 +1,18 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+.Python
+env/
+venv/
+.venv/  # This is important for your current setup
+
+# IDE / Editor specific
+.vscode/
+.idea/
+
+# Other common ignores (add more if needed)
+# .env  # If you have a .env file for secrets, UNCOMMENT this line
+# instance/ # Common for Flask
+# *.sqlite3 # If you have a local sqlite database
