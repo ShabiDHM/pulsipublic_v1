@@ -10,7 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("SCRIPT.JS: CRITICAL - Chart or ChartDataLabels is not defined. Plugin NOT registered.");
     }
 
-    const API_BASE_URL = 'http://127.0.0.1:5000/api';
+    // MODIFIED API_BASE_URL for deployment
+    // This will make API calls relative to the current host, e.g.,
+    // if page is on https://pulsipublicv1.onrender.com, API calls will go to https://pulsipublicv1.onrender.com/api/...
+    // if page is on http://127.0.0.1:5000 (served by Flask), API calls will go to http://127.0.0.1:5000/api/...
+    const API_BASE_URL = '/api'; // <<<< KEY CHANGE HERE
+
     const languageSelectorButton = document.getElementById('languageSelector');
     const languageDropdown = document.getElementById('languageDropdown');
     const currentLanguageSpan = languageSelectorButton?.querySelector('span');
@@ -86,9 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         if (currentLanguageSpan) currentLanguageSpan.textContent = lang.toUpperCase();
         updateDynamicTitles(lang);
-        // For dropdowns like "Compare With" that have static translated options + dynamic ones
         if (typeof populateCompareWithDropdown === "function" && allMinistriesData) {
-             // This ensures "No Comparison" option is re-translated
             populateCompareWithDropdown(allMinistriesData, document.getElementById('compareWithFilter')?.value);
         }
     }
@@ -212,9 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         { dbKey: "Report Release:", i18nKey: "activityPrefixReportRelease" },
                         { dbKey: "New Initiative:", i18nKey: "activityPrefixNewInitiative" },
                         { dbKey: "Consultation Document:", i18nKey: "activityPrefixConsultationDocument" },
-                        { dbKey: "National Directive:", i18nKey: "activityPrefixNationalDirective" }, // Assuming you add this key
-                        { dbKey: "Cabinet Meeting Summary:", i18nKey: "activityPrefixCabinetMeeting" }, // Assuming you add this key
-                        { dbKey: "Press Conference:", i18nKey: "activityPrefixPressConference" } // Assuming you add this key
+                        { dbKey: "National Directive:", i18nKey: "activityPrefixNationalDirective" }, 
+                        { dbKey: "Cabinet Meeting Summary:", i18nKey: "activityPrefixCabinetMeeting" }, 
+                        { dbKey: "Press Conference:", i18nKey: "activityPrefixPressConference" } 
                     ];
                     for (const p of knownPrefixes) {
                         if (originalTitle.startsWith(p.dbKey)) {
@@ -230,14 +233,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     const statusCell = row.insertCell();
                     const statusSpan = document.createElement('span');
-                    let statusText = (act && act.status && String(act.status).trim() !== "") ? act.status : getTranslation('tableStatusCompleted'); // API should provide translated status or a key
+                    let statusText = (act && act.status && String(act.status).trim() !== "") ? act.status : getTranslation('tableStatusCompleted'); 
                     let statusClasses = 'bg-green-100 text-green-800';
-                    // If API sends status keys, translate them here. Otherwise, compare known translated strings.
                     if (statusText.toLowerCase() === getTranslation('tableStatusInProgress', currentLang).toLowerCase()) {
                         statusClasses = 'bg-yellow-100 text-yellow-800';
                     }
                     statusSpan.className = `px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${statusClasses}`;
-                    statusSpan.textContent = statusText; // Display the (hopefully) already translated status
+                    statusSpan.textContent = statusText; 
                     statusCell.appendChild(statusSpan);
                 });
             } else {
@@ -325,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pmoItem = fDataFull.splice(pmoIndexInFull, 1)[0];
         }
 
-        let fData = [...fDataFull]; // Now fData doesn't have PMO for filtering yet
+        let fData = [...fDataFull]; 
 
         const sTerm = document.getElementById('searchMinistryInput')?.value.toLowerCase() || '';
         if (sTerm) { fData = fData.filter(m => (m.name || '').toLowerCase().includes(sTerm)); }
@@ -360,22 +362,17 @@ document.addEventListener('DOMContentLoaded', () => {
             default: fData.sort((a, b) => (b.score ?? -1) - (a.score ?? -1));
         }
 
-        if (pmoItem) { // Add PMO back to the top, only if it wasn't filtered out by search/score
+        if (pmoItem) { 
             let pmoShouldBeVisible = true;
             if (sTerm && !(pmoItem.name || '').toLowerCase().includes(sTerm)) {
                 pmoShouldBeVisible = false;
             }
             const pmoScore = pmoItem.score;
             if (pmoScore === null || pmoScore === undefined || isNaN(parseFloat(pmoScore)) || !(parseFloat(pmoScore) >= minS && parseFloat(pmoScore) <= maxS) ) {
-                 // If score filter is active and PMO is outside range, don't show it
-                 // UNLESS minS=0 and maxS=100 (i.e. default, no score filter applied by user), then PMO's own score validity matters.
-                 // The initial filter for fData already handles items with no valid scores if score filter is wide.
-                 // This check is more about whether PMO's specific score falls in user-defined range.
                 if (!(minS === 0 && maxS === 100 && (pmoScore !== null && pmoScore !== undefined && !isNaN(parseFloat(pmoScore))))) {
                     pmoShouldBeVisible = false;
                 }
             }
-             // And if ministry type filter is active and PMO's category doesn't match
             if (mType !== 'all' && pmoItem.category_key !== mType) {
                 pmoShouldBeVisible = false;
             }
@@ -393,45 +390,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const compareWithSel = document.getElementById('compareWithFilter');
         if (!compareWithSel) return;
 
-        const currentSelection = selectedValue || compareWithSel.value; // Preserve selection if any
+        const currentSelection = selectedValue || compareWithSel.value; 
         
         let optionsHtml = `<option value="no-comparison" data-i18n-key="optionNoComparison">${getTranslation('optionNoComparison')}</option>`;
-        // Add other static options like "All Ministries" or period comparisons if they are part of this dropdown
-        // Example, if API returns ministries with specific IDs for comparison:
-        // optionsHtml += `<option value="all-average" data-i18n-key="optionCompareAllAverage">Average of All</option>`;
-
-        // If you want to list individual ministries from the current data:
-        // (This might become very long if many ministries)
-        /*
-        if (ministries && ministries.length > 0) {
-            ministries.forEach(m => {
-                // Exclude PMO from being a comparison target against itself if it's the only item, or by design
-                // if (m.id !== 0) { // Example: Don't list PMO as a comparison target
-                    optionsHtml += `<option value="${m.id}">${m.name}</option>`;
-                // }
-            });
-        }
-        */
-        // For now, keeping the static period options from HTML and just ensuring "No Comparison" is translated.
-        // The HTML has the other period options. If they need to be dynamic, this function would build them.
-
-        compareWithSel.innerHTML = optionsHtml; // This will overwrite existing options from HTML.
-                                             // If HTML has static options you want to keep, append instead or be selective.
-                                             // For this specific case, let's assume the static options in HTML for periods are okay
-                                             // and we just want to make sure "No Comparison" is correctly translated.
-                                             // So, a better approach is to only update the text of existing static options.
         
-        // Re-apply translations to static options defined in HTML for this dropdown
+        compareWithSel.innerHTML = optionsHtml;
+                                             
         compareWithSel.querySelectorAll('option[data-i18n-key]').forEach(opt => {
             const key = opt.getAttribute('data-i18n-key');
             opt.textContent = getTranslation(key);
         });
         
-        if (currentSelection) { // Try to reselect previous value
+        if (currentSelection) { 
             compareWithSel.value = currentSelection;
         }
     }
-
 
     async function fetchDashboardData(pillar, lang, period) { 
         showLoadingIndicator(true); 
@@ -439,6 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cacheKey = `${pillar}-${lang}-${period}`; 
         
         if(apiDataCache.dashboard[cacheKey]){ 
+            console.log("SCRIPT.JS: Using cached dashboard data for key:", cacheKey);
             updateKPICards(apiDataCache.dashboard[cacheKey].kpi_summary); 
             allMinistriesData = apiDataCache.dashboard[cacheKey].ministries || []; 
             populateCompareWithDropdown(allMinistriesData, document.getElementById('compareWithFilter')?.value);
@@ -446,12 +420,15 @@ document.addEventListener('DOMContentLoaded', () => {
             showLoadingIndicator(false); 
             return; 
         } 
+        console.log("SCRIPT.JS: Fetching NEW dashboard data for key:", cacheKey);
         try { 
             const url = `${API_BASE_URL}/dashboard_data?pillar=${pillar}&lang=${lang}&period=${period}`; 
+            console.log("SCRIPT.JS: Fetching dashboard data from URL:", url);
             const resp = await fetch(url); 
             if(!resp.ok){ const errTxt = await resp.text(); throw new Error(`HTTP error! ${resp.status}, ${errTxt}`); } 
             const data = await resp.json(); 
             if(!data||typeof data.kpi_summary==='undefined'||typeof data.ministries==='undefined'){ 
+                console.warn("SCRIPT.JS: Fetched dashboard data, but structure is unexpected or empty.", data);
                 updateKPICards(null); 
                 allMinistriesData=[]; 
             } else { 
@@ -473,18 +450,18 @@ document.addEventListener('DOMContentLoaded', () => {
         } 
     }
     async function loadAndRenderMinistryDetails(id, period) {
-        // Ensure no static PMO detail handling is here if API provides details for ID 0
         console.log(`SCRIPT.JS: loadAndRenderMinistryDetails called for id: ${id}, period: ${period}`); 
         showLoadingIndicator(true); 
         const cacheKey = `${id}-${currentLang}-${period}`; 
         if(apiDataCache.details[cacheKey]){ 
-            console.log("SCRIPT.JS: Found ministry details in cache. Populating."); 
+            console.log("SCRIPT.JS: Found ministry details in cache. Populating for key:", cacheKey);
             populateMinistryDetails(apiDataCache.details[cacheKey]); 
             showLoadingIndicator(false); return; 
         } 
+        console.log("SCRIPT.JS: Fetching NEW ministry details for key:", cacheKey);
         try { 
             const url = `${API_BASE_URL}/ministry_details/${id}?lang=${currentLang}&period=${period}`; 
-            console.log("SCRIPT.JS: Fetching ministry details from URL:", url); 
+            console.log("SCRIPT.JS: Fetching ministry details from URL:", url);
             const resp = await fetch(url); 
             if(!resp.ok){ 
                 const errTxt = await resp.text(); 
@@ -512,7 +489,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function setLanguage(lang) { 
         if(lang !== currentLang){ 
             currentLang=lang; 
-            updateAllUIText(lang); // This updates static texts and options with data-i18n-key
+            updateAllUIText(lang); 
             
             showNotification(`${getTranslation('notificationLangSwitchPrefix')} ${getTranslation(`language${lang.toUpperCase()}`)}`); 
             const period = document.getElementById('timePeriod')?.value || 'q2-2023'; 
@@ -563,7 +540,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(periodSel) {
             periodSel.addEventListener('change', () => {
                 console.log("SCRIPT.JS: Time Period filter changed.");
-                const periodValue=periodSel.value; // Use a different variable name
+                const periodValue=periodSel.value;
                 fetchDashboardData(currentPillar,currentLang,periodValue);
                 if(ministryDetailsSection && !ministryDetailsSection.classList.contains('hidden')){
                     const mId=ministryDetailsSection.dataset.currentMinistryId;
