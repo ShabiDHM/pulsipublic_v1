@@ -18,10 +18,13 @@ COPY pulsi_politik_backend/ /app/pulsi_politik_backend/
 
 # Copy the entire frontend application code into the container
 # This creates /app/pulsi_politik_frontend/ in the container
-# Your Flask app will need to be configured to serve static files from this path
 COPY pulsi_politik_frontend/ /app/pulsi_politik_frontend/
 
-# Make port 8000 available to the world outside this container (Render will use this)
+# Copy the static directory which contains assets like Leaflet
+# This creates /app/static/ in the container
+COPY static/ /app/static/
+
+# Make port 8000 available to the world outside this container (Render will use this, or your specified port)
 EXPOSE 8000
 
 # Define environment variable for Flask (optional but good practice for clarity)
@@ -33,4 +36,7 @@ ENV FLASK_APP=pulsi_politik_backend.app
 # 1. Your Flask app instance is named 'app' in 'pulsi_politik_backend/app.py'
 # 2. Gunicorn is installed (from requirements.txt)
 # Gunicorn will listen on all interfaces (0.0.0.0) on port 8000 inside the container.
-CMD ["gunicorn", "--workers", "2", "--bind", "0.0.0.0:8000", "pulsi_politik_backend.app:app"]
+# Render automatically sets the PORT environment variable, so it's good to use it.
+# If your requirements.txt doesn't have gunicorn, this CMD will fail.
+# Ensure gunicorn is in pulsi_politik_backend/requirements.txt
+CMD ["gunicorn", "--workers", "2", "--bind", "0.0.0.0:$PORT", "pulsi_politik_backend.app:app"]
