@@ -24,19 +24,18 @@ COPY pulsi_politik_frontend/ /app/pulsi_politik_frontend/
 # This creates /app/static/ in the container
 COPY static/ /app/static/
 
-# Make port 8000 available to the world outside this container (Render will use this, or your specified port)
-EXPOSE 8000
+# Make port available (Gunicorn will bind to $PORT provided by Render)
+# EXPOSE is good practice for documentation and for some Docker networking scenarios,
+# but Render primarily relies on your app binding to the $PORT it provides.
+EXPOSE 8000 
 
 # Define environment variable for Flask (optional but good practice for clarity)
-# This tells Flask where your app object is.
 ENV FLASK_APP=pulsi_politik_backend.app
 
 # Run the application using Gunicorn when the container launches
+# Using shell form for CMD to allow environment variable ($PORT) expansion by the shell.
 # This assumes:
 # 1. Your Flask app instance is named 'app' in 'pulsi_politik_backend/app.py'
 # 2. Gunicorn is installed (from requirements.txt)
-# Gunicorn will listen on all interfaces (0.0.0.0) on port 8000 inside the container.
-# Render automatically sets the PORT environment variable, so it's good to use it.
-# If your requirements.txt doesn't have gunicorn, this CMD will fail.
-# Ensure gunicorn is in pulsi_politik_backend/requirements.txt
-CMD ["gunicorn", "--workers", "2", "--bind", "0.0.0.0:$PORT", "pulsi_politik_backend.app:app"]
+# Gunicorn will listen on all interfaces (0.0.0.0) on the port specified by $PORT.
+CMD gunicorn --workers 2 --bind 0.0.0.0:$PORT pulsi_politik_backend.app:app
