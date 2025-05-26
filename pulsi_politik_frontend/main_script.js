@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // START: Global Variables & Constants
     const API_BASE_URL = '/api';
     let currentPillar = 'Transparency';
-    let currentLang = 'en';
+    let currentLang = 'en'; // Default language
     let allMinistriesData = [];
     let apiDataCache = { dashboard: {}, details: {} };
     let currentNotificationTimeout = null;
@@ -36,14 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // START: DOM Element References
     const languageSelectorButton = document.getElementById('languageSelector');
     const languageDropdown = document.getElementById('languageDropdown');
-    const currentLanguageSpan = languageSelectorButton?.querySelector('span');
+    const currentLanguageSpan = languageSelectorButton?.querySelector('span'); // This is the span we are targeting
     const pillarTabs = isDashboardPage ? document.querySelectorAll('.tab-item') : null;
     let chartContainer = isDashboardPage ? document.getElementById('chart-container') : null;
     const currentViewTitle = isDashboardPage ? document.getElementById('currentView') : null;
     const ministryDetailsSection = isDashboardPage ? document.getElementById('ministryDetails') : null;
     const selectedMinistryNameTitle = isDashboardPage ? document.getElementById('selectedMinistryName') : null;
     const kpiElements = {};
-    const detailElements = {}; 
+    const detailElements = {};
     const perfBreakdownElements = {};
 
     if (isDashboardPage) {
@@ -74,33 +74,815 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // END: DOM Element References
 
-    // START: Translations Object (COMPREHENSIVE - Including new footer keys)
+    // START: Translations Object
     const translations = {
-        en: {
-            days: "days", headerTitle: "Public Pulse", headerSubtitle: "Kosovo Civic Monitor", languageEN: "English (EN)", languageSQ: "Albanian (SQ)", languageSR: "Serbian (SR)", userMenuProfile: "Profile", userMenuSettings: "Settings", userMenuSignOut: "Sign out", sidebarMainNavigation: "MAIN NAVIGATION", sidebarDashboard: "Dashboard", sidebarDocuments: "Documents", sidebarEvents: "Events", sidebarAnalytics: "ANALYTICS", sidebarLocalGovernment: "Local Government", sidebarExportData: "Export Data",
-            breadcrumbDashboard: "Dashboard", breadcrumbPublicPulse: "Public Pulse", breadcrumbDocuments: "Documents", breadcrumbEvents: "Events", breadcrumbLocalGovernment: "Local Government", breadcrumbExportData: "Export Data",
-            pageTitle: "Public Pulse Dashboard", pageSubtitle: "Monitoring transparency and performance of Kosovo institutions", pageTitleDocuments: "Document Repository", pageSubtitleDocuments: "Access official publications, reports, and legislative documents.", pageTitleEvents: "Upcoming Events & Workshops", pageSubtitleEvents: "Discover public consultations, workshops, and civic engagement opportunities.", pageTitleLocalGovernment: "Local Government Performance", pageSubtitleLocalGovernment: "Visualize transparency and performance metrics across Kosovo's municipalities.", pageTitleExportData: "Data Export Center", pageSubtitleExportData: "Download raw data for your research and analysis needs.",
-            kpiAvgTransparency: "Average Transparency", kpiParticipationScore: "Participation Score", kpiEfficiencyRating: "Efficiency Rating", kpiOverallOutcome: "Overall Outcome", kpiChangeSinceLastQuarter: "since last quarter", filtersTitle: "Interactive Filters", filtersReset: "Reset Filters", filtersExport: "Export", filtersExportPDF: "Export as PDF", filtersExportExcel: "Export as Excel", filtersExportCSV: "Export as CSV", filtersExportImage: "Export as Image", filtersTimePeriod: "Time Period", filtersCompareWith: "Compare With", filtersMinistryType: "Ministry Type", filtersScoreRange: "Score Range", filtersSearchMinistry: "Search Ministry", filtersSearchPlaceholder: "Type to search...", filtersApply: "Apply Filters", filtersShowComparison: "Show comparison", tabTransparency: "Transparency", tabParticipation: "Participation", tabEfficiency: "Efficiency", tabOutcome: "Outcome", viewTitleSuffix: "Scores", legendHigh: "High (>70)", legendMedium: "Medium (40-70)", legendLow: "Low (<40)", legendSortBy: "Sort by", sortHighestScore: "Highest Score", sortLowestScore: "Lowest Score", sortNameAZ: "Name (A-Z)", sortNameZA: "Name (Z-A)", detailsTitle: "Ministry Details", detailsTransparencyScore: "Transparency Score", detailsInfoRequests: "Information Requests", infoRequestsProcessed: "processed", detailsResponseTime: "Response Time", daysUnit: "days", detailsChangeSinceLastPeriod: "since last period", detailsPerfBreakdown: "Performance Breakdown", perfBreakdownWebsiteTransparency: "Website Transparency", perfBreakdownDocAccessibility: "Document Accessibility", perfBreakdownReqResponsiveness: "Request Responsiveness", perfBreakdownInfoCompleteness: "Information Completeness", perfBreakdownPublicEngagement: "Public Engagement", perfBreakdownDefaultLabel1: "Website Transparency", perfBreakdownDefaultLabel2: "Document Accessibility", perfBreakdownDefaultLabel3: "Request Responsiveness", perfBreakdownDefaultLabel4: "Information Completeness", perfBreakdownDefaultLabel5: "Public Engagement", detailsRecentActivities: "Recent Activities", tableHeaderDate: "Date", tableHeaderActivity: "Activity", tableHeaderStatus: "Status", tableStatusCompleted: "Completed", tableStatusInProgress: "In Progress", tableNoRecentActivities: "No recent activities to display.", tableNoDataToDisplay: "No data to display for the current filters.", notificationLangSwitchPrefix: "Language switched to", notificationFiltersApplied: "Filters applied", notificationFiltersReset: "Filters have been reset.", notificationComparisonEnabled: "Comparison view enabled", notificationComparisonDisabled: "Comparison view disabled", notificationExportingPrefix: "Exporting data as", notificationSortedByPrefix: "Sorted by", tooltipClickForDetails: "Click for details", tooltipScoreSuffix: "Score", categoryLabel: "Category", ministerLabel: "Minister", tooltipKeyMembers: "Key Members", optionNoComparison: "No Comparison", optionAllMinistries: "All Ministries", loadingData: "Loading data...", errorFetchingData: "Error fetching data. Please try again.", noChangeData: "- No change data", 
-            footerAboutTitleNew: "About Public Pulse", footerAboutTextNew: "As an independent, non-partisan watchdog, Public Pulse is committed to strengthening democratic accountability across Kosovo. We meticulously analyze the transparency and effectiveness of public service delivery, providing citizens with the clear, evidence-based insights essential for holding power accountable. For Kosovo to thrive, every citizen must have the tools to engage, question, and drive progress.", footerContactInfoTitle: "Contact Info", footerFollowUsTitle: "Follow Us", footerCopyrightNew: "Public Pulse Kosovo. All Rights Reserved.", 
-            categoryEconomic: "Economic", categoryGovernance: "Governance", categorySocial: "Social", categoryInfrastructure: "Infrastructure", categoryGeneral: "General", activityPrefixPublicEvent: "Public Event: ", activityPrefixReportRelease: "Report Release: ", activityPrefixNewInitiative: "New Initiative: ", activityPrefixConsultationDocument: "Consultation Document: ", pmoName: "Office of the Prime Minister", primeMinisterLabel: "Prime Minister", periodQ2_2023: "Q2 2023", periodQ1_2023: "Q1 2023", periodQ4_2022: "Q4 2022", periodQ3_2022: "Q3 2022", periodAnnual_2022: "Annual 2022", periodQ1_2023_compare: "Q1 2023", periodQ4_2022_compare: "Q4 2022", periodQ2_2022_yoy: "Q2 2022 (YoY)", periodAnnual_2022_compare: "Annual 2022",
-            mockPageUnderConstructionTitle: "Page Under Construction", mockPageContentComingSoon: "Content for this page is coming soon!", mockPageExportDataContent: "Content for the Export Data page is coming soon! You'll be able to download datasets in various formats.",
-            docSearchLabel: "Search Documents", docSearchPlaceholder: "Enter keywords...", docCategoryLabel: "Category", docCategoryAll: "All Categories", docCategoryReports: "Annual Reports", docCategoryLegislative: "Legislative Acts", docCategoryPolicy: "Policy Briefs", docCategoryResearch: "Research Papers", docYearLabel: "Year", docYearAll: "All Years", docApplyFiltersButton: "Apply Filters", docTitle1: "Annual Transparency Report 2023", docDesc1: "A comprehensive overview of institutional transparency throughout Kosovo in 2023, highlighting key findings and recommendations.", docDate1: "Feb 15, 2024", docFileInfo1: "PDF, 3.2 MB", docDownloadButton: "Download", docTitle2: "Draft Law on Public Information Access", docDesc2: "The proposed legislative text for enhancing public access to information, open for public consultation.", docDate2: "Jan 20, 2024", docFileInfo2: "DOCX, 1.1 MB", docTitle3: "Policy Brief: Digital Governance", docDesc3: "Analysis and recommendations for advancing digital governance practices in public institutions.", docDate3: "Dec 05, 2023", docFileInfo3: "PDF, 780 KB", paginationPrevious: "Previous", paginationNext: "Next",
-            eventSearchLabel: "Search Events", eventSearchPlaceholder: "Event name or keyword...", eventTypeLabel: "Event Type", eventTypeAll: "All Types", eventTypeWorkshop: "Workshop", eventTypeConference: "Conference", eventTypeConsultation: "Public Consultation", eventTypeWebinar: "Webinar", eventDateLabel: "Date", eventApplyFiltersButton: "Apply Filters", eventTitle1: "Workshop on Digital Literacy for CSOs", eventDesc1: "Join us for an interactive workshop designed to enhance the digital skills of civil society organizations in Kosovo.", eventDateInfo1: "Date: October 28, 2024", eventTimeInfo1: "Time: 10:00 - 14:00", eventLocationInfo1: "Location: Innovation Centre Kosovo, Prishtina", eventLearnMoreButton: "Learn More & Register", eventTitle2: "Conference on Open Government Data", eventDesc2: "A national conference bringing together policymakers, CSOs, and tech enthusiasts to discuss the future of open data in Kosovo.", eventDateInfo2: "Date: November 12-13, 2024", eventTimeInfo2: "Time: Full Day", eventLocationInfo2: "Location: Emerald Hotel, Prishtina",
-            mapLegendTitle: "Map Legend & Info", mapLegendHighPerf: "High Performance", mapLegendMedPerf: "Medium Performance", mapLegendLowPerf: "Low Performance", mapLegendDefault: "Default / No Data", mapSelectedMunicipality: "Selected Municipality:", mapClickPrompt: "Click on a marker to see details.", mapPopulation: "Population", mapPerformance: "Performance", mapPerformanceHigh: "High", mapPerformanceMedium: "Medium", mapPerformanceLow: "Low", mapScore: "Score", mapViewDetails: "View More Details", mapDataTableTitle: "Regional Data Overview", mapDataTableDesc: "A table summarizing key indicators for all municipalities could be displayed here. For now, this is a placeholder.",
-            mapMayorLabel: "Mayor", mapCabinetMembersLabel: "Cabinet Members", dataNotAvailable: "N/A",
-            // New Footer Keys
-            footerLearnMoreAboutUs: "Learn more about us", footerExploreTitle: "Explore", footerContactPage: "Contact Us", footerNewsletterTitle: "Stay Updated", footerNewsletterText: "Subscribe to our newsletter to get the latest updates and reports directly in your inbox.", footerEmailLabel: "Email address", footerEmailPlaceholder: "Enter your email", footerSubscribeButton: "Subscribe", footerPrivacyPolicyLink: "Privacy Policy", footerTermsLink: "Terms of Use"
-        },
-        sq: { /* ... ALL YOUR ALBANIAN TRANSLATIONS - INCLUDING THE NEW FOOTER KEYS ... */
-            footerLearnMoreAboutUs: "Mëso më shumë rreth nesh", footerExploreTitle: "Eksploro", footerContactPage: "Na Kontaktoni", footerNewsletterTitle: "Qëndroni të Informuar", footerNewsletterText: "Regjistrohuni në buletinin tonë për të marrë përditësimet dhe raportet më të fundit direkt në emailin tuaj.", footerEmailLabel: "Adresa e emailit", footerEmailPlaceholder: "Shkruani emailin tuaj", footerSubscribeButton: "Regjistrohu", footerPrivacyPolicyLink: "Politika e Privatësisë", footerTermsLink: "Kushtet e Përdorimit",
-             days: "ditë", headerTitle: "Pulsi Publik", headerSubtitle: "Monitori Qytetar i Kosovës", languageEN: "Anglisht (EN)", languageSQ: "Shqip (SQ)", languageSR: "Serbisht (SR)", userMenuProfile: "Profili", userMenuSettings: "Cilësimet", userMenuSignOut: "Dilni", sidebarMainNavigation: "NAVIGIMI KRYESOR", sidebarDashboard: "Paneli", sidebarDocuments: "Dokumentet", sidebarEvents: "Ngjarjet", sidebarAnalytics: "ANALITIKA", sidebarLocalGovernment: "Qeverisja Lokale", sidebarExportData: "Eksporto të Dhënat", breadcrumbDashboard: "Paneli", breadcrumbPublicPulse: "Pulsi Publik", breadcrumbDocuments: "Dokumentet", breadcrumbEvents: "Ngjarjet", breadcrumbLocalGovernment: "Qeverisja Lokale", breadcrumbExportData: "Eksporto të Dhënat", pageTitle: "Paneli Pulsi Publik", pageSubtitle: "Monitorimi i transparencës dhe performancës së institucioneve të Kosovës", pageTitleDocuments: "Depoja e Dokumenteve", pageSubtitleDocuments: "Aksesoni publikimet zyrtare, raportet dhe dokumentet legjislative.", pageTitleEvents: "Ngjarjet & Punëtoritë e Ardhshme", pageSubtitleEvents: "Zbuloni konsultimet publike, punëtoritë dhe mundësitë për angazhim qytetar.", pageTitleLocalGovernment: "Performanca e Qeverisjes Lokale", pageSubtitleLocalGovernment: "Vizualizoni metrikat e transparencës dhe performancës nëpër komunat e Kosovës.", pageTitleExportData: "Qendra e Eksportit të të Dhënave", pageSubtitleExportData: "Shkarkoni të dhëna të papërpunuara për nevojat tuaja kërkimore dhe analitike.", kpiAvgTransparency: "Transparenca Mesatare", kpiParticipationScore: "Pikët e Pjesëmarrjes", kpiEfficiencyRating: "Vlerësimi i Efikasitetit", kpiOverallOutcome: "Rezultati i Përgjithshëm", kpiChangeSinceLastQuarter: "nga tremujori i kaluar", filtersTitle: "Filtra Interaktivë", filtersReset: "Rivendos Filtrat", filtersExport: "Eksporto", filtersExportPDF: "Eksporto si PDF", filtersExportExcel: "Eksporto si Excel", filtersExportCSV: "Eksporto si CSV", filtersExportImage: "Eksporto si Imazh", filtersTimePeriod: "Periudha Kohore", filtersCompareWith: "Krahaso Me", filtersMinistryType: "Lloji i Ministrisë", filtersScoreRange: "Gama e Pikëve", filtersSearchMinistry: "Kërko Ministrinë", filtersSearchPlaceholder: "Shkruaj për të kërkuar...", filtersApply: "Apliko Filtrat", filtersShowComparison: "Shfaq krahasimin", tabTransparency: "Transparenca", tabParticipation: "Pjesëmarrja", tabEfficiency: "Efikasiteti", tabOutcome: "Rezultati", viewTitleSuffix: " Rezultatet", legendHigh: "E Lartë (>70)", legendMedium: "Mesatare (40-70)", legendLow: "E Ulët (<40)", legendSortBy: "Rendit sipas", sortHighestScore: "Pikët më të Larta", sortLowestScore: "Pikët më të Ulëta", sortNameAZ: "Emri (A-Z)", sortNameZA: "Emri (Z-A)", detailsTitle: "Detajet e Ministrisë", detailsTransparencyScore: "Pikët e Transparencës", detailsInfoRequests: "Kërkesat për Informacion", infoRequestsProcessed: "të procesuara", detailsResponseTime: "Koha e Përgjigjes", detailsChangeSinceLastPeriod: "nga periudha e kaluar", detailsPerfBreakdown: "Ndarja e Performancës", perfBreakdownWebsiteTransparency: "Transparenca e Uebfaqes", perfBreakdownDocAccessibility: "Aksesueshmëria e Dokumenteve", perfBreakdownReqResponsiveness: "Përgjegjshmëria ndaj Kërkesave", perfBreakdownInfoCompleteness: "Plotësia e Informacionit", perfBreakdownPublicEngagement: "Angazhimi Publik", perfBreakdownDefaultLabel1: "Transparenca e Uebfaqes", perfBreakdownDefaultLabel2: "Aksesueshmëria e Dokumenteve", perfBreakdownDefaultLabel3: "Përgjegjshmëria ndaj Kërkesave", perfBreakdownDefaultLabel4: "Plotësia e Informacionit", perfBreakdownDefaultLabel5: "Angazhimi Publik", detailsRecentActivities: "Aktivitetet e Fundit", tableHeaderDate: "Data", tableHeaderActivity: "Aktiviteti", tableHeaderStatus: "Statusi", tableStatusCompleted: "E Përfunduar", tableStatusInProgress: "Në Progres", tableNoRecentActivities: "Nuk ka aktivitete të fundit për të shfaqur.", tableNoDataToDisplay: "Nuk ka të dhëna për të shfaqur për filtrat aktualë.", notificationLangSwitchPrefix: "Gjuha u ndryshua në", notificationFiltersApplied: "Filtrat u aplikuan", notificationFiltersReset: "Filtrat janë rivendosur.", notificationComparisonEnabled: "Pamja e krahasimit u aktivizua", notificationComparisonDisabled: "Pamja e krahasimit u çaktivizua", notificationExportingPrefix: "Duke eksportuar të dhënat si", notificationSortedByPrefix: "Renditur sipas", tooltipClickForDetails: "Kliko për detaje", tooltipScoreSuffix: "Pikët", categoryLabel: "Kategoria", ministerLabel: "Ministri", tooltipKeyMembers: "Anëtarët Kyç", optionNoComparison: "Pa Krahasim", optionAllMinistries: "Të gjitha Ministritë", loadingData: "Duke ngarkuar të dhënat...", errorFetchingData: "Gabim gjatë marrjes së të dhënave. Ju lutemi provoni përsëri.", noChangeData: "- Nuk ka të dhëna për ndryshim", footerAboutTitleNew: "Rreth Pulsit Publik", footerAboutTextNew: "Si një mbikëqyrës i pavarur dhe jo-partiak, Public Pulse është i përkushtuar për forcimin e llogaridhënies demokratike në mbarë Kosovën. Ne analizojmë me përpikëri transparencën dhe efektivitetin e ofrimit të shërbimeve publike, duke u ofruar qytetarëve njohuri të qarta, të bazuara në dëshmi, thelbësore për të kërkuar llogari nga pushteti. Që Kosova të përparojë, çdo qytetar duhet të ketë mjetet për t'u angazhuar, për të pyetur dhe për të nxitur progresin.", footerContactInfoTitle: "Informacion Kontakti", footerFollowUsTitle: "Na Ndiqni", footerCopyrightNew: "Pulsi Publik Kosovë. Të gjitha të drejtat e rezervuara.", categoryEconomic: "Ekonomike", categoryGovernance: "Qeverisjes", categorySocial: "Sociale", categoryInfrastructure: "Infrastrukturës", categoryGeneral: "Të Përgjithshme", activityPrefixPublicEvent: "Ngjarje Publike: ", activityPrefixReportRelease: "Publikim Raporti: ", activityPrefixNewInitiative: "Nismë e Re: ", activityPrefixConsultationDocument: "Dokument Konsultimi: ", pmoName: "Zyra e Kryeministrit", primeMinisterLabel: "Kryeministri", periodQ2_2023: "T2 2023", periodQ1_2023: "T1 2023", periodQ4_2022: "T4 2022", periodQ3_2022: "T3 2022", periodAnnual_2022: "Vjetor 2022", periodQ1_2023_compare: "T1 2023", periodQ4_2022_compare: "T4 2022", periodQ2_2022_yoy: "T2 2022 (VnM)", periodAnnual_2022_compare: "Vjetor 2022", mockPageUnderConstructionTitle: "Faqja në Ndërtim", mockPageContentComingSoon: "Përmbajtja për këtë faqe do të jetë së shpejti!", mockPageExportDataContent: "Përmbajtja për faqen e Eksportit të të Dhënave do të jetë së shpejti! Do të keni mundësi të shkarkoni grupe të dhënash në formate të ndryshme.", docSearchLabel: "Kërko Dokumente", docSearchPlaceholder: "Shkruani fjalë kyçe...", docCategoryLabel: "Kategoria", docCategoryAll: "Të gjitha Kategoritë", docCategoryReports: "Raporte Vjetore", docCategoryLegislative: "Akte Ligjore", docCategoryPolicy: "Udhëzime Politikash", docCategoryResearch: "Punime Kërkimore", docYearLabel: "Viti", docYearAll: "Të gjithë Vitet", docApplyFiltersButton: "Apliko Filtrat", docTitle1: "Raporti Vjetor i Transparencës 2023", docDesc1: "Një pasqyrë gjithëpërfshirëse e transparencës institucionale në mbarë Kosovën në vitin 2023, duke nxjerrë në pah gjetjet kryesore dhe rekomandimet.", docDate1: "15 Shkurt 2024", docFileInfo1: "PDF, 3.2 MB", docDownloadButton: "Shkarko", docTitle2: "Projektligji për Qasjen në Informata Publike", docDesc2: "Teksti i propozuar legjislativ për përmirësimin e qasjes publike në informata, i hapur për konsultim publik.", docDate2: "20 Janar 2024", docFileInfo2: "DOCX, 1.1 MB", docTitle3: "Udhëzim Politikash: Qeverisja Dixhitale", docDesc3: "Analizë dhe rekomandime për avancimin e praktikave të qeverisjes dixhitale në institucionet publike.", docDate3: "05 Dhjetor 2023", docFileInfo3: "PDF, 780 KB", paginationPrevious: "Para", paginationNext: "Pas", eventSearchLabel: "Kërko Ngjarje", eventSearchPlaceholder: "Emri i ngjarjes ose fjalë kyçe...", eventTypeLabel: "Lloji i Ngjarjes", eventTypeAll: "Të gjitha Llojet", eventTypeWorkshop: "Punëtori", eventTypeConference: "Konferencë", eventTypeConsultation: "Konsultim Publik", eventTypeWebinar: "Webinar", eventDateLabel: "Data", eventApplyFiltersButton: "Apliko Filtrat", eventTitle1: "Punëtori mbi Shkrim-Leximin Dixhital për OJQ-të", eventDesc1: "Bashkohuni me ne në një punëtori interaktive të dizajnuar për të përmirësuar aftësitë dixhitale të organizatave të shoqërisë civile në Kosovë.", eventDateInfo1: "Data: 28 Tetor 2024", eventTimeInfo1: "Koha: 10:00 - 14:00", eventLocationInfo1: "Vendndodhja: Qendra e Inovacionit Kosovë, Prishtinë", eventLearnMoreButton: "Mëso Më Shumë & Regjistrohu", eventTitle2: "Konferenca mbi të Dhënat e Hapura Qeveritare", eventDesc2: "Një konferencë kombëtare që bashkon politikëbërësit, OJQ-të dhe entuziastët e teknologjisë për të diskutuar të ardhmen e të dhënave të hapura në Kosovë.", eventDateInfo2: "Data: 12-13 Nëntor 2024", eventTimeInfo2: "Koha: Ditë e Plotë", eventLocationInfo2: "Vendndodhja: Hotel Emerald, Prishtinë",
-            mapLegendTitle: "Legjenda e Hartës & Info", mapLegendHighPerf: "Performancë e Lartë", mapLegendMedPerf: "Performancë Mesatare", mapLegendLowPerf: "Performancë e Ulët", mapLegendDefault: "Standarde / Pa të Dhëna", mapSelectedMunicipality: "Komuna e Zgjedhur:", mapClickPrompt: "Kliko mbi një shënues për të parë detajet.", mapPopulation: "Popullsia", mapPerformance: "Performanca", mapPerformanceHigh: "E Lartë", mapPerformanceMedium: "Mesatare", mapPerformanceLow: "E Ulët", mapScore: "Pikët", mapViewDetails: "Shiko Më Shumë Detaje", mapDataTableTitle: "Pasqyra e të Dhënave Rajonale", mapDataTableDesc: "Një tabelë që përmbledh të dhënat kryesore për të gjitha komunat mund të shfaqet këtu. Për momentin, ky është një vendmbajtës.", mapMayorLabel: "Kryetari", mapCabinetMembersLabel: "Anëtarët e Kabinetit", dataNotAvailable: "E padisponueshme"
-        },
-        sr: { /* ... YOUR FULL SERBIAN TRANSLATIONS ... */ days: "dana", headerTitle: "Javni Puls", headerSubtitle: "Građanski Monitor Kosova", languageEN: "Engleski (EN)", languageSQ: "Albanski (SQ)", languageSR: "Srpski (SR)", userMenuProfile: "Profil", userMenuSettings: "Podešavanja", userMenuSignOut: "Odjavi se", sidebarMainNavigation: "GLAVNA NAVIGACIJA", sidebarDashboard: "Kontrolna tabla", sidebarDocuments: "Dokumenti", sidebarEvents: "Događaji", sidebarAnalytics: "ANALITIKA", sidebarLocalGovernment: "Lokalna Samouprava", sidebarExportData: "Izvezi Podatke", breadcrumbDashboard: "Kontrolna tabla", breadcrumbPublicPulse: "Javni Puls", breadcrumbDocuments: "Dokumenti", breadcrumbEvents: "Događaji", breadcrumbLocalGovernment: "Lokalna Samouprava", breadcrumbExportData: "Izvezi Podatke", pageTitle: "Javni Puls Kontrolna Tabla", pageSubtitle: "Praćenje transparentnosti i učinka kosovskih institucija", pageTitleDocuments: "Repozitorijum Dokumenata", pageSubtitleDocuments: "Pristupite zvaničnim publikacijama, izveštajima i zakonodavnim dokumentima.", pageTitleEvents: "Predstojeći Događaji i Radionice", pageSubtitleEvents: "Otkrijte javne konsultacije, radionice i mogućnosti za građansko učešće.", pageTitleLocalGovernment: "Učinak Lokalne Samouprave", pageSubtitleLocalGovernment: "Vizuelizujte metrike transparentnosti i učinka širom kosovskih opština.", pageTitleExportData: "Centar za Izvoz Podataka", pageSubtitleExportData: "Preuzmite sirove podatke za vaše istraživačke i analitičke potrebe.", kpiAvgTransparency: "Prosečna Transparentnost", kpiParticipationScore: "Ocena Učešća", kpiEfficiencyRating: "Ocena Efikasnosti", kpiOverallOutcome: "Ukupni Ishod", kpiChangeSinceLastQuarter: "od prošlog kvartala", filtersTitle: "Interaktivni Filteri", filtersReset: "Resetuj Filtere", filtersExport: "Izvezi", filtersExportPDF: "Izvezi kao PDF", filtersExportExcel: "Izvezi kao Excel", filtersExportCSV: "Izvezi kao CSV", filtersExportImage: "Izvezi kao Sliku", filtersTimePeriod: "Vremenski Period", filtersCompareWith: "Uporedi Sa", filtersMinistryType: "Tip Ministarstva", filtersScoreRange: "Raspon Ocena", filtersSearchMinistry: "Pretraži Ministarstvo", filtersSearchPlaceholder: "Kucajte za pretragu...", filtersApply: "Primeni Filtere", filtersShowComparison: "Prikaži poređenje", tabTransparency: "Transparentnost", tabParticipation: "Učešće", tabEfficiency: "Efikasnost", tabOutcome: "Ishod", viewTitleSuffix: "Ocene", legendHigh: "Visoko (>70)", legendMedium: "Srednje (40-70)", legendLow: "Nisko (<40)", legendSortBy: "Sortiraj po", sortHighestScore: "Najviša Ocena", sortLowestScore: "Najniža Ocena", sortNameAZ: "Naziv (A-Z)", sortNameZA: "Naziv (Z-A)", detailsTitle: "Detalji Ministarstva", detailsTransparencyScore: "Ocena Transparentnosti", detailsInfoRequests: "Zahtevi za Informacije", infoRequestsProcessed: "obrađeno", detailsResponseTime: "Vreme Odgovora", detailsChangeSinceLastPeriod: "od prošlog perioda", detailsPerfBreakdown: "Analiza Učinka", perfBreakdownWebsiteTransparency: "Transparentnost Veb Sajta", perfBreakdownDocAccessibility: "Dostupnost Dokumenata", perfBreakdownReqResponsiveness: "Odaziv na Zahteve", perfBreakdownInfoCompleteness: "Potpunost Informacija", perfBreakdownPublicEngagement: "Javno Angažovanje", perfBreakdownDefaultLabel1: "Transparentnost Veb Sajta", perfBreakdownDefaultLabel2: "Dostupnost Dokumenata", perfBreakdownDefaultLabel3: "Odaziv na Zahteve", perfBreakdownDefaultLabel4: "Potpunost Informacija", perfBreakdownDefaultLabel5: "Javno Angažovanje", detailsRecentActivities: "Nedavne Aktivnosti", tableHeaderDate: "Datum", tableHeaderActivity: "Aktivnost", tableHeaderStatus: "Status", tableStatusCompleted: "Završeno", tableStatusInProgress: "U Toku", tableNoRecentActivities: "Nema nedavnih aktivnosti za prikaz.", tableNoDataToDisplay: "Nema podataka za prikaz za trenutne filtere.", notificationLangSwitchPrefix: "Jezik promenjen na", notificationFiltersApplied: "Filteri primenjeni", notificationFiltersReset: "Filteri su resetovani.", notificationComparisonEnabled: "Prikaz poređenja omogućen", notificationComparisonDisabled: "Prikaz poređenja onemogućen", notificationExportingPrefix: "Izvoženje podataka kao", notificationSortedByPrefix: "Sortirano po", tooltipClickForDetails: "Klikni za detalje", tooltipScoreSuffix: "Ocena", categoryLabel: "Kategorija", ministerLabel: "Ministar", tooltipKeyMembers: "Ključni Članovi", optionNoComparison: "Bez Poređenja", optionAllMinistries: "Sva Ministarstva", loadingData: "Učitavanje podataka...", errorFetchingData: "Greška pri dohvatanju podataka. Molimo pokušajte ponovo.", noChangeData: "- Nema podataka o promeni", footerAboutTitleNew: "O Javnom Pulsu", footerAboutTextNew: "Kao nezavisni, nestranački nadzorni organ, Javni Puls je posvećen jačanju demokratske odgovornosti širom Kosova. Pažljivo analiziramo transparentnost i efikasnost pružanja javnih usluga, pružajući građanima jasne uvide zasnovane na dokazima, neophodne za pozivanje vlasti na odgovornost. Da bi Kosovo napredovalo, svaki građanin mora imati alate da se angažuje, postavlja pitanja i podstiče napredak.", footerContactInfoTitle: "Kontakt Informacije", footerFollowUsTitle: "Pratite Nas", footerCopyrightNew: "Javni Puls Kosovo. Sva prava zadržana.", categoryEconomic: "Ekonomske", categoryGovernance: "Upravljanja", categorySocial: "Socijalne", categoryInfrastructure: "Infrastrukturne", categoryGeneral: "Opšte", activityPrefixPublicEvent: "Javni Događaj: ", activityPrefixReportRelease: "Objavljivanje Izveštaja: ", activityPrefixNewInitiative: "Nova Inicijativa: ", activityPrefixConsultationDocument: "Konsultacioni Dokument: ", pmoName: "Kancelarija Premijera", primeMinisterLabel: "Premijer", periodQ2_2023: "Q2 2023", periodQ1_2023: "Q1 2023", periodQ4_2022: "Q4 2022", periodQ3_2022: "Q3 2022", periodAnnual_2022: "Godišnje 2022", periodQ1_2023_compare: "Q1 2023", periodQ4_2022_compare: "Q4 2022", periodQ2_2022_yoy: "Q2 2022 (God/God)", periodAnnual_2022_compare: "Godišnje 2022", mockPageUnderConstructionTitle: "Stranica u Izradi", mockPageContentComingSoon: "Sadržaj za ovu stranicu će uskoro biti dostupan!", mockPageExportDataContent: "Sadržaj za stranicu Izvezi Podatke će uskoro biti dostupan! Moći ćete da preuzmete skupove podataka u različitim formatima.", docSearchLabel: "Pretraži Dokumente", docSearchPlaceholder: "Unesite ključne reči...", docCategoryLabel: "Kategorija", docCategoryAll: "Sve Kategorije", docCategoryReports: "Godišnji Izveštaji", docCategoryLegislative: "Zakonodavni Akti", docCategoryPolicy: "Politički Dokumenti", docCategoryResearch: "Istraživački Radovi", docYearLabel: "Godina", docYearAll: "Sve Godine", docApplyFiltersButton: "Primeni Filtere", docTitle1: "Godišnji Izveštaj o Transparentnosti 2023", docDesc1: "Sveobuhvatan pregled institucionalne transparentnosti širom Kosova u 2023. godini, ističući ključne nalaze i preporuke.", docDate1: "15. Feb 2024.", docFileInfo1: "PDF, 3.2 MB", docDownloadButton: "Preuzmi", docTitle2: "Nacrt Zakona o Pristupu Javnim Informacijama", docDesc2: "Predloženi zakonodavni tekst za unapređenje javnog pristupa informacijama, otvoren za javnu raspravu.", docDate2: "20. Jan 2024.", docFileInfo2: "DOCX, 1.1 MB", docTitle3: "Politički Dokument: Digitalna Uprava", docDesc3: "Analiza i preporuke za unapređenje praksi digitalne uprave u javnim institucijama.", docDate3: "05. Dec 2023.", docFileInfo3: "PDF, 780 KB", paginationPrevious: "Prethodna", paginationNext: "Sledeća", eventSearchLabel: "Pretraži Događaje", eventSearchPlaceholder: "Naziv događaja ili ključna reč...", eventTypeLabel: "Tip Događaja", eventTypeAll: "Svi Tipovi", eventTypeWorkshop: "Radionica", eventTypeConference: "Konferencija", eventTypeConsultation: "Javna Konsultacija", eventTypeWebinar: "Webinar", eventDateLabel: "Datum", eventApplyFiltersButton: "Primeni Filtere", eventTitle1: "Radionica o Digitalnoj Pismenosti za OCD", eventDesc1: "Pridružite nam se na interaktivnoj radionici osmišljenoj da unapredi digitalne veštine organizacija civilnog društva na Kosovu.", eventDateInfo1: "Datum: 28. Oktobar 2024.", eventTimeInfo1: "Vreme: 10:00 - 14:00", eventLocationInfo1: "Lokacija: Inovacioni Centar Kosovo, Priština", eventLearnMoreButton: "Saznaj Više & Registruj se", eventTitle2: "Konferencija o Otvorenim Vladinim Podacima", eventDesc2: "Nacionalna konferencija koja okuplja kreatore politika, OCD i tehnološke entuzijaste kako bi razgovarali o budućnosti otvorenih podataka na Kosovu.", eventDateInfo2: "Datum: 12-13. Novembar 2024.", eventTimeInfo2: "Vreme: Ceo Dan", eventLocationInfo2: "Lokacija: Hotel Emerald, Priština",
-            mapLegendTitle: "Legenda Mape & Info", mapLegendHighPerf: "Visoke Performanse", mapLegendMedPerf: "Srednje Performanse", mapLegendLowPerf: "Niske Performanse", mapLegendDefault: "Standardno / Nema Podataka", mapSelectedMunicipality: "Izabrana Opština:", mapClickPrompt: "Kliknite na marker da vidite detalje.", mapPopulation: "Stanovništvo", mapPerformance: "Performanse", mapPerformanceHigh: "Visoke", mapPerformanceMedium: "Srednje", mapPerformanceLow: "Niske", mapScore: "Ocena", mapViewDetails: "Pogledaj Više Detalja", mapDataTableTitle: "Pregled Regionalnih Podataka", mapDataTableDesc: "Tabela koja sumira ključne indikatore za sve opštine mogla bi biti prikazana ovde. Za sada, ovo je placeholder.",
-            mapMayorLabel: "Gradonačelnik", mapCabinetMembersLabel: "Članovi Kabineta", dataNotAvailable: "Nije dostupno",
-            footerLearnMoreAboutUs: "Saznajte više o nama", footerExploreTitle: "Istražite", footerContactPage: "Kontaktirajte Nas", footerNewsletterTitle: "Ostanite Ažurirani", footerNewsletterText: "Pretplatite se na naš bilten da biste dobijali najnovija ažuriranja i izveštaje direktno u vaše prijemno sanduče.", footerEmailLabel: "Email adresa", footerEmailPlaceholder: "Unesite vašu email adresu", footerSubscribeButton: "Pretplati se", footerPrivacyPolicyLink: "Politika Privatnosti", footerTermsLink: "Uslovi Korišćenja"
-        }
+    en: {
+        // Common UI
+        days: "days",
+        headerTitle: "Public Pulse",
+        headerSubtitle: "Kosovo Civic Monitor",
+        languageEN: "English (EN)",
+        languageSQ: "Albanian (SQ)",
+        languageSR: "Serbian (SR)",
+        currentLangIndicator: "EN", // ADDED
+        userMenuProfile: "Profile",
+        userMenuSettings: "Settings",
+        userMenuSignOut: "Sign out",
+        sidebarMainNavigation: "MAIN NAVIGATION",
+        sidebarDashboard: "Dashboard",
+        sidebarDocuments: "Documents",
+        sidebarEvents: "Events",
+        sidebarAnalytics: "ANALYTICS",
+        sidebarLocalGovernment: "Local Government",
+        sidebarExportData: "Export Data",
+        breadcrumbDashboard: "Dashboard",
+        breadcrumbPublicPulse: "Public Pulse",
+        breadcrumbDocuments: "Documents",
+        breadcrumbEvents: "Events",
+        breadcrumbLocalGovernment: "Local Government",
+        breadcrumbExportData: "Export Data",
+        breadcrumbAboutUs: "About Us",
+
+        // Page Titles & Subtitles
+        pageTitle: "Public Pulse Dashboard",
+        pageSubtitle: "Monitoring transparency and performance of Kosovo institutions",
+        pageTitleDocuments: "Document Repository",
+        pageSubtitleDocuments: "Access official publications, reports, and legislative documents.",
+        pageTitleEvents: "Upcoming Events & Workshops",
+        pageSubtitleEvents: "Discover public consultations, workshops, and civic engagement opportunities.",
+        pageTitleLocalGovernment: "Local Government Performance",
+        pageSubtitleLocalGovernment: "Visualize transparency and performance metrics across Kosovo's municipalities.",
+        pageTitleExportData: "Data Export Center",
+        pageSubtitleExportData: "Download raw data for your research and analysis needs.",
+        pageTitleAboutUs: "About Public Pulse",
+        pageSubtitleAboutUs: "Strengthening democratic accountability across Kosovo through meticulous analysis of transparency and public service delivery.",
+
+        // Dashboard Specific
+        kpiAvgTransparency: "Average Transparency",
+        kpiParticipationScore: "Participation Score",
+        kpiEfficiencyRating: "Efficiency Rating",
+        kpiOverallOutcome: "Overall Outcome",
+        kpiChangeSinceLastQuarter: "since last quarter",
+        filtersTitle: "Interactive Filters",
+        filtersReset: "Reset Filters",
+        filtersExport: "Export",
+        filtersExportPDF: "Export as PDF",
+        filtersExportExcel: "Export as Excel",
+        filtersExportCSV: "Export as CSV",
+        filtersExportImage: "Export as Image",
+        filtersTimePeriod: "Time Period",
+        filtersCompareWith: "Compare With",
+        filtersMinistryType: "Ministry Type",
+        filtersScoreRange: "Score Range",
+        filtersSearchMinistry: "Search Ministry",
+        filtersSearchPlaceholder: "Type to search...",
+        filtersApply: "Apply Filters",
+        filtersShowComparison: "Show comparison",
+        tabTransparency: "Transparency",
+        tabParticipation: "Participation",
+        tabEfficiency: "Efficiency",
+        tabOutcome: "Outcome",
+        viewTitleSuffix: "Scores",
+        legendHigh: "High (>70)",
+        legendMedium: "Medium (40-70)",
+        legendLow: "Low (<40)",
+        legendSortBy: "Sort by",
+        sortHighestScore: "Highest Score",
+        sortLowestScore: "Lowest Score",
+        sortNameAZ: "Name (A-Z)",
+        sortNameZA: "Name (Z-A)",
+        detailsTitle: "Ministry Details",
+        detailsTransparencyScore: "Transparency Score",
+        detailsInfoRequests: "Information Requests",
+        infoRequestsProcessed: "processed",
+        detailsResponseTime: "Response Time",
+        daysUnit: "days",
+        detailsChangeSinceLastPeriod: "since last period",
+        detailsPerfBreakdown: "Performance Breakdown",
+        perfBreakdownWebsiteTransparency: "Website Transparency",
+        perfBreakdownDocAccessibility: "Document Accessibility",
+        perfBreakdownReqResponsiveness: "Request Responsiveness",
+        perfBreakdownInfoCompleteness: "Information Completeness",
+        perfBreakdownPublicEngagement: "Public Engagement",
+        perfBreakdownDefaultLabel1: "Website Transparency",
+        perfBreakdownDefaultLabel2: "Document Accessibility",
+        perfBreakdownDefaultLabel3: "Request Responsiveness",
+        perfBreakdownDefaultLabel4: "Information Completeness",
+        perfBreakdownDefaultLabel5: "Public Engagement",
+        detailsRecentActivities: "Recent Activities",
+        tableHeaderDate: "Date",
+        tableHeaderActivity: "Activity",
+        tableHeaderStatus: "Status",
+        tableStatusCompleted: "Completed",
+        tableStatusInProgress: "In Progress",
+        tableNoRecentActivities: "No recent activities to display.",
+        tableNoDataToDisplay: "No data to display for the current filters.",
+        notificationLangSwitchPrefix: "Language switched to",
+        notificationFiltersApplied: "Filters applied",
+        notificationFiltersReset: "Filters have been reset.",
+        notificationComparisonEnabled: "Comparison view enabled",
+        notificationComparisonDisabled: "Comparison view disabled",
+        notificationExportingPrefix: "Exporting data as",
+        notificationSortedByPrefix: "Sorted by",
+        tooltipClickForDetails: "Click for details",
+        tooltipScoreSuffix: "Score",
+        categoryLabel: "Category",
+        ministerLabel: "Minister",
+        tooltipKeyMembers: "Key Members",
+        optionNoComparison: "No Comparison",
+        optionAllMinistries: "All Ministries",
+        loadingData: "Loading data...",
+        errorFetchingData: "Error fetching data. Please try again.",
+        noChangeData: "- No change data",
+
+        // Footer
+        footerAboutTitleNew: "About Public Pulse",
+        footerAboutTextNew: "As an independent, non-partisan watchdog, Public Pulse is committed to strengthening democratic accountability across Kosovo. We meticulously analyze the transparency and effectiveness of public service delivery, providing citizens with the clear, evidence-based insights essential for holding power accountable. For Kosovo to thrive, every citizen must have the tools to engage, question, and drive progress.",
+        footerContactInfoTitle: "Contact Info",
+        footerFollowUsTitle: "Follow Us",
+        footerCopyrightNew: "Public Pulse Kosovo. All Rights Reserved.",
+        footerLearnMoreAboutUs: "Learn more about us",
+        footerExploreTitle: "Explore",
+        footerContactPage: "Contact Us",
+        footerNewsletterTitle: "Stay Updated",
+        footerNewsletterText: "Subscribe to our newsletter to get the latest updates and reports directly in your inbox.",
+        footerEmailLabel: "Email address",
+        footerEmailPlaceholder: "Enter your email",
+        footerSubscribeButton: "Subscribe",
+        footerPrivacyPolicyLink: "Privacy Policy",
+        footerTermsLink: "Terms of Use",
+        footerAboutTextShort: "An independent, non-partisan watchdog strengthening democratic accountability across Kosovo by analyzing transparency and public service delivery.",
+
+        // Keys specific to About.html content
+        footerAboutPillarsIntro: "Our Core Pillars",
+        aboutPillarsSubtext: "Our independent, evidence-driven assessments are anchored in four fundamental pillars, designed to empower Kosovo's citizens:",
+        contactUsButton: "Contact Us for More Information",
+        footerPillarTransparencyTitle: "Transparency: Exposing the Workings of Governance",
+        footerPillarTransparencyDesc: "In Kosovo's journey towards robust democracy, true transparency is non-negotiable. Our independent scrutiny examines how openly and comprehensively public service bodies share information critical to the public—from proactive data releases and budget clarity to their responsiveness to citizens' right to know. This pillar illuminates decision-making, building the essential public trust needed for informed, sovereign civic action.",
+        footerPillarParticipationTitle: "Participation Index: Ensuring Every Voice Shapes Kosovo's Future",
+        footerPillarParticipationDesc: "A vibrant democracy in Kosovo depends on genuine citizen participation. This index objectively assesses the commitment and effectiveness of public bodies in creating meaningful avenues for citizens to influence policy and governance. We evaluate not just the existence of consultative mechanisms, but their real-world impact, championing a Kosovo where active citizenship is both a right and a shared responsibility for progress.",
+        footerPillarEfficiencyTitle: "Efficiency Rating: Public Resources, Public Benefit",
+        footerPillarEfficiencyDesc: "Kosovo's citizens deserve public services that are effective and deliver tangible value. Our independent Efficiency Rating scrutinizes how well public service bodies manage resources and execute their mandates to provide timely, impactful services. We focus on concrete operational performance, ensuring that public expenditure and effort translate directly into improved quality of life and progress for all communities in Kosovo.",
+        footerPillarOutcomeTitle: "Overall Performance Index: Charting Kosovo's Path to Better Governance",
+        footerPillarOutcomeDesc: "This comprehensive, citizen-focused index integrates our independent findings across Transparency, Participation, and Efficiency. It offers an evidence-based benchmark of how effectively public service bodies are serving the people of Kosovo. More than just a score, it’s a tool for progress—identifying strengths, pinpointing areas for urgent improvement, and empowering citizens, civil society, and institutions to collaboratively build a more accountable and responsive future for Kosovo.",
+
+        // Other
+        categoryEconomic: "Economic",
+        categoryGovernance: "Governance",
+        categorySocial: "Social",
+        categoryInfrastructure: "Infrastructure",
+        categoryGeneral: "General",
+        activityPrefixPublicEvent: "Public Event: ",
+        activityPrefixReportRelease: "Report Release: ",
+        activityPrefixNewInitiative: "New Initiative: ",
+        activityPrefixConsultationDocument: "Consultation Document: ",
+        pmoName: "Office of the Prime Minister",
+        primeMinisterLabel: "Prime Minister",
+        periodQ2_2023: "Q2 2023",
+        periodQ1_2023: "Q1 2023",
+        periodQ4_2022: "Q4 2022",
+        periodQ3_2022: "Q3 2022",
+        periodAnnual_2022: "Annual 2022",
+        periodQ1_2023_compare: "Q1 2023",
+        periodQ4_2022_compare: "Q4 2022",
+        periodQ2_2022_yoy: "Q2 2022 (YoY)",
+        periodAnnual_2022_compare: "Annual 2022",
+
+        // Mock pages
+        mockPageUnderConstructionTitle: "Page Under Construction",
+        mockPageContentComingSoon: "Content for this page is coming soon!",
+        mockPageExportDataContent: "Content for the Export Data page is coming soon! You'll be able to download datasets in various formats.",
+
+        // Documents page
+        docSearchLabel: "Search Documents",
+        docSearchPlaceholder: "Enter keywords...",
+        docCategoryLabel: "Category",
+        docCategoryAll: "All Categories",
+        docCategoryReports: "Annual Reports",
+        docCategoryLegislative: "Legislative Acts",
+        docCategoryPolicy: "Policy Briefs",
+        docCategoryResearch: "Research Papers",
+        docYearLabel: "Year",
+        docYearAll: "All Years",
+        docApplyFiltersButton: "Apply Filters",
+        docTitle1: "Annual Transparency Report 2023",
+        docDesc1: "A comprehensive overview of institutional transparency throughout Kosovo in 2023, highlighting key findings and recommendations.",
+        docDate1: "Feb 15, 2024",
+        docFileInfo1: "PDF, 3.2 MB",
+        docDownloadButton: "Download",
+        docTitle2: "Draft Law on Public Information Access",
+        docDesc2: "The proposed legislative text for enhancing public access to information, open for public consultation.",
+        docDate2: "Jan 20, 2024",
+        docFileInfo2: "DOCX, 1.1 MB",
+        docTitle3: "Policy Brief: Digital Governance",
+        docDesc3: "Analysis and recommendations for advancing digital governance practices in public institutions.",
+        docDate3: "Dec 05, 2023",
+        docFileInfo3: "PDF, 780 KB",
+        paginationPrevious: "Previous",
+        paginationNext: "Next",
+
+        // Events page
+        eventSearchLabel: "Search Events",
+        eventSearchPlaceholder: "Event name or keyword...",
+        eventTypeLabel: "Event Type",
+        eventTypeAll: "All Types",
+        eventTypeWorkshop: "Workshop",
+        eventTypeConference: "Conference",
+        eventTypeConsultation: "Public Consultation",
+        eventTypeWebinar: "Webinar",
+        eventDateLabel: "Date",
+        eventApplyFiltersButton: "Apply Filters",
+        eventTitle1: "Workshop on Digital Literacy for CSOs",
+        eventDesc1: "Join us for an interactive workshop designed to enhance the digital skills of civil society organizations in Kosovo.",
+        eventDateInfo1: "Date: October 28, 2024",
+        eventTimeInfo1: "Time: 10:00 - 14:00",
+        eventLocationInfo1: "Location: Innovation Centre Kosovo, Prishtina",
+        eventLearnMoreButton: "Learn More & Register",
+        eventTitle2: "Conference on Open Government Data",
+        eventDesc2: "A national conference bringing together policymakers, CSOs, and tech enthusiasts to discuss the future of open data in Kosovo.",
+        eventDateInfo2: "Date: November 12-13, 2024",
+        eventTimeInfo2: "Time: Full Day",
+        eventLocationInfo2: "Location: Emerald Hotel, Prishtina",
+
+        // Map Specific
+        mapLegendTitle: "Map Legend & Info",
+        mapLegendHighPerf: "High Performance",
+        mapLegendMedPerf: "Medium Performance",
+        mapLegendLowPerf: "Low Performance",
+        mapLegendDefault: "Default / No Data",
+        mapSelectedMunicipality: "Selected Municipality:",
+        mapClickPrompt: "Click on a marker to see details.",
+        mapPopulation: "Population",
+        mapPerformance: "Performance",
+        mapPerformanceHigh: "High",
+        mapPerformanceMedium: "Medium",
+        mapPerformanceLow: "Low",
+        mapScore: "Score",
+        mapViewDetails: "View More Details",
+        mapDataTableTitle: "Regional Data Overview",
+        mapDataTableDesc: "A table summarizing key indicators for all municipalities could be displayed here. For now, this is a placeholder.",
+        mapMayorLabel: "Mayor",
+        mapCabinetMembersLabel: "Cabinet Members",
+        dataNotAvailable: "N/A",
+
+        notificationBannerText: "Notification:",
+        mobileMenuToggle: "Toggle navigation",
+        ariaLabelMainNav: "Main navigation",
+        ariaLabelLangMenu: "Language selection",
+        ariaLabelUserMenu: "User account menu",
+        ariaLabelCloseDetails: "Close ministry details",
+        chartAccessibilityLabel: "Ministry performance chart",
+        chartAccessibilityDesc: "Bar chart showing ministry scores. Use arrow keys to navigate between items.",
+        dataTableSummary: "Showing {start} to {end} of {total} entries",
+        paginationPage: "Page",
+        loadingChartData: "Loading visualization...",
+        mapAccessibilityLabel: "Kosovo municipalities map",
+        mapAccessibilityDesc: "Interactive map showing municipality performance. Click markers for details.",
+        errorMinistryDetails: "Failed to load ministry details",
+        validationSearchMinistry: "Enter at least 3 characters",
+        validationInvalidEmail: "Please enter a valid email address",
+        cookieConsentMessage: "We use cookies to ensure the best experience.",
+        cookieConsentAccept: "Accept",
+        cookieConsentLearnMore: "Learn more"
+    },
+    sq: { // Albanian
+        // Common UI
+        days: "ditë",
+        headerTitle: "Pulsi Publik",
+        headerSubtitle: "Monitoruesi Qytetar i Kosovës",
+        languageEN: "Anglisht (EN)",
+        languageSQ: "Shqip (SQ)",
+        languageSR: "Serbisht (SR)",
+        currentLangIndicator: "SQ", // ADDED
+        userMenuProfile: "Profili",
+        userMenuSettings: "Cilësimet",
+        userMenuSignOut: "Dilni",
+        sidebarMainNavigation: "NAVIGIMI KRYESOR",
+        sidebarDashboard: "Paneli",
+        sidebarDocuments: "Dokumentet",
+        sidebarEvents: "Ngjarjet",
+        sidebarAnalytics: "ANALITIKA",
+        sidebarLocalGovernment: "Qeverisja Lokale",
+        sidebarExportData: "Eksporto të Dhënat",
+        breadcrumbDashboard: "Paneli",
+        breadcrumbPublicPulse: "Pulsi Publik",
+        breadcrumbDocuments: "Dokumentet",
+        breadcrumbEvents: "Ngjarjet",
+        breadcrumbLocalGovernment: "Qeverisja Lokale",
+        breadcrumbExportData: "Eksporto të Dhënat",
+        breadcrumbAboutUs: "Rreth Nesh",
+
+        // Page Titles & Subtitles
+        pageTitle: "Paneli i Pulsit Publik",
+        pageSubtitle: "Monitorimi i transparencës dhe performancës së institucioneve të Kosovës",
+        pageTitleDocuments: "Depoja e Dokumenteve",
+        pageSubtitleDocuments: "Qasuni në publikime zyrtare, raporte dhe dokumente legjislative.",
+        pageTitleEvents: "Ngjarjet & Punëtoritë e Ardhshme",
+        pageSubtitleEvents: "Zbuloni konsultime publike, punëtori dhe mundësi për angazhim qytetar.",
+        pageTitleLocalGovernment: "Performanca e Qeverisjes Lokale",
+        pageSubtitleLocalGovernment: "Vizualizoni metrikët e transparencës dhe performancës nëpër komunat e Kosovës.",
+        pageTitleExportData: "Qendra e Eksportit të të Dhënave",
+        pageSubtitleExportData: "Shkarkoni të dhënat e papërpunuara për nevojat tuaja kërkimore dhe analitike.",
+        pageTitleAboutUs: "Rreth Pulsit Publik",
+        pageSubtitleAboutUs: "Forcimi i llogaridhënies demokratike në mbarë Kosovën përmes analizës së përpiktë të transparencës dhe ofrimit të shërbimeve publike.",
+
+        // Dashboard Specific
+        kpiAvgTransparency: "Transparenca Mesatare",
+        kpiParticipationScore: "Pikët e Pjesëmarrjes",
+        kpiEfficiencyRating: "Vlerësimi i Efiçiencës",
+        kpiOverallOutcome: "Rezultati i Përgjithshëm",
+        kpiChangeSinceLastQuarter: "që nga tremujori i fundit",
+        filtersTitle: "Filtrat Interaktivë",
+        filtersReset: "Rivendos Filtrat",
+        filtersExport: "Eksporto",
+        filtersExportPDF: "Eksporto si PDF",
+        filtersExportExcel: "Eksporto si Excel",
+        filtersExportCSV: "Eksporto si CSV",
+        filtersExportImage: "Eksporto si Imazh",
+        filtersTimePeriod: "Periudha Kohore",
+        filtersCompareWith: "Krahaso me",
+        filtersMinistryType: "Lloji i Ministrisë",
+        filtersScoreRange: "Diapazoni i Pikëve",
+        filtersSearchMinistry: "Kërko Ministrinë",
+        filtersSearchPlaceholder: "Shkruani për të kërkuar...",
+        filtersApply: "Apliko Filtrat",
+        filtersShowComparison: "Shfaq krahasimin",
+        tabTransparency: "Transparenca",
+        tabParticipation: "Pjesëmarrja",
+        tabEfficiency: "Efiçienca",
+        tabOutcome: "Rezultati",
+        viewTitleSuffix: "Pikët",
+        legendHigh: "Lartë (>70)",
+        legendMedium: "Mesatare (40-70)",
+        legendLow: "Ulët (<40)",
+        legendSortBy: "Rendit sipas",
+        sortHighestScore: "Pikët më të Larta",
+        sortLowestScore: "Pikët më të Ulëta",
+        sortNameAZ: "Emri (A-Z)",
+        sortNameZA: "Emri (Z-A)",
+        detailsTitle: "Detajet e Ministrisë",
+        detailsTransparencyScore: "Pikët e Transparencës",
+        detailsInfoRequests: "Kërkesat për Informacion",
+        infoRequestsProcessed: "të procesuara",
+        detailsResponseTime: "Koha e Përgjigjes",
+        daysUnit: "ditë",
+        detailsChangeSinceLastPeriod: "që nga periudha e fundit",
+        detailsPerfBreakdown: "Analiza e Performancës",
+        perfBreakdownWebsiteTransparency: "Transparenca e Ueb-faqes",
+        perfBreakdownDocAccessibility: "Qasshmëria e Dokumenteve",
+        perfBreakdownReqResponsiveness: "Reagueshmëria ndaj Kërkesave",
+        perfBreakdownInfoCompleteness: "Plotësia e Informacionit",
+        perfBreakdownPublicEngagement: "Angazhimi Publik",
+        perfBreakdownDefaultLabel1: "Transparenca e Ueb-faqes",
+        perfBreakdownDefaultLabel2: "Qasshmëria e Dokumenteve",
+        perfBreakdownDefaultLabel3: "Reagueshmëria ndaj Kërkesave",
+        perfBreakdownDefaultLabel4: "Plotësia e Informacionit",
+        perfBreakdownDefaultLabel5: "Angazhimi Publik",
+        detailsRecentActivities: "Aktivitetet e Fundit",
+        tableHeaderDate: "Data",
+        tableHeaderActivity: "Aktiviteti",
+        tableHeaderStatus: "Statusi",
+        tableStatusCompleted: "Përfunduar",
+        tableStatusInProgress: "Në Proces",
+        tableNoRecentActivities: "Nuk ka aktivitete të fundit për të shfaqur.",
+        tableNoDataToDisplay: "Nuk ka të dhëna për të shfaqur me filtrat aktualë.",
+        notificationLangSwitchPrefix: "Gjuha u ndërrua në",
+        notificationFiltersApplied: "Filtrat u aplikuan",
+        notificationFiltersReset: "Filtrat janë rivendosur.",
+        notificationComparisonEnabled: "Pamja e krahasimit u aktivizua",
+        notificationComparisonDisabled: "Pamja e krahasimit u çaktivizua",
+        notificationExportingPrefix: "Eksportimi i të dhënave si",
+        notificationSortedByPrefix: "Renditur sipas",
+        tooltipClickForDetails: "Klikoni për detaje",
+        tooltipScoreSuffix: "Pikët",
+        categoryLabel: "Kategoria",
+        ministerLabel: "Ministri",
+        tooltipKeyMembers: "Anëtarët Kyç",
+        optionNoComparison: "Pa Krahasim",
+        optionAllMinistries: "Të Gjitha Ministritë",
+        loadingData: "Duke ngarkuar të dhënat...",
+        errorFetchingData: "Gabim gjatë marrjes së të dhënave. Ju lutemi provoni përsëri.",
+        noChangeData: "- Nuk ka të dhëna për ndryshim",
+
+        // Footer
+        footerAboutTitleNew: "Rreth Pulsit Publik",
+        footerAboutTextNew: "Si një vëzhgues i pavarur dhe jopartiak, Pulsi Publik është i përkushtuar për forcimin e llogaridhënies demokratike në të gjithë Kosovën. Ne analizojmë me përpikëri transparencën dhe efektivitetin e ofrimit të shërbimeve publike, duke u ofruar qytetarëve njohuri të qarta, të bazuara në dëshmi, thelbësore për mbajtjen e pushtetit të përgjegjshëm. Që Kosova të lulëzojë, çdo qytetar duhet të ketë mjetet për t'u angazhuar, për të pyetur dhe për të nxitur progresin.",
+        footerContactInfoTitle: "Informacioni i Kontaktit",
+        footerFollowUsTitle: "Na Ndiqni",
+        footerCopyrightNew: "Pulsi Publik Kosovë. Të gjitha të drejtat e rezervuara.",
+        footerLearnMoreAboutUs: "Mëso më shumë rreth nesh",
+        footerExploreTitle: "Eksploro",
+        footerContactPage: "Na Kontaktoni",
+        footerNewsletterTitle: "Qëndroni të Informuar",
+        footerNewsletterText: "Regjistrohuni në buletinin tonë për të marrë përditësimet dhe raportet më të fundit direkt në emailin tuaj.",
+        footerEmailLabel: "Adresa e emailit",
+        footerEmailPlaceholder: "Shkruani emailin tuaj",
+        footerSubscribeButton: "Regjistrohu",
+        footerPrivacyPolicyLink: "Politika e Privatësisë",
+        footerTermsLink: "Kushtet e Përdorimit",
+        footerAboutTextShort: "Një vëzhgues i pavarur, jopartiak që forcon llogaridhënien demokratike në mbarë Kosovën duke analizuar transparencën dhe ofrimin e shërbimeve publike.",
+
+        // About.html specific
+        footerAboutPillarsIntro: "Shtylla Jonë Kryesore",
+        aboutPillarsSubtext: "Vlerësimet tona të pavarura, të bazuara në dëshmi, ankorohen në katër shtylla themelore, të dizajnuara për të fuqizuar qytetarët e Kosovës:",
+        contactUsButton: "Na Kontaktoni për Më Shumë Informacion",
+        footerPillarTransparencyTitle: "Transparenca: Ekspozimi i Punës së Qeverisjes",
+        footerPillarTransparencyDesc: "Në rrugëtimin e Kosovës drejt një demokracie të fortë, transparenca e vërtetë është e panegociueshme. Vëzhgimi ynë i pavarur shqyrton sa hapur dhe gjithëpërfshirës organet e shërbimit publik ndajnë informacion kritik për publikun - nga publikimet proaktive të të dhënave dhe qartësia buxhetore deri te reagueshmëria e tyre ndaj të drejtës së qytetarëve për të ditur. Kjo shtyllë ndriçon procesin e vendimmarrjes, duke ndërtuar besimin thelbësor publik të nevojshëm për veprim qytetar të informuar dhe sovran.",
+        footerPillarParticipationTitle: "Indeksi i Pjesëmarrjes: Sigurimi që çdo Zë Të Formësojë të Ardhmen e Kosovës",
+        footerPillarParticipationDesc: "Një demokraci e gjallë në Kosovë varet nga pjesëmarrja e vërtetë qytetare. Ky indeks vlerëson objektivisht angazhimin dhe efektivitetin e organeve publike në krijimin e rrugëve kuptimplotë për qytetarët për të ndikuar në politikën dhe qeverisjen. Ne vlerësojmë jo vetëm ekzistencën e mekanizmave konsultativë, por edhe ndikimin e tyre në botën reale, duke përkrahur një Kosovë ku qytetaria aktive është si një e drejtë, ashtu edhe një përgjegjësi e përbashkët për progres.",
+        footerPillarEfficiencyTitle: "Vlerësimi i Efiçiencës: Burimet Publike, Përfitimi Publik",
+        footerPillarEfficiencyDesc: "Qytetarët e Kosovës meritojnë shërbime publike që janë efektive dhe ofrojnë vlerë të prekshme. Vlerësimi ynë i pavarur i Efiçiencës shqyrton sa mirë organet e shërbimit publik menaxhojnë burimet dhe ekzekutojnë mandatet e tyre për të ofruar shërbime në kohë dhe me ndikim. Ne përqendrohemi në performancën konkrete operacionale, duke siguruar që shpenzimet dhe përpjekjet publike të përkthehen drejtpërdrejt në përmirësimin e cilësisë së jetës dhe progresin për të gjitha komunitetet në Kosovë.",
+        footerPillarOutcomeTitle: "Indeksi i Performancës së Përgjithshme: Hartëzimi i Rrugës së Kosovës drejt Qeverisjes më të Mirë",
+        footerPillarOutcomeDesc: "Ky indeks gjithëpërfshirës, i fokusuar te qytetari, integron gjetjet tona të pavarura në Transparencë, Pjesëmarrje dhe Efiçiencë. Ai ofron një pikë referimi të bazuar në dëshmi se sa efektivisht organet e shërbimit publik u shërbejnë njerëzve të Kosovës. Më shumë se thjesht një pikë, është një mjet për progres - identifikimin e pikave të forta, përcaktimin e fushave për përmirësim urgjent dhe fuqizimin e qytetarëve, shoqërisë civile dhe institucioneve për të ndërtuar bashkërisht një të ardhme më të llogaridhënëse dhe reaguese për Kosovën.",
+
+        // Other
+        categoryEconomic: "Ekonomike",
+        categoryGovernance: "Qeverisjes",
+        categorySocial: "Sociale",
+        categoryInfrastructure: "Infrastrukturës",
+        categoryGeneral: "Të Përgjithshme",
+        activityPrefixPublicEvent: "Ngjarje Publike: ",
+        activityPrefixReportRelease: "Publikim Raporti: ",
+        activityPrefixNewInitiative: "Nismë e Re: ",
+        activityPrefixConsultationDocument: "Dokument Konsultimi: ",
+        pmoName: "Zyra e Kryeministrit",
+        primeMinisterLabel: "Kryeministri",
+        periodQ2_2023: "TM2 2023",
+        periodQ1_2023: "TM1 2023",
+        periodQ4_2022: "TM4 2022",
+        periodQ3_2022: "TM3 2022",
+        periodAnnual_2022: "Vjetor 2022",
+        periodQ1_2023_compare: "TM1 2023",
+        periodQ4_2022_compare: "TM4 2022",
+        periodQ2_2022_yoy: "TM2 2022 (VnM)",
+        periodAnnual_2022_compare: "Vjetor 2022",
+
+        // Mock pages
+        mockPageUnderConstructionTitle: "Faqja në Ndërtim",
+        mockPageContentComingSoon: "Përmbajtja për këtë faqe do të vijë së shpejti!",
+        mockPageExportDataContent: "Përmbajtja për faqen e Eksportit të të Dhënave do të vijë së shpejti! Do të keni mundësi të shkarkoni grupe të dhënash në formate të ndryshme.",
+
+        // Documents page
+        docSearchLabel: "Kërko Dokumente",
+        docSearchPlaceholder: "Shkruani fjalë kyçe...",
+        docCategoryLabel: "Kategoria",
+        docCategoryAll: "Të Gjitha Kategoritë",
+        docCategoryReports: "Raporte Vjetore",
+        docCategoryLegislative: "Akte Ligjore",
+        docCategoryPolicy: "Udhëzime Politike",
+        docCategoryResearch: "Punime Kërkimore",
+        docYearLabel: "Viti",
+        docYearAll: "Të Gjithë Vitet",
+        docApplyFiltersButton: "Apliko Filtrat",
+        docTitle1: "Raporti Vjetor i Transparencës 2023",
+        docDesc1: "Një përmbledhje gjithëpërfshirëse e transparencës institucionale në mbarë Kosovën në vitin 2023, duke theksuar gjetjet kryesore dhe rekomandimet.",
+        docDate1: "15 Shkurt 2024",
+        docFileInfo1: "PDF, 3.2 MB",
+        docDownloadButton: "Shkarko",
+        docTitle2: "Projektligji për Qasjen në Informacionin Publik",
+        docDesc2: "Teksti i propozuar legjislativ për përmirësimin e qasjes publike në informacion, i hapur për konsultim publik.",
+        docDate2: "20 Janar 2024",
+        docFileInfo2: "DOCX, 1.1 MB",
+        docTitle3: "Udhëzim Politik: Qeverisja Dixhitale",
+        docDesc3: "Analizë dhe rekomandime për avancimin e praktikave të qeverisjes dixhitale në institucionet publike.",
+        docDate3: "05 Dhjetor 2023",
+        docFileInfo3: "PDF, 780 KB",
+        paginationPrevious: "Mëparshme",
+        paginationNext: "Tjetra",
+
+        // Events page
+        eventSearchLabel: "Kërko Ngjarje",
+        eventSearchPlaceholder: "Emri i ngjarjes ose fjalë kyçe...",
+        eventTypeLabel: "Lloji i Ngjarjes",
+        eventTypeAll: "Të Gjitha Llojet",
+        eventTypeWorkshop: "Punëtori",
+        eventTypeConference: "Konferencë",
+        eventTypeConsultation: "Konsultim Publik",
+        eventTypeWebinar: "Uebinar",
+        eventDateLabel: "Data",
+        eventApplyFiltersButton: "Apliko Filtrat",
+        eventTitle1: "Punëtori mbi Shkrim-leximin Dixhital për OJQ-të",
+        eventDesc1: "Bashkohuni me ne në një punëtori interaktive të dizajnuar për të përmirësuar aftësitë dixhitale të organizatave të shoqërisë civile në Kosovë.",
+        eventDateInfo1: "Data: 28 Tetor 2024",
+        eventTimeInfo1: "Koha: 10:00 - 14:00",
+        eventLocationInfo1: "Vendi: Qendra e Inovacionit Kosovë, Prishtinë",
+        eventLearnMoreButton: "Mëso Më Shumë & Regjistrohu",
+        eventTitle2: "Konferencë mbi të Dhënat e Hapura Qeveritare",
+        eventDesc2: "Një konferencë kombëtare që bashkon politikëbërësit, OJQ-të dhe entuziastët e teknologjisë për të diskutuar të ardhmen e të dhënave të hapura në Kosovë.",
+        eventDateInfo2: "Data: 12-13 Nëntor 2024",
+        eventTimeInfo2: "Koha: Ditë e Plotë",
+        eventLocationInfo2: "Vendi: Hotel Emerald, Prishtinë",
+
+        // Map Specific
+        mapLegendTitle: "Legjenda e Hartës & Info",
+        mapLegendHighPerf: "Performancë e Lartë",
+        mapLegendMedPerf: "Performancë Mesatare",
+        mapLegendLowPerf: "Performancë e Ulët",
+        mapLegendDefault: "Parazgjedhur / Pa të Dhëna",
+        mapSelectedMunicipality: "Komuna e Zgjedhur:",
+        mapClickPrompt: "Klikoni mbi një shënues për të parë detajet.",
+        mapPopulation: "Popullsia",
+        mapPerformance: "Performanca",
+        mapPerformanceHigh: "E Lartë",
+        mapPerformanceMedium: "Mesatare",
+        mapPerformanceLow: "E Ulët",
+        mapScore: "Pikët",
+        mapViewDetails: "Shiko Më Shumë Detaje",
+        mapDataTableTitle: "Përmbledhje e të Dhënave Rajonale",
+        mapDataTableDesc: "Një tabelë që përmbledh treguesit kryesorë për të gjitha komunat mund të shfaqej këtu. Për tani, ky është një vendmbajtës.",
+        mapMayorLabel: "Kryetari",
+        mapCabinetMembersLabel: "Anëtarët e Kabinetit",
+        dataNotAvailable: "E padisponueshme",
+
+        notificationBannerText: "Njoftim:",
+        mobileMenuToggle: "Hap/Mbyll navigimin",
+        ariaLabelMainNav: "Navigimi kryesor",
+        ariaLabelLangMenu: "Përzgjedhja e gjuhës",
+        ariaLabelUserMenu: "Menuja e llogarisë së përdoruesit",
+        ariaLabelCloseDetails: "Mbyll detajet e ministrisë",
+        chartAccessibilityLabel: "Grafiku i performancës së ministrisë",
+        chartAccessibilityDesc: "Grafik me shirita që tregon rezultatet e ministrisë. Përdorni tastet e shigjetave për të lëvizur ndërmjet elementeve.",
+        dataTableSummary: "Duke shfaqur {start} deri në {end} nga {total} regjistrime",
+        paginationPage: "Faqja",
+        loadingChartData: "Duke ngarkuar vizualizimin...",
+        mapAccessibilityLabel: "Harta e komunave të Kosovës",
+        mapAccessibilityDesc: "Hartë interaktive që tregon performancën e komunave. Klikoni mbi shënuesit për detaje.",
+        errorMinistryDetails: "Dështoi ngarkimi i detajeve të ministrisë",
+        validationSearchMinistry: "Shkruani të paktën 3 karaktere",
+        validationInvalidEmail: "Ju lutemi shkruani një adresë emaili të vlefshme",
+        cookieConsentMessage: "Ne përdorim cookies për të siguruar përvojën më të mirë.",
+        cookieConsentAccept: "Prano",
+        cookieConsentLearnMore: "Mëso më shumë"
+    },
+    sr: { // Serbian (Latin script)
+        // Common UI
+        days: "dana",
+        headerTitle: "Javni Puls",
+        headerSubtitle: "Građanski Monitor Kosova",
+        languageEN: "Engleski (EN)",
+        languageSQ: "Albanski (SQ)",
+        languageSR: "Srpski (SR)",
+        currentLangIndicator: "SR", // ADDED
+        userMenuProfile: "Profil",
+        userMenuSettings: "Podešavanja",
+        userMenuSignOut: "Odjavite se",
+        sidebarMainNavigation: "GLAVNA NAVIGACIJA",
+        sidebarDashboard: "Kontrolna tabla",
+        sidebarDocuments: "Dokumenti",
+        sidebarEvents: "Događaji",
+        sidebarAnalytics: "ANALITIKA",
+        sidebarLocalGovernment: "Lokalna Samouprava",
+        sidebarExportData: "Izvezi Podatke",
+        breadcrumbDashboard: "Kontrolna tabla",
+        breadcrumbPublicPulse: "Javni Puls",
+        breadcrumbDocuments: "Dokumenti",
+        breadcrumbEvents: "Događaji",
+        breadcrumbLocalGovernment: "Lokalna Samouprava",
+        breadcrumbExportData: "Izvezi Podatke",
+        breadcrumbAboutUs: "O Nama",
+
+        // Page Titles & Subtitles
+        pageTitle: "Kontrolna tabla Javnog Pulsa",
+        pageSubtitle: "Praćenje transparentnosti i performansi institucija Kosova",
+        pageTitleDocuments: "Repozitorijum Dokumenata",
+        pageSubtitleDocuments: "Pristup zvaničnim publikacijama, izveštajima i zakonodavnim dokumentima.",
+        pageTitleEvents: "Predstojeći Događaji i Radionice",
+        pageSubtitleEvents: "Otkrijte javne konsultacije, radionice i mogućnosti građanskog angažovanja.",
+        pageTitleLocalGovernment: "Performanse Lokalne Samouprave",
+        pageSubtitleLocalGovernment: "Vizualizujte metrike transparentnosti i performansi širom opština Kosova.",
+        pageTitleExportData: "Centar za Izvoz Podataka",
+        pageSubtitleExportData: "Preuzmite sirove podatke za vaše potrebe istraživanja i analize.",
+        pageTitleAboutUs: "O Javnom Pulsu",
+        pageSubtitleAboutUs: "Jačanje demokratske odgovornosti širom Kosova kroz pedantnu analizu transparentnosti i pružanja javnih usluga.",
+
+        // Dashboard Specific
+        kpiAvgTransparency: "Prosečna Transparentnost",
+        kpiParticipationScore: "Ocena Učešća",
+        kpiEfficiencyRating: "Ocena Efikasnosti",
+        kpiOverallOutcome: "Ukupni Rezultat",
+        kpiChangeSinceLastQuarter: "od prošlog tromesečja",
+        filtersTitle: "Interaktivni Filteri",
+        filtersReset: "Resetuj Filtere",
+        filtersExport: "Izvezi",
+        filtersExportPDF: "Izvezi kao PDF",
+        filtersExportExcel: "Izvezi kao Excel",
+        filtersExportCSV: "Izvezi kao CSV",
+        filtersExportImage: "Izvezi kao Slika",
+        filtersTimePeriod: "Vremenski Period",
+        filtersCompareWith: "Uporedi sa",
+        filtersMinistryType: "Vrsta Ministarstva",
+        filtersScoreRange: "Opseg Ocena",
+        filtersSearchMinistry: "Pretraži Ministarstvo",
+        filtersSearchPlaceholder: "Unesite za pretragu...",
+        filtersApply: "Primeni Filtere",
+        filtersShowComparison: "Prikaži poređenje",
+        tabTransparency: "Transparentnost",
+        tabParticipation: "Učešće",
+        tabEfficiency: "Efikasnost",
+        tabOutcome: "Rezultat",
+        viewTitleSuffix: "Ocene",
+        legendHigh: "Visoko (>70)",
+        legendMedium: "Srednje (40-70)",
+        legendLow: "Nisko (<40)",
+        legendSortBy: "Sortiraj po",
+        sortHighestScore: "Najviša Ocena",
+        sortLowestScore: "Najniža Ocena",
+        sortNameAZ: "Naziv (A-Z)",
+        sortNameZA: "Naziv (Z-A)",
+        detailsTitle: "Detalji Ministarstva",
+        detailsTransparencyScore: "Ocena Transparentnosti",
+        detailsInfoRequests: "Zahtevi za Informacije",
+        infoRequestsProcessed: "obrađeno",
+        detailsResponseTime: "Vreme Odgovora",
+        daysUnit: "dana",
+        detailsChangeSinceLastPeriod: "od prošlog perioda",
+        detailsPerfBreakdown: "Analiza Performansi",
+        perfBreakdownWebsiteTransparency: "Transparentnost Vebsajta",
+        perfBreakdownDocAccessibility: "Pristupačnost Dokumenata",
+        perfBreakdownReqResponsiveness: "Odgovornost na Zahteve",
+        perfBreakdownInfoCompleteness: "Potpunost Informacija",
+        perfBreakdownPublicEngagement: "Javno Angažovanje",
+        perfBreakdownDefaultLabel1: "Transparentnost Vebsajta",
+        perfBreakdownDefaultLabel2: "Pristupačnost Dokumenata",
+        perfBreakdownDefaultLabel3: "Odgovornost na Zahteve",
+        perfBreakdownDefaultLabel4: "Potpunost Informacija",
+        perfBreakdownDefaultLabel5: "Javno Angažovanje",
+        detailsRecentActivities: "Nedavne Aktivnosti",
+        tableHeaderDate: "Datum",
+        tableHeaderActivity: "Aktivnost",
+        tableHeaderStatus: "Status",
+        tableStatusCompleted: "Završeno",
+        tableStatusInProgress: "U toku",
+        tableNoRecentActivities: "Nema nedavnih aktivnosti za prikaz.",
+        tableNoDataToDisplay: "Nema podataka za prikaz sa trenutnim filterima.",
+        notificationLangSwitchPrefix: "Jezik promenjen na",
+        notificationFiltersApplied: "Filteri primenjeni",
+        notificationFiltersReset: "Filteri su resetovani.",
+        notificationComparisonEnabled: "Poređenje omogućeno",
+        notificationComparisonDisabled: "Poređenje onemogućeno",
+        notificationExportingPrefix: "Izvoz podataka kao",
+        notificationSortedByPrefix: "Sortirano po",
+        tooltipClickForDetails: "Kliknite za detalje",
+        tooltipScoreSuffix: "Ocena",
+        categoryLabel: "Kategorija",
+        ministerLabel: "Ministar",
+        tooltipKeyMembers: "Ključni Članovi",
+        optionNoComparison: "Bez Poređenja",
+        optionAllMinistries: "Sva Ministarstva",
+        loadingData: "Učitavanje podataka...",
+        errorFetchingData: "Greška pri preuzimanju podataka. Molimo pokušajte ponovo.",
+        noChangeData: "- Nema podataka o promenama",
+
+        // Footer
+        footerAboutTitleNew: "O Javnom Pulsu",
+        footerAboutTextNew: "Kao nezavisni, nestranački nadzornik, Javni Puls je posvećen jačanju demokratske odgovornosti širom Kosova. Pedantno analiziramo transparentnost i efikasnost pružanja javnih usluga, pružajući građanima jasne, na dokazima zasnovane uvide koji su ključni za pozivanje na odgovornost vlasti. Da bi Kosovo napredovalo, svaki građanin mora imati alate za angažovanje, postavljanje pitanja i pokretanje napretka.",
+        footerContactInfoTitle: "Kontakt Info",
+        footerFollowUsTitle: "Pratite Nas",
+        footerCopyrightNew: "Javni Puls Kosovo. Sva prava zadržana.",
+        footerLearnMoreAboutUs: "Saznajte više o nama",
+        footerExploreTitle: "Istražite",
+        footerContactPage: "Kontaktirajte Nas",
+        footerNewsletterTitle: "Ostanite Ažurirani",
+        footerNewsletterText: "Pretplatite se na naš bilten da biste dobijali najnovija ažuriranja i izveštaje direktno u vaše prijemno sanduče.",
+        footerEmailLabel: "Email adresa",
+        footerEmailPlaceholder: "Unesite vašu email adresu",
+        footerSubscribeButton: "Pretplati se",
+        footerPrivacyPolicyLink: "Politika Privatnosti",
+        footerTermsLink: "Uslovi Korišćenja",
+        footerAboutTextShort: "Nezavisni, nestranački nadzornik koji jača demokratsku odgovornost širom Kosova analizirajući transparentnost i pružanje javnih usluga.",
+
+        // About.html specific
+        footerAboutPillarsIntro: "Naši Osnovni Stubovi",
+        aboutPillarsSubtext: "Naše nezavisne procene zasnovane na dokazima usidrene su u četiri fundamentalna stuba, osmišljena da osnaže građane Kosova:",
+        contactUsButton: "Kontaktirajte Nas za Više Informacija",
+        footerPillarTransparencyTitle: "Transparentnost: Otkrivanje Rada Uprave",
+        footerPillarTransparencyDesc: "Na putu Kosova ka snažnoj demokratiji, istinska transparentnost je neophodna. Naš nezavisni nadzor ispituje koliko otvoreno i sveobuhvatno tela javnih službi dele informacije ključne za javnost – od proaktivnog objavljivanja podataka i jasnoće budžeta do njihove odgovornosti na pravo građana da znaju. Ovaj stub osvetljava donošenje odluka, gradeći suštinsko poverenje javnosti potrebno za informisano, suvereno građansko delovanje.",
+        footerPillarParticipationTitle: "Indeks Učešća: Osiguravanje da Svaki Glas Oblikuje Budućnost Kosova",
+        footerPillarParticipationDesc: "Živahna demokratija na Kosovu zavisi od istinskog učešća građana. Ovaj indeks objektivno procenjuje posvećenost i efikasnost javnih tela u stvaranju značajnih načina da građani utiču na politiku i upravljanje. Mi ne ocenjujemo samo postojanje konsultativnih mehanizama, već njihov stvarni uticaj, zalažući se za Kosovo gde je aktivno građanstvo i pravo i zajednička odgovornost za napredak.",
+        footerPillarEfficiencyTitle: "Ocena Efikasnosti: Javni Resursi, Javna Korist",
+        footerPillarEfficiencyDesc: "Građani Kosova zaslužuju javne usluge koje su efikasne i donose opipljivu vrednost. Naša nezavisna Ocena Efikasnosti ispituje koliko dobro tela javnih službi upravljaju resursima i izvršavaju svoje mandate kako bi pružila pravovremene, uticajne usluge. Fokusiramo se na konkretne operativne performanse, osiguravajući da se javni rashodi i napori direktno pretoče u poboljšani kvalitet života i napredak za sve zajednice na Kosovu.",
+        footerPillarOutcomeTitle: "Indeks Ukupnih Performansi: Mapiranje Puta Kosova ka Boljem Upravljanju",
+        footerPillarOutcomeDesc: "Ovaj sveobuhvatni indeks, usmeren na građane, integriše naše nezavisne nalaze o Transparentnosti, Učešću i Efikasnosti. On nudi merilo zasnovano na dokazima o tome koliko efikasno tela javnih službi služe narodu Kosova. Više od same ocene, to je alat za napredak – identifikovanje prednosti, ukazivanje na oblasti za hitno poboljšanje i osnaživanje građana, civilnog društva i institucija da zajedno grade odgovorniju i reaktivniju budućnost za Kosovo.",
+
+        // Other
+        categoryEconomic: "Ekonomska",
+        categoryGovernance: "Upravljanja",
+        categorySocial: "Socijalna",
+        categoryInfrastructure: "Infrastrukture",
+        categoryGeneral: "Opšta",
+        activityPrefixPublicEvent: "Javni Događaj: ",
+        activityPrefixReportRelease: "Objavljivanje Izveštaja: ",
+        activityPrefixNewInitiative: "Nova Inicijativa: ",
+        activityPrefixConsultationDocument: "Konsultacioni Dokument: ",
+        pmoName: "Kancelarija Premijera",
+        primeMinisterLabel: "Premijer",
+        periodQ2_2023: "K2 2023",
+        periodQ1_2023: "K1 2023",
+        periodQ4_2022: "K4 2022",
+        periodQ3_2022: "K3 2022",
+        periodAnnual_2022: "Godišnji 2022",
+        periodQ1_2023_compare: "K1 2023",
+        periodQ4_2022_compare: "K4 2022",
+        periodQ2_2022_yoy: "K2 2022 (MgM)",
+        periodAnnual_2022_compare: "Godišnji 2022",
+
+        // Mock pages
+        mockPageUnderConstructionTitle: "Stranica u Izradi",
+        mockPageContentComingSoon: "Sadržaj za ovu stranicu uskoro stiže!",
+        mockPageExportDataContent: "Sadržaj za stranicu Izvoz Podataka uskoro stiže! Moći ćete da preuzimate skupove podataka u različitim formatima.",
+
+        // Documents page
+        docSearchLabel: "Pretraži Dokumente",
+        docSearchPlaceholder: "Unesite ključne reči...",
+        docCategoryLabel: "Kategorija",
+        docCategoryAll: "Sve Kategorije",
+        docCategoryReports: "Godišnji Izveštaji",
+        docCategoryLegislative: "Zakonodavni Akti",
+        docCategoryPolicy: "Sažeci Politika",
+        docCategoryResearch: "Istraživački Radovi",
+        docYearLabel: "Godina",
+        docYearAll: "Sve Godine",
+        docApplyFiltersButton: "Primeni Filtere",
+        docTitle1: "Godišnji Izveštaj o Transparentnosti 2023",
+        docDesc1: "Sveobuhvatan pregled institucionalne transparentnosti širom Kosova u 2023. godini, sa ključnim nalazima i preporukama.",
+        docDate1: "15. Feb 2024",
+        docFileInfo1: "PDF, 3.2 MB",
+        docDownloadButton: "Preuzmi",
+        docTitle2: "Nacrt Zakona o Pristupu Javnim Informacijama",
+        docDesc2: "Predloženi zakonodavni tekst za unapređenje javnog pristupa informacijama, otvoren za javnu raspravu.",
+        docDate2: "20. Jan 2024",
+        docFileInfo2: "DOCX, 1.1 MB",
+        docTitle3: "Sažetak Politike: Digitalno Upravljanje",
+        docDesc3: "Analiza i preporuke za unapređenje praksi digitalnog upravljanja u javnim institucijama.",
+        docDate3: "05. Dec 2023",
+        docFileInfo3: "PDF, 780 KB",
+        paginationPrevious: "Prethodna",
+        paginationNext: "Sledeća",
+
+        // Events page
+        eventSearchLabel: "Pretraži Događaje",
+        eventSearchPlaceholder: "Naziv događaja ili ključna reč...",
+        eventTypeLabel: "Vrsta Događaja",
+        eventTypeAll: "Sve Vrste",
+        eventTypeWorkshop: "Radionica",
+        eventTypeConference: "Konferencija",
+        eventTypeConsultation: "Javna Konsultacija",
+        eventTypeWebinar: "Vebinar",
+        eventDateLabel: "Datum",
+        eventApplyFiltersButton: "Primeni Filtere",
+        eventTitle1: "Radionica o Digitalnoj Pismenosti za OCD",
+        eventDesc1: "Pridružite nam se na interaktivnoj radionici osmišljenoj da unapredi digitalne veštine organizacija civilnog društva na Kosovu.",
+        eventDateInfo1: "Datum: 28. Oktobar 2024.",
+        eventTimeInfo1: "Vreme: 10:00 - 14:00",
+        eventLocationInfo1: "Mesto: Inovacioni Centar Kosovo, Priština",
+        eventLearnMoreButton: "Saznajte Više i Registrujte se",
+        eventTitle2: "Konferencija o Otvorenim Vladinim Podacima",
+        eventDesc2: "Nacionalna konferencija koja okuplja kreatore politika, OCD i tehnološke entuzijaste kako bi razgovarali o budućnosti otvorenih podataka na Kosovu.",
+        eventDateInfo2: "Datum: 12-13. Novembar 2024.",
+        eventTimeInfo2: "Vreme: Ceo Dan",
+        eventLocationInfo2: "Mesto: Hotel Emerald, Priština",
+
+        // Map Specific
+        mapLegendTitle: "Legenda Mape i Info",
+        mapLegendHighPerf: "Visoke Performanse",
+        mapLegendMedPerf: "Srednje Performanse",
+        mapLegendLowPerf: "Niske Performanse",
+        mapLegendDefault: "Podrazumevano / Nema Podataka",
+        mapSelectedMunicipality: "Izabrana Opština:",
+        mapClickPrompt: "Kliknite na marker da vidite detalje.",
+        mapPopulation: "Populacija",
+        mapPerformance: "Performanse",
+        mapPerformanceHigh: "Visoke",
+        mapPerformanceMedium: "Srednje",
+        mapPerformanceLow: "Niske",
+        mapScore: "Ocena",
+        mapViewDetails: "Pogledaj Više Detalja",
+        mapDataTableTitle: "Pregled Regionalnih Podataka",
+        mapDataTableDesc: "Ovde bi mogla biti prikazana tabela koja sumira ključne indikatore za sve opštine. Za sada, ovo je rezervno mesto.",
+        mapMayorLabel: "Gradonačelnik",
+        mapCabinetMembersLabel: "Članovi Kabineta",
+        dataNotAvailable: "Nije dostupno",
+
+        notificationBannerText: "Obaveštenje:",
+        mobileMenuToggle: "Otvori/Zatvori navigaciju",
+        ariaLabelMainNav: "Glavna navigacija",
+        ariaLabelLangMenu: "Izbor jezika",
+        ariaLabelUserMenu: "Meni korisničkog naloga",
+        ariaLabelCloseDetails: "Zatvori detalje ministarstva",
+        chartAccessibilityLabel: "Grafikon učinka ministarstva",
+        chartAccessibilityDesc: "Stubičasti grafikon koji prikazuje rezultate ministarstva. Koristite tastere sa strelicama za kretanje između stavki.",
+        dataTableSummary: "Prikazano {start} do {end} od {total} unosa",
+        paginationPage: "Stranica",
+        loadingChartData: "Učitavanje vizuelizacije...",
+        mapAccessibilityLabel: "Mapa opština Kosova",
+        mapAccessibilityDesc: "Interaktivna mapa koja prikazuje učinak opština. Kliknite na markere za detalje.",
+        errorMinistryDetails: "Učitavanje detalja ministarstva nije uspelo",
+        validationSearchMinistry: "Unesite najmanje 3 karaktera",
+        validationInvalidEmail: "Molimo unesite važeću email adresu",
+        cookieConsentMessage: "Koristimo kolačiće kako bismo osigurali najbolje iskustvo.",
+        cookieConsentAccept: "Prihvati",
+        cookieConsentLearnMore: "Saznajte više"
+    }
     };
     // END: Translations Object
 
@@ -156,29 +938,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateAllUIText(lang) {
-        document.querySelectorAll('[data-i18n-key]').forEach(el => {
-            const key = el.getAttribute('data-i18n-key');
+        document.querySelectorAll('[data-translate]').forEach(el => { // Changed from data-i18n-key to data-translate
+            const key = el.getAttribute('data-translate');
             let trans = getTranslation(key, lang);
             if (el.tagName === 'TITLE') { document.title = trans; }
             else if (el.tagName === 'INPUT' && (el.type === 'text' || el.type === 'search' || el.type === 'month' || el.type === 'number')) {
-                 // Handle placeholders for specific input types that use data-i18n-key (like searchMinistryInput)
-                if (el.hasAttribute('data-i18n-key-placeholder')) {
-                    el.placeholder = getTranslation(el.getAttribute('data-i18n-key-placeholder'), lang);
+                if (el.hasAttribute('data-translate-placeholder')) { // Check for specific placeholder key
+                    el.placeholder = getTranslation(el.getAttribute('data-translate-placeholder'), lang);
                 } else {
-                    el.placeholder = trans; // Fallback or if the main key is for placeholder
+                     el.placeholder = trans; // Fallback or if the main key is for placeholder
                 }
             }
             else if (el.tagName === 'INPUT' && (el.type === 'submit' || el.type === 'button')) { el.value = trans; }
             else if (el.tagName === 'TEXTAREA') { el.placeholder = trans; }
             else { el.innerHTML = trans; }
         });
-        if (currentLanguageSpan) currentLanguageSpan.textContent = lang.toUpperCase();
+
+        // Update ARIA labels if they have a data-translate-aria-label attribute
+        document.querySelectorAll('[data-translate-aria-label]').forEach(el => {
+            const key = el.getAttribute('data-translate-aria-label');
+            el.setAttribute('aria-label', getTranslation(key, lang));
+        });
+
+
+        if (currentLanguageSpan) {
+             // Special handling for the language indicator span
+            if (currentLanguageSpan.hasAttribute('data-translate') && currentLanguageSpan.getAttribute('data-translate') === 'currentLangIndicator') {
+                currentLanguageSpan.textContent = getTranslation(`language${lang.toUpperCase()}`).match(/([A-Z]{2})/)?.[0] || lang.toUpperCase();
+            } else {
+                currentLanguageSpan.textContent = lang.toUpperCase();
+            }
+        }
+
+
         if (isDashboardPage && typeof updateDynamicTitles === "function") updateDynamicTitles(lang);
         if (isDashboardPage && typeof populateCompareWithDropdown === "function" && allMinistriesData && allMinistriesData.length > 0) {
              populateCompareWithDropdown(allMinistriesData, document.getElementById('compareWithFilter')?.value);
         }
     }
-    
+
     function updateDynamicTitles(lang = currentLang) {
         if (!isDashboardPage) return;
         if (currentViewTitle) {
@@ -228,7 +1026,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-    
+
     function populateMinistryDetails(detailsData) {
         if (!isDashboardPage || !ministryDetailsSection) return;
         if (!detailsData || !detailsData.profile) {
@@ -353,13 +1151,13 @@ document.addEventListener('DOMContentLoaded', () => {
         canvas.height = Math.min(maxHeight, Math.max(minHeight, (data.length * itemHeight) + baseHeight));
         chartContainer.appendChild(canvas);
 
-        const ctx = canvas.getContext('2d'); 
-        if (!ctx) { 
-            console.error("SCRIPT.JS: renderChart: Failed to get 2D context for canvas!"); 
-            return; 
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+            console.error("SCRIPT.JS: renderChart: Failed to get 2D context for canvas!");
+            return;
         }
-        
-        const labels = data.map(m => m.name); 
+
+        const labels = data.map(m => m.name);
         const scores = data.map(m => m.score);
         const HIGH_SCORE_THRESHOLD = 70; const MEDIUM_SCORE_THRESHOLD = 40;
         const COLOR_HIGH_BG = 'rgba(75,192,192,0.7)'; const COLOR_HIGH_BD = 'rgba(75,192,192,1)';
@@ -368,7 +1166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const COLOR_NA_BG = 'rgba(200,200,200,0.7)'; const COLOR_NA_BD = 'rgba(200,200,200,1)';
         const bgColors = scores.map(s => { const val = parseFloat(s); if (s === null || s === undefined || isNaN(val)) return COLOR_NA_BG; if (val >= HIGH_SCORE_THRESHOLD) return COLOR_HIGH_BG; if (val >= MEDIUM_SCORE_THRESHOLD) return COLOR_MEDIUM_BG; return COLOR_LOW_RED_BG; });
         const bdColors = scores.map(s => { const val = parseFloat(s); if (s === null || s === undefined || isNaN(val)) return COLOR_NA_BD; if (val >= HIGH_SCORE_THRESHOLD) return COLOR_HIGH_BD; if (val >= MEDIUM_SCORE_THRESHOLD) return COLOR_MEDIUM_BD; return COLOR_LOW_RED_BD; });
-        
+
         if (ministryBarChart) {
             ministryBarChart.destroy();
             ministryBarChart = null;
@@ -386,13 +1184,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } catch (e) { console.error("SCRIPT.JS: Chart instantiation ERROR:", e); }
     }
-    
+
     function applyFiltersAndSort() {
         if (!isDashboardPage) return;
         if (typeof allMinistriesData === 'undefined' || !allMinistriesData) {
             if (typeof renderChart === "function") renderChart([]); return;
         }
-        let fData = [...allMinistriesData]; 
+        let fData = [...allMinistriesData];
         let pmoItem = null; const PMO_ID = 0;
         const pmoIndexInFData = fData.findIndex(m => m.id === PMO_ID);
         if (pmoIndexInFData > -1) pmoItem = fData.splice(pmoIndexInFData, 1)[0];
@@ -417,23 +1215,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if (searchTerm && !(pmoItem.name || '').toLowerCase().includes(searchTerm)) pmoVisible = false;
             if (ministryType !== 'all' && pmoItem.category_key !== ministryType) pmoVisible = false;
             const pmoScoreVal = pmoItem.score;
-            if (pmoScoreVal === null || pmoScoreVal === undefined || isNaN(parseFloat(pmoScoreVal))) { if (!(minScore === 0 && maxScore === 100)) pmoVisible = false; } 
+            if (pmoScoreVal === null || pmoScoreVal === undefined || isNaN(parseFloat(pmoScoreVal))) { if (!(minScore === 0 && maxScore === 100)) pmoVisible = false; }
             else if (!(parseFloat(pmoScoreVal) >= minScore && parseFloat(pmoScoreVal) <= maxScore)) pmoVisible = false;
             if (pmoVisible) fData.unshift(pmoItem);
         }
         if (typeof renderChart === "function") renderChart(fData);
     }
-    
+
     function populateCompareWithDropdown(ministries, selectedValue) {
         if (!isDashboardPage) return;
         const compareWithSel = document.getElementById('compareWithFilter');
         if (!compareWithSel) return;
         const currentSelection = selectedValue || compareWithSel.value;
-        let optionsHtml = `<option value="none" data-i18n-key="optionNoComparison">${getTranslation('optionNoComparison')}</option>`;
-        optionsHtml += `<option value="q1-2023" data-i18n-key="periodQ1_2023_compare">${getTranslation('periodQ1_2023_compare')}</option>`;
-        optionsHtml += `<option value="q4-2022" data-i18n-key="periodQ4_2022_compare">${getTranslation('periodQ4_2022_compare')}</option>`;
-        optionsHtml += `<option value="q2-2022" data-i18n-key="periodQ2_2022_yoy">${getTranslation('periodQ2_2022_yoy')}</option>`;
-        optionsHtml += `<option value="annual-2022" data-i18n-key="periodAnnual_2022_compare">${getTranslation('periodAnnual_2022_compare')}</option>`;
+        let optionsHtml = `<option value="none" data-translate="optionNoComparison">${getTranslation('optionNoComparison')}</option>`;
+        optionsHtml += `<option value="q1-2023" data-translate="periodQ1_2023_compare">${getTranslation('periodQ1_2023_compare')}</option>`;
+        optionsHtml += `<option value="q4-2022" data-translate="periodQ4_2022_compare">${getTranslation('periodQ4_2022_compare')}</option>`;
+        optionsHtml += `<option value="q2-2022" data-translate="periodQ2_2022_yoy">${getTranslation('periodQ2_2022_yoy')}</option>`;
+        optionsHtml += `<option value="annual-2022" data-translate="periodAnnual_2022_compare">${getTranslation('periodAnnual_2022_compare')}</option>`;
         compareWithSel.innerHTML = optionsHtml;
         if (currentSelection && Array.from(compareWithSel.options).some(opt => opt.value === currentSelection)) {
             compareWithSel.value = currentSelection;
@@ -455,7 +1253,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const resp = await fetch(url);
             if(!resp.ok){ const errTxt = await resp.text(); console.error(`Ministry details fetch HTTP error ${resp.status} for ID ${id}, Period ${period}: ${errTxt}`); populateMinistryDetails(null); throw new Error(`HTTP error! ${resp.status}, ${errTxt}`); }
             const data = await resp.json();
-            if(!data){ console.warn(`Ministry details API returned no data for ID ${id}, Period ${period}.`); populateMinistryDetails(null); } 
+            if(!data){ console.warn(`Ministry details API returned no data for ID ${id}, Period ${period}.`); populateMinistryDetails(null); }
             else { apiDataCache.details[cacheKey]=data; populateMinistryDetails(data); }
         } catch(e){
             console.error('Ministry details fetch/processing error:', e);
@@ -465,7 +1263,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showLoadingIndicator(false);
         }
     }
-    
+
     async function fetchDashboardData(pillar, lang, period) {
         if (!isDashboardPage) {
             if(typeof showLoadingIndicator === "function") showLoadingIndicator(false);
@@ -479,7 +1277,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(apiDataCache.dashboard[dataCacheKey]){
             console.log("SCRIPT.JS: Using cached dashboard data for key:", dataCacheKey);
             const cachedData = apiDataCache.dashboard[dataCacheKey];
-            allMinistriesData = cachedData.ministries || []; 
+            allMinistriesData = cachedData.ministries || [];
             if(typeof updateKPICards === "function") updateKPICards(cachedData.kpi_summary);
             if (typeof applyFiltersAndSort === "function") applyFiltersAndSort();
             if (typeof populateCompareWithDropdown === "function" && allMinistriesData) {
@@ -488,7 +1286,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if(typeof showLoadingIndicator === "function") showLoadingIndicator(false);
             return;
         }
-        
+
         const apiCallPillar = pillar;
         console.log("SCRIPT.JS: Fetching NEW API data for dashboard. API Pillar:", apiCallPillar, "Lang:", lang, "Period:", period);
         try {
@@ -502,7 +1300,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(typeof updateKPICards === "function") updateKPICards(null);
                 allMinistriesData=[];
             } else {
-                apiDataCache.dashboard[dataCacheKey]=data; 
+                apiDataCache.dashboard[dataCacheKey]=data;
                 allMinistriesData=data.ministries||[];
                 if(typeof updateKPICards === "function") updateKPICards(data.kpi_summary);
             }
@@ -538,7 +1336,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const mapCenter = [42.6026, 20.9030];
         kosovoMapInstance = L.map('kosovoMap').setView(mapCenter, 8);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors', maxZoom: 18, }).addTo(kosovoMapInstance);
-        
+
         const municipalities = [
             { name: "Prishtinë / Priština", lat: 42.6629, lng: 21.1655, data: { population: "198,897 (2011)", performance: "High", score: 85, mayor: "Përparim Rama", cabinet_members: ["Donjeta Sahatçiu", "Alban Zogaj", "Florian Dushi", "Arbërie Nagavci", "Krenare Sogojeva-Dermaku"] } },
             { name: "Prizren", lat: 42.2153, lng: 20.7414, data: { population: "177,781 (2011)", performance: "Medium", score: 65, mayor: "Shaqir Totaj", cabinet_members: ["Hanefi Muharremi", "Mevlan Krasniqi", "Manushaqe Koci", "Visar Islamaj", "Pacinda Kelmendi"] } },
@@ -585,8 +1383,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         municipalities.forEach(muni => {
             if (typeof muni.lat !== 'number' || typeof muni.lng !== 'number') { console.warn(`SCRIPT.JS: Invalid or missing coords for ${muni.name}. Skipping marker.`); return; }
-            
-            let markerColor = 'blue'; 
+
+            let markerColor = 'blue';
             let iconHtml = `<i class="fas fa-map-marker-alt" style="color: white; font-size: 14px;"></i>`;
             if (muni.data && muni.data.performance) {
                 switch (muni.data.performance.toLowerCase()) {
@@ -595,18 +1393,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     case 'low': markerColor = 'red'; iconHtml = `<i class="fas fa-times-circle" style="color: white; font-size: 14px;"></i>`; break;
                 }
             } else { console.warn(`SCRIPT.JS: No performance data for ${muni.name}, using default marker.`); }
-            
+
             const customMarkerIcon = L.divIcon({
                 html: `<div style="background-color: ${markerColor}; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid white; box-shadow: 0 1px 3px rgba(0,0,0,0.3);">${iconHtml}</div>`,
-                className: '', 
+                className: '',
                 iconSize: [28, 28],
-                iconAnchor: [14, 28], 
-                popupAnchor: [0, -28] 
+                iconAnchor: [14, 28],
+                popupAnchor: [0, -28]
             });
 
             try {
                 const marker = L.marker([muni.lat, muni.lng], {icon: customMarkerIcon}).addTo(kosovoMapInstance);
-                
+
                 let tooltipHtml = `<div style="min-width: 180px;">`;
                 tooltipHtml += `<div style="font-size: 1.1em; font-weight: bold; margin-bottom: 5px;">${muni.name}</div>`;
                 const mayorName = (muni.data && muni.data.mayor) ? muni.data.mayor : getTranslation('dataNotAvailable');
@@ -622,11 +1420,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 tooltipHtml += `</div>`;
 
                 marker.bindTooltip(tooltipHtml, {
-                    permanent: false, 
-                    direction: 'top',  
-                    opacity: 0.95, 
-                    offset: L.point(0, -30), 
-                    className: 'kosovo-map-tooltip' 
+                    permanent: false,
+                    direction: 'top',
+                    opacity: 0.95,
+                    offset: L.point(0, -30),
+                    className: 'kosovo-map-tooltip'
                 });
 
                 marker.on('click', function() {
@@ -645,13 +1443,14 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("SCRIPT.JS: Kosovo Map initialized with markers (tooltips show mayor & cabinet).");
     }
     // END: initializeKosovoMap Function
-    
+
     // START: CORE LOGIC FUNCTIONS
     function setLanguage(lang) {
         if(lang !== currentLang){
             currentLang = lang;
-            updateAllUIText(lang); 
-            showNotification(`${getTranslation('notificationLangSwitchPrefix')} ${getTranslation(`language${lang.toUpperCase()}`)}`);
+            localStorage.setItem('preferredLang', lang); // Save preference
+            updateAllUIText(lang);
+            showNotification(`${getTranslation('notificationLangSwitchPrefix')} ${getTranslation(`language${lang.toUpperCase()}`)}`, false); // Pass false since message is pre-constructed
             if (isDashboardPage) {
                 const periodVal = document.getElementById('timePeriod')?.value || 'q2-2023';
                 if(typeof fetchDashboardData === "function") fetchDashboardData(currentPillar, currentLang, periodVal);
@@ -669,8 +1468,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (languageSelectorButton && languageDropdown) { languageSelectorButton.addEventListener('click', (e) => { e.stopPropagation(); languageDropdown.classList.toggle('hidden'); }); languageDropdown.addEventListener('click', (e) => { const opt = e.target.closest('a[data-lang]'); if (opt) { e.preventDefault(); setLanguage(opt.dataset.lang); languageDropdown.classList.add('hidden'); } }); }
         const userMenuBtn = document.getElementById('userMenu'); const userDropdownEl = document.getElementById('userDropdown'); if (userMenuBtn && userDropdownEl) { userMenuBtn.addEventListener('click', (e) => { e.stopPropagation(); userDropdownEl.classList.toggle('hidden'); }); }
         const mobileSidebarToggle = document.getElementById('mobileSidebarToggle'); const sidebar = document.getElementById('sidebar'); const closeSidebarButton = document.getElementById('toggleSidebar'); if (mobileSidebarToggle && sidebar) { mobileSidebarToggle.addEventListener('click', () => { sidebar.classList.toggle('hidden'); sidebar.classList.toggle('block'); }); } if (closeSidebarButton && sidebar) { closeSidebarButton.addEventListener('click', () => { sidebar.classList.add('hidden'); sidebar.classList.remove('block'); }); }
-        
-        document.addEventListener('click', (e) => { 
+
+        document.addEventListener('click', (e) => {
             if (languageDropdown && !languageDropdown.classList.contains('hidden') && languageSelectorButton && !languageSelectorButton.contains(e.target) && !languageDropdown.contains(e.target)) languageDropdown.classList.add('hidden');
             if (userDropdownEl && !userDropdownEl.classList.contains('hidden') && userMenuBtn && !userMenuBtn.contains(e.target) && !userDropdownEl.contains(e.target)) userDropdownEl.classList.add('hidden');
             if(isDashboardPage){
@@ -694,10 +1493,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     // END: CORE LOGIC FUNCTIONS
-    
+
     // --- SCRIPT INITIALIZATION ---
-    updateAllUIText(currentLang); 
-    initializeSidebarActiveState(); 
+    const preferredLang = localStorage.getItem('preferredLang');
+    if (preferredLang && translations[preferredLang]) {
+        currentLang = preferredLang;
+    } // else currentLang remains 'en' (default)
+
+    updateAllUIText(currentLang); // This will now use the currentLang (either 'en' or from localStorage)
+    initializeSidebarActiveState();
 
     if(typeof setupEventListeners === "function") {
         setupEventListeners();
@@ -710,7 +1514,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const initialPeriod = document.getElementById('timePeriod')?.value || 'q2-2023';
         if(typeof fetchDashboardData === "function") {
             fetchDashboardData(currentPillar, currentLang, initialPeriod)
-                .catch(error => { 
+                .catch(error => {
                     console.error("Dashboard data fetch error during initial load:", error);
                     if (typeof renderChart === "function") renderChart([]);
                     if (typeof updateKPICards === "function") updateKPICards(null);
@@ -718,7 +1522,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.error("fetchDashboardData function is not defined!");
         }
-    } else if (currentPageName === 'local_government.html') { // UPDATED CHECK
+    } else if (currentPageName === 'local_government.html') {
         if (typeof initializeKosovoMap === "function") {
             initializeKosovoMap();
         } else {
@@ -728,7 +1532,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const yearSpan = document.getElementById('currentYear');
     if(yearSpan) yearSpan.textContent = new Date().getFullYear().toString();
-    console.log(`SCRIPT.JS DOMInit: Page (${currentPageName}) initialization sequence complete.`);
+    console.log(`SCRIPT.JS DOMInit: Page (${currentPageName}) initialization sequence complete. Initial lang: ${currentLang}`);
 });
 // END: DOMContentLoaded Event Listener
 

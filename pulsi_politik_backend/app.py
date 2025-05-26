@@ -27,10 +27,10 @@ app = Flask(__name__,
             static_folder=os.path.join(PROJECT_ROOT, 'static'),
             static_url_path='/static')
 
-# ADD THIS LOGGING LINE:
-app.logger.info(f"DEBUGGING RENDER: Calculated PROJECT_ROOT: {PROJECT_ROOT}")
-app.logger.info(f"DEBUGGING RENDER: Flask static_folder is set to: {app.static_folder}")
-app.logger.info(f"DEBUGGING RENDER: Flask template_folder is set to: {app.template_folder}")
+# Debugging log lines for paths
+app.logger.info(f"DEBUGGING RENDER/PATHS: Calculated PROJECT_ROOT: {PROJECT_ROOT}")
+app.logger.info(f"DEBUGGING RENDER/PATHS: Flask static_folder is set to: {app.static_folder}")
+app.logger.info(f"DEBUGGING RENDER/PATHS: Flask template_folder is set to: {app.template_folder}")
 
 
 CORS(app)
@@ -38,7 +38,7 @@ app.wsgi_app = SecurityHeadersMiddleware(app.wsgi_app)
 app.config.from_object(Config)
 register_error_handlers(app)
 
-app.logger.setLevel(logging.INFO)
+app.logger.setLevel(logging.INFO) # Ensure INFO level is set for app.logger
 
 ministry_repo = None
 ministry_service = None
@@ -151,18 +151,26 @@ def serve_index():
 @app.route('/<page_name>.html')
 def serve_page(page_name):
     # Basic security: ensure page_name is from a safe list of known HTML files
-    safe_html_pages = ["documents", "events", "local_government", "export_data", "about"] # Added about.html
+    # ***** MODIFICATION HERE: Added "about" *****
+    safe_html_pages = ["documents", "events", "local_government", "export_data", "about"] 
     if page_name in safe_html_pages:
+        app.logger.info(f"Serving page: {page_name}.html")
         return render_template(f'{page_name}.html')
     app.logger.warning(f"Attempt to access non-whitelisted HTML page: {page_name}.html")
     return "Page not found", 404
 
 @app.route('/<filename>')
 def serve_frontend_asset(filename):
+    # This route is specifically for style.css and main_script.js if they are in the template_folder
+    # Other static assets (like images, Leaflet) are served by Flask's default static handler
+    # if they are in the 'static_folder' (e.g., /static/leaflet/leaflet.js)
     allowed_assets = ["style.css", "main_script.js"] 
     if filename in allowed_assets:
+        app.logger.info(f"Serving frontend asset from template_folder: {filename}")
         return send_from_directory(app.template_folder, filename)
-    app.logger.warning(f"Attempt to access asset not explicitly allowed or handled: {filename}")
+    # If not in allowed_assets, Flask will try its default static handler next if the path matches /static/...
+    # Otherwise, it might lead to a 404 if not handled by any other route.
+    app.logger.warning(f"Attempt to access asset '{filename}' not explicitly handled by serve_frontend_asset or Flask's default static serving (if not under /static/ path).")
     return "File not found", 404
 
 
@@ -211,7 +219,7 @@ def get_ministry_details(ministry_id: int):
 
 
 if __name__ == '__main__':
-    app.logger.info(f"Starting Flask app with __name__ == '__main__'") # Added for when running directly
+    app.logger.info(f"Starting Flask app directly (if __name__ == '__main__')") 
     app.run(host=app.config.get("HOST", "127.0.0.1"),
             port=app.config.get("PORT", 5000),
             debug=app.config.get("DEBUG", True))
