@@ -27,6 +27,12 @@ app = Flask(__name__,
             static_folder=os.path.join(PROJECT_ROOT, 'static'),
             static_url_path='/static')
 
+# ADD THIS LOGGING LINE:
+app.logger.info(f"DEBUGGING RENDER: Calculated PROJECT_ROOT: {PROJECT_ROOT}")
+app.logger.info(f"DEBUGGING RENDER: Flask static_folder is set to: {app.static_folder}")
+app.logger.info(f"DEBUGGING RENDER: Flask template_folder is set to: {app.template_folder}")
+
+
 CORS(app)
 app.wsgi_app = SecurityHeadersMiddleware(app.wsgi_app)
 app.config.from_object(Config)
@@ -145,7 +151,7 @@ def serve_index():
 @app.route('/<page_name>.html')
 def serve_page(page_name):
     # Basic security: ensure page_name is from a safe list of known HTML files
-    safe_html_pages = ["documents", "events", "local_government", "export_data"] # CORRECTED LIST
+    safe_html_pages = ["documents", "events", "local_government", "export_data", "about"] # Added about.html
     if page_name in safe_html_pages:
         return render_template(f'{page_name}.html')
     app.logger.warning(f"Attempt to access non-whitelisted HTML page: {page_name}.html")
@@ -205,6 +211,7 @@ def get_ministry_details(ministry_id: int):
 
 
 if __name__ == '__main__':
+    app.logger.info(f"Starting Flask app with __name__ == '__main__'") # Added for when running directly
     app.run(host=app.config.get("HOST", "127.0.0.1"),
             port=app.config.get("PORT", 5000),
             debug=app.config.get("DEBUG", True))

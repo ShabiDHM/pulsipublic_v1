@@ -125,39 +125,103 @@
 </div>
 <!-- END: Notification Banner -->
 
-<!-- START: Footer Section (Same as index.html or your new updated footer) -->
-<footer class="site-footer bg-gray-800 text-gray-300 py-10 px-4 sm:px-6 lg:px-8 mt-auto">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1.5fr_1fr_auto] gap-8 items-start">
-        <div class="footer-section">
-            <h4 data-i18n-key="footerAboutTitleNew" class="text-lg font-semibold text-white mb-4">Rreth Pulsit Publik</h4>
-            <p data-i18n-key="footerAboutTextNew" class="text-sm leading-relaxed">Si një mbikëqyrës i pavarur dhe jo-partiak, Public Pulse është i përkushtuar për forcimin e llogaridhënies demokratike në mbarë Kosovën. Ne analizojmë me përpikëri transparencën dhe efektivitetin e ofrimit të shërbimeve publike, duke u ofruar qytetarëve njohuri të qarta, të bazuara në dëshmi, thelbësore për të kërkuar llogari nga pushteti. Që Kosova të përparojë, çdo qytetar duhet të ketë mjetet për t'u angazhuar, për të pyetur dhe për të nxitur progresin.</p>
-        </div>
-        <div class="footer-section">
-            <h4 data-i18n-key="footerContactInfoTitle" class="text-lg font-semibold text-white mb-4">Informacion Kontakti</h4>
-            <address class="not-italic text-sm space-y-3">
-                <p class="flex items-center"><i class="fas fa-envelope mr-3 text-blue-400 fa-fw"></i><a href="mailto:shabanbala@gmail.com" class="hover:text-blue-400 transition-colors">shabanbala@gmail.com</a></p>
-                <p class="flex items-center"><i class="fas fa-phone mr-3 text-blue-400 fa-fw"></i><a href="tel:+38344987898" class="hover:text-blue-400 transition-colors">+383 44987898</a></p>
-                <p class="flex items-start"><i class="fas fa-map-marker-alt mr-3 text-blue-400 fa-fw mt-1"></i><span>Data And Human Management<br>Prishtina, Kosovo</span></p>
-            </address>
-        </div>
-        <div class="footer-section">
-            <h4 data-i18n-key="footerFollowUsTitle" class="text-lg font-semibold text-white mb-4">Na Ndiqni</h4>
-            <div class="flex space-x-4">
-                <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-facebook-f fa-lg"></i></a>
-                <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-twitter fa-lg"></i></a>
-                <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-instagram fa-lg"></i></a>
+<!-- START: Footer Section (Enhanced Design) -->
+<footer class="bg-gray-800 text-gray-300 mt-auto">
+    <div class="max-w-7xl mx-auto pt-16 pb-8 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12 mb-12">
+            
+            <!-- Column 1: About -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-white tracking-tight" data-i18n-key="footerAboutTitleNew">About Public Pulse</h3>
+                <p class="text-sm text-gray-400 leading-relaxed" data-i18n-key="footerAboutTextNew">
+                    As an independent, non-partisan watchdog, Public Pulse is committed to strengthening democratic accountability across Kosovo. We meticulously analyze the transparency and effectiveness of public service delivery, providing citizens with the clear, evidence-based insights essential for holding power accountable. For Kosovo to thrive, every citizen must have the tools to engage, question, and drive progress.
+                </p>
+                <a href="about.html" class="text-sm text-blue-400 hover:text-blue-300 font-medium inline-flex items-center group" data-i18n-key="footerLearnMoreAboutUs">
+                    Learn more about us
+                    <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <!-- Column 2: Explore / Quick Links -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-white tracking-tight" data-i18n-key="footerExploreTitle">Explore</h3>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="index.html" data-i18n-key="sidebarDashboard" class="text-gray-400 hover:text-white transition-colors duration-150">Dashboard</a></li>
+                    <li><a href="documents.html" data-i18n-key="sidebarDocuments" class="text-gray-400 hover:text-white transition-colors duration-150">Documents</a></li>
+                    <li><a href="events.html" data-i18n-key="sidebarEvents" class="text-gray-400 hover:text-white transition-colors duration-150">Events</a></li>
+                    <li><a href="local_government.html" data-i18n-key="sidebarLocalGovernment" class="text-gray-400 hover:text-white transition-colors duration-150">Local Government</a></li>
+                    <li><a href="contact.html" data-i18n-key="footerContactPage" class="text-gray-400 hover:text-white transition-colors duration-150">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Get in Touch & Follow Us -->
+            <div class="space-y-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-white tracking-tight" data-i18n-key="footerContactInfoTitle">Get in Touch</h3>
+                    <address class="not-italic text-sm space-y-4 mt-4">
+                        <p class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-3 fa-fw text-blue-400"></i>
+                            <a href="mailto:shabanbala@gmail.com" class="hover:text-white transition-colors duration-150">shabanbala@gmail.com</a>
+                        </p>
+                        <p class="flex items-center text-gray-400">
+                            <i class="fas fa-phone mr-3 fa-fw text-blue-400"></i>
+                            <a href="tel:+38344987898" class="hover:text-white transition-colors duration-150">+383 44987898</a>
+                        </p>
+                        <p class="flex items-start text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-3 fa-fw mt-1 text-blue-400"></i>
+                            <span>Data And Human Management<br>Prishtina, Kosovo</span>
+                        </p>
+                    </address>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white tracking-tight" data-i18n-key="footerFollowUsTitle">Follow Us</h3>
+                    <div class="flex space-x-5 mt-4">
+                        <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                        <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-instagram fa-lg"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="footer-section flex items-center justify-center lg:justify-end mt-6 lg:mt-0">
-           <img src="/static/image/pulsi-publik-logo.png" alt="Pulsi Publik Logo" class="h-20 w-auto md:h-24">
+
+        <!-- Optional: Newsletter Signup Section -->
+        <div class="mt-12 border-t border-gray-700 pt-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-lg font-semibold text-white" data-i18n-key="footerNewsletterTitle">Stay Updated</h3>
+                    <p class="mt-2 text-sm text-gray-400" data-i18n-key="footerNewsletterText">Subscribe to our newsletter to get the latest updates and reports directly in your inbox.</p>
+                </div>
+                <form class="flex sm:flex-row flex-col gap-2">
+                    <label for="email-address" class="sr-only" data-i18n-key="footerEmailLabel">Email address</label>
+                    <input id="email-address" name="email-address" type="email" autocomplete="email" required
+                           class="w-full px-4 py-2.5 text-sm text-gray-900 bg-white border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500"
+                           data-i18n-key-placeholder="footerEmailPlaceholder" placeholder="Enter your email">
+                    <button type="submit"
+                            class="flex-shrink-0 inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-blue-500"
+                            data-i18n-key="footerSubscribeButton">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="footer-bottom mt-8 pt-8 border-t border-gray-700 text-center">
-        <p class="text-sm">© <span id="currentYear"></span> <span data-i18n-key="footerCopyrightNew">Pulsi Publik Kosovë. Të gjitha të drejtat e rezervuara.</span></p>
+        <!-- End Optional Newsletter -->
+
+
+        <!-- Footer Bottom: Copyright & Legal Links -->
+        <div class="mt-12 pt-8 border-t border-gray-700 md:flex md:items-center md:justify-between">
+            <p class="text-sm text-gray-400 text-center md:text-left">
+                © <span id="currentYear"></span> <span data-i18n-key="footerCopyrightNew">Public Pulse Kosovo. All Rights Reserved.</span>
+            </p>
+            <div class="mt-4 md:mt-0 flex justify-center md:justify-start space-x-6">
+                <a href="privacy.html" data-i18n-key="footerPrivacyPolicyLink" class="text-sm text-gray-400 hover:text-white transition-colors duration-150">Privacy Policy</a>
+                <a href="terms.html" data-i18n-key="footerTermsLink" class="text-sm text-gray-400 hover:text-white transition-colors duration-150">Terms of Use</a>
+            </div>
+        </div>
     </div>
 </footer>
 <!-- END: Footer Section -->
+ 
 
 <!-- START: JavaScript Libraries (Same as index.html) -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>

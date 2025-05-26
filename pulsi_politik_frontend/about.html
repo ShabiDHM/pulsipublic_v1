@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- START: Document Head Section -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n-key="pageTitleAboutUs">About Public Pulse - Kosovo Civic Monitor</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- END: Document Head Section -->
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+    <!-- START: Header Navigation (Same as other pages) -->
+    <header class="bg-gray-800 text-white shadow-lg px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                    <div class="text-green-500 text-xl"><i class="fas fa-heartbeat"></i></div>
+                </div>
+                <div class="ml-3">
+                    <h1 data-i18n-key="headerTitle" class="text-xl font-bold">Public Pulse</h1>
+                    <p data-i18n-key="headerSubtitle" class="text-sm text-gray-300">Kosovo Civic Monitor</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center space-x-3">
+            <div class="relative">
+                <button id="languageSelector" class="bg-gray-700 hover:bg-gray-600 rounded px-3 py-1 flex items-center">
+                    <span class="mr-1">EN</span><i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div id="languageDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden z-20">
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="en" data-i18n-key="languageEN">English (EN)</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sq" data-i18n-key="languageSQ">Albanian (SQ)</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sr" data-i18n-key="languageSR">Serbian (SR)</a>
+                </div>
+            </div>
+            <div class="relative">
+                <button id="userMenu" class="bg-blue-600 hover:bg-blue-700 rounded-full w-8 h-8 flex items-center justify-center">
+                    <i class="fas fa-user"></i>
+                </button>
+                <div id="userDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden w-48 z-20">
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-user-circle mr-2"></i><span data-i18n-key="userMenuProfile">Profile</span></a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-cog mr-2"></i><span data-i18n-key="userMenuSettings">Settings</span></a>
+                    <div class="border-t border-gray-200"></div>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200 text-red-600"><i class="fas fa-sign-out-alt mr-2"></i><span data-i18n-key="userMenuSignOut">Sign out</span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- END: Header Navigation -->
+
+<div class="flex flex-1">
+    <!-- START: Sidebar Navigation (Consistent with other pages) -->
+    <aside id="sidebar" class="bg-white shadow-md w-64 transition-all duration-300 hidden md:block">
+        <nav class="py-4 h-full flex flex-col">
+            <div class="px-4 pb-4 mb-4 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                    <p data-i18n-key="sidebarMainNavigation" class="text-sm text-gray-500">MAIN NAVIGATION</p>
+                    <button id="toggleSidebar" class="md:hidden text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <div class="flex-grow overflow-y-auto">
+                <a href="index.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
+                    <div class="w-6 text-center"><i class="fas fa-tachometer-alt"></i></div><span data-i18n-key="sidebarDashboard" class="ml-3">Dashboard</span>
+                </a>
+                <a href="documents.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
+                    <div class="w-6 text-center"><i class="fas fa-file-alt"></i></div><span data-i18n-key="sidebarDocuments" class="ml-3">Documents</span>
+                </a>
+                <a href="events.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
+                    <div class="w-6 text-center"><i class="fas fa-calendar-alt"></i></div><span data-i18n-key="sidebarEvents" class="ml-3">Events</span>
+                </a>
+                <div class="sidebar-section-heading"><p data-i18n-key="sidebarAnalytics" class="font-medium">ANALITIKA</p></div>
+                <a href="local_government.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
+                    <div class="w-6 text-center"><i class="fas fa-university"></i></div>
+                    <span data-i18n-key="sidebarLocalGovernment" class="ml-3">Local Government</span>
+                </a>
+                <a href="export_data.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
+                    <div class="w-6 text-center"><i class="fas fa-download"></i></div><span data-i18n-key="sidebarExportData" class="ml-3">Export Data</span>
+                </a>
+            </div>
+        </nav>
+    </aside>
+    <!-- END: Sidebar Navigation -->
+
+    <!-- START: Mobile Sidebar Toggle Button -->
+    <button id="mobileSidebarToggle" class="md:hidden fixed top-4 left-4 bg-gray-800 text-white rounded-md w-10 h-10 flex items-center justify-center shadow-lg z-40">
+        <i class="fas fa-bars"></i>
+    </button>
+    <!-- END: Mobile Sidebar Toggle Button -->
+
+    <!-- START: Main Content Area (about.html) -->
+    <main class="flex-1 overflow-x-hidden">
+        <!-- START: Breadcrumb Navigation -->
+        <div class="bg-white px-6 py-3 flex items-center text-sm border-b border-gray-200">
+            <a href="index.html" class="text-gray-600 hover:text-blue-600" aria-label="Home"><i class="fas fa-home"></i></a>
+            <span class="mx-2 text-gray-400">/</span>
+            <span data-i18n-key="breadcrumbAboutUs" class="text-gray-800 font-medium">About Us</span>
+        </div>
+        <!-- END: Breadcrumb Navigation -->
+
+        <div class="px-4 sm:px-6 lg:px-8 py-8 max-w-4xl mx-auto">
+            <!-- START: Page Header -->
+            <div class="mb-10 text-center">
+                <h2 data-i18n-key="pageTitleAboutUs" class="text-3xl md:text-4xl font-bold text-gray-900">About Public Pulse</h2>
+                <p data-i18n-key="pageSubtitleAboutUs" class="mt-3 text-lg text-gray-600 max-w-2xl mx-auto">
+                    Strengthening democratic accountability across Kosovo through meticulous analysis of transparency and public service delivery.
+                </p>
+            </div>
+            <!-- END: Page Header -->
+
+            <!-- START: Introduction Section -->
+            <div class="prose prose-lg text-gray-700 max-w-none mb-12 bg-white p-6 sm:p-8 rounded-lg shadow-md">
+                <p data-i18n-key="footerAboutTextNew">
+                    As an independent, non-partisan watchdog, Public Pulse is committed to strengthening democratic accountability across Kosovo. We meticulously analyze the transparency and effectiveness of public service delivery, providing citizens with the clear, evidence-based insights essential for holding power accountable. For Kosovo to thrive, every citizen must have the tools to engage, question, and drive progress.
+                </p>
+            </div>
+            <!-- END: Introduction Section -->
+            
+            <!-- START: Four Pillars Section -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-2 text-center" data-i18n-key="footerAboutPillarsIntro">Our Core Pillars</h3>
+                <p class="text-center text-gray-600 mb-8" data-i18n-key="aboutPillarsSubtext">Our independent, evidence-driven assessments are anchored in four fundamental pillars, designed to empower Kosovo's citizens:</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Pillar 1: Transparency -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center">
+                                <i class="fas fa-eye fa-lg"></i>
+                            </div>
+                            <h4 class="ml-4 text-xl font-semibold text-gray-800" data-i18n-key="footerPillarTransparencyTitle">Transparency</h4>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed" data-i18n-key="footerPillarTransparencyDesc">
+                            In Kosovo's journey towards robust democracy, true transparency is non-negotiable. Our independent scrutiny examines how openly and comprehensively public service bodies share information critical to the public—from proactive data releases and budget clarity to their responsiveness to citizens' right to know. This pillar illuminates decision-making, building the essential public trust needed for informed, sovereign civic action.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 2: Participation -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
+                                <i class="fas fa-users fa-lg"></i>
+                            </div>
+                            <h4 class="ml-4 text-xl font-semibold text-gray-800" data-i18n-key="footerPillarParticipationTitle">Participation</h4>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed" data-i18n-key="footerPillarParticipationDesc">
+                            A vibrant democracy in Kosovo depends on genuine citizen participation. This index objectively assesses the commitment and effectiveness of public bodies in creating meaningful avenues for citizens to influence policy and governance. We evaluate not just the existence of consultative mechanisms, but their real-world impact, championing a Kosovo where active citizenship is both a right and a shared responsibility for progress.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 3: Efficiency -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center">
+                                <i class="fas fa-cogs fa-lg"></i> <!-- Changed from fa-bolt -->
+                            </div>
+                            <h4 class="ml-4 text-xl font-semibold text-gray-800" data-i18n-key="footerPillarEfficiencyTitle">Efficiency</h4>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed" data-i18n-key="footerPillarEfficiencyDesc">
+                            Kosovo's citizens deserve public services that are effective and deliver tangible value. Our independent Efficiency Rating scrutinizes how well public service bodies manage resources and execute their mandates to provide timely, impactful services. We focus on concrete operational performance, ensuring that public expenditure and effort translate directly into improved quality of life and progress for all communities in Kosovo.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 4: Outcome -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center">
+                                <i class="fas fa-bullseye fa-lg"></i> <!-- Changed from fa-chart-pie -->
+                            </div>
+                            <h4 class="ml-4 text-xl font-semibold text-gray-800" data-i18n-key="footerPillarOutcomeTitle">Outcome</h4>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed" data-i18n-key="footerPillarOutcomeDesc">
+                            This comprehensive, citizen-focused index integrates our independent findings across Transparency, Participation, and Efficiency. It offers an evidence-based benchmark of how effectively public service bodies are serving the people of Kosovo. More than just a score, it’s a tool for progress—identifying strengths, pinpointing areas for urgent improvement, and empowering citizens, civil society, and institutions to collaboratively build a more accountable and responsive future for Kosovo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- END: Four Pillars Section -->
+            
+            <!-- Optional: Call to Action or Further Info -->
+            <div class="text-center mt-12">
+                 <a href="contact.html"
+                   class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                   data-i18n-key="contactUsButton">
+                    Contact Us for More Information
+                </a>
+            </div>
+
+        </div>
+    </main>
+    <!-- END: Main Content Area -->
+</div>
+
+<!-- START: Notification Banner (Same as other pages) -->
+<div id="notificationBanner" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-md shadow-lg flex items-center hidden z-50">
+    <i class="fas fa-check-circle mr-2"></i>
+    <span id="notificationMessage">Action completed successfully!</span>
+</div>
+<!-- END: Notification Banner -->
+
+<!-- START: Footer Section (Consistent with other pages) -->
+<footer class="bg-gray-800 text-gray-300 mt-auto">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12 mb-12">
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-white tracking-tight" data-i18n-key="footerAboutTitleNew">About Public Pulse</h3>
+                <p class="text-sm text-gray-400 leading-relaxed" data-i18n-key="footerAboutTextShort"> An independent, non-partisan watchdog strengthening democratic accountability across Kosovo by analyzing transparency and public service delivery. </p>
+                <a href="about.html" class="text-sm text-blue-400 hover:text-blue-300 font-medium inline-flex items-center group" data-i18n-key="footerLearnMoreAboutUs"> Learn more about us <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i> </a>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-white tracking-tight" data-i18n-key="footerExploreTitle">Explore</h3>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="index.html" data-i18n-key="sidebarDashboard" class="text-gray-400 hover:text-white transition-colors duration-150">Dashboard</a></li>
+                    <li><a href="documents.html" data-i18n-key="sidebarDocuments" class="text-gray-400 hover:text-white transition-colors duration-150">Documents</a></li>
+                    <li><a href="events.html" data-i18n-key="sidebarEvents" class="text-gray-400 hover:text-white transition-colors duration-150">Events</a></li>
+                    <li><a href="local_government.html" data-i18n-key="sidebarLocalGovernment" class="text-gray-400 hover:text-white transition-colors duration-150">Local Government</a></li>
+                    <li><a href="contact.html" data-i18n-key="footerContactPage" class="text-gray-400 hover:text-white transition-colors duration-150">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="space-y-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-white tracking-tight" data-i18n-key="footerContactInfoTitle">Get in Touch</h3>
+                    <address class="not-italic text-sm space-y-4 mt-4">
+                        <p class="flex items-center text-gray-400"> <i class="fas fa-envelope mr-3 fa-fw text-blue-400"></i> <a href="mailto:shabanbala@gmail.com" class="hover:text-white transition-colors duration-150">shabanbala@gmail.com</a> </p>
+                        <p class="flex items-center text-gray-400"> <i class="fas fa-phone mr-3 fa-fw text-blue-400"></i> <a href="tel:+38344987898" class="hover:text-white transition-colors duration-150">+383 44987898</a> </p>
+                        <p class="flex items-start text-gray-400"> <i class="fas fa-map-marker-alt mr-3 fa-fw mt-1 text-blue-400"></i> <span>Data And Human Management<br>Prishtina, Kosovo</span> </p>
+                    </address>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white tracking-tight" data-i18n-key="footerFollowUsTitle">Follow Us</h3>
+                    <div class="flex space-x-5 mt-4">
+                        <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                        <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-instagram fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 border-t border-gray-700 pt-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-lg font-semibold text-white" data-i18n-key="footerNewsletterTitle">Stay Updated</h3>
+                    <p class="mt-2 text-sm text-gray-400" data-i18n-key="footerNewsletterText">Subscribe to our newsletter to get the latest updates and reports directly in your inbox.</p>
+                </div>
+                <form class="flex sm:flex-row flex-col gap-2">
+                    <label for="email-address" class="sr-only" data-i18n-key="footerEmailLabel">Email address</label>
+                    <input id="email-address" name="email-address" type="email" autocomplete="email" required class="w-full px-4 py-2.5 text-sm text-gray-900 bg-white border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500" data-i18n-key-placeholder="footerEmailPlaceholder" placeholder="Enter your email">
+                    <button type="submit" class="flex-shrink-0 inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-blue-500" data-i18n-key="footerSubscribeButton"> Subscribe </button>
+                </form>
+            </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-gray-700 md:flex md:items-center md:justify-between">
+            <p class="text-sm text-gray-400 text-center md:text-left"> © <span id="currentYear"></span> <span data-i18n-key="footerCopyrightNew">Public Pulse Kosovo. All Rights Reserved.</span> </p>
+            <div class="mt-4 md:mt-0 flex justify-center md:justify-start space-x-6">
+                <a href="privacy.html" data-i18n-key="footerPrivacyPolicyLink" class="text-sm text-gray-400 hover:text-white transition-colors duration-150">Privacy Policy</a>
+                <a href="terms.html" data-i18n-key="footerTermsLink" class="text-sm text-gray-400 hover:text-white transition-colors duration-150">Terms of Use</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- END: Footer Section -->
+
+<!-- START: JavaScript Libraries -->
+<!-- Chart.js and Datalabels are likely not needed for this specific page -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script> -->
+<!-- END: JavaScript Libraries -->
+
+<!-- START: Custom Scripts -->
+<script src="main_script.js" defer></script>
+<!-- END: Custom Scripts -->
+</body>
+</html>
