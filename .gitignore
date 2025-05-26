@@ -1,18 +1,15 @@
-# Python
-*.pyc
-*.pyo
-*.pyd
-__pycache__/
-.Python
-env/
+# Virtual Environment
+.venv/
 venv/
-.venv/  # This is important for your current setup
+ENV/
+env/
 
-# IDE / Editor specific
-.vscode/
-.idea/
+# Python bytecode
+*.pyc
+__pycache__/
 
-# Other common ignores (add more if needed)
-# .env  # If you have a .env file for secrets, UNCOMMENT this line
-# instance/ # Common for Flask
-# *.sqlite3 # If you have a local sqlite database
+# Database file (optional, decide if you want to commit kcm_data.db)
+# If you DON'T want to commit it, make sure this line (or similar) is present:
+# pulsi_politik_backend/kcm_data.db
+# *.db
+# *.sqlite3
