@@ -4,7 +4,7 @@
     <!-- START: Document Head Section -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n-key="pageTitleEvents">Events - Kosovo Civic Monitor</title>
+    <title data-translate="pageTitleEvents">Events - Kosovo Civic Monitor</title> <!-- MODIFIED -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -19,20 +19,20 @@
                     <div class="text-green-500 text-xl"><i class="fas fa-heartbeat"></i></div>
                 </div>
                 <div class="ml-3">
-                    <h1 data-i18n-key="headerTitle" class="text-xl font-bold">Public Pulse</h1>
-                    <p data-i18n-key="headerSubtitle" class="text-sm text-gray-300">Kosovo Civic Monitor</p>
+                    <h1 data-translate="headerTitle" class="text-xl font-bold">Public Pulse</h1> <!-- MODIFIED -->
+                    <p data-translate="headerSubtitle" class="text-sm text-gray-300">Kosovo Civic Monitor</p> <!-- MODIFIED -->
                 </div>
             </div>
         </div>
         <div class="flex items-center space-x-3">
             <div class="relative">
                 <button id="languageSelector" class="bg-gray-700 hover:bg-gray-600 rounded px-3 py-1 flex items-center">
-                    <span class="mr-1">EN</span><i class="fas fa-chevron-down text-xs"></i>
+                    <span class="mr-1" data-translate="currentLangIndicator">EN</span><i class="fas fa-chevron-down text-xs"></i> <!-- MODIFIED -->
                 </button>
                 <div id="languageDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden z-20">
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="en" data-i18n-key="languageEN">English (EN)</a>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sq" data-i18n-key="languageSQ">Albanian (SQ)</a>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sr" data-i18n-key="languageSR">Serbian (SR)</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="en" data-translate="languageEN">English (EN)</a> <!-- MODIFIED -->
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sq" data-translate="languageSQ">Albanian (SQ)</a> <!-- MODIFIED -->
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sr" data-translate="languageSR">Serbian (SR)</a> <!-- MODIFIED -->
                 </div>
             </div>
             <div class="relative">
@@ -40,10 +40,10 @@
                     <i class="fas fa-user"></i>
                 </button>
                 <div id="userDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden w-48 z-20">
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-user-circle mr-2"></i><span data-i18n-key="userMenuProfile">Profile</span></a>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-cog mr-2"></i><span data-i18n-key="userMenuSettings">Settings</span></a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-user-circle mr-2"></i><span data-translate="userMenuProfile">Profile</span></a> <!-- MODIFIED -->
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-cog mr-2"></i><span data-translate="userMenuSettings">Settings</span></a> <!-- MODIFIED -->
                     <div class="border-t border-gray-200"></div>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200 text-red-600"><i class="fas fa-sign-out-alt mr-2"></i><span data-i18n-key="userMenuSignOut">Sign out</span></a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200 text-red-600"><i class="fas fa-sign-out-alt mr-2"></i><span data-translate="userMenuSignOut">Sign out</span></a> <!-- MODIFIED -->
                 </div>
             </div>
         </div>
@@ -56,27 +56,30 @@
         <nav class="py-4 h-full flex flex-col">
             <div class="px-4 pb-4 mb-4 border-b border-gray-200">
                 <div class="flex items-center justify-between">
-                    <p data-i18n-key="sidebarMainNavigation" class="text-sm text-gray-500">MAIN NAVIGATION</p>
+                    <p data-translate="sidebarMainNavigation" class="text-sm text-gray-500">MAIN NAVIGATION</p> <!-- MODIFIED -->
                     <button id="toggleSidebar" class="md:hidden text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
                 </div>
             </div>
             <div class="flex-grow overflow-y-auto">
                 <a href="index.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
-                    <div class="w-6 text-center"><i class="fas fa-tachometer-alt"></i></div><span data-i18n-key="sidebarDashboard" class="ml-3">Dashboard</span>
+                    <div class="w-6 text-center"><i class="fas fa-tachometer-alt"></i></div><span data-translate="sidebarDashboard" class="ml-3">Dashboard</span> <!-- MODIFIED -->
                 </a>
                 <a href="documents.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
-                    <div class="w-6 text-center"><i class="fas fa-file-alt"></i></div><span data-i18n-key="sidebarDocuments" class="ml-3">Documents</span>
+                    <div class="w-6 text-center"><i class="fas fa-file-alt"></i></div><span data-translate="sidebarDocuments" class="ml-3">Documents</span> <!-- MODIFIED -->
                 </a>
                 <a href="events.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
-                    <div class="w-6 text-center"><i class="fas fa-calendar-alt"></i></div><span data-i18n-key="sidebarEvents" class="ml-3">Events</span>
+                    <div class="w-6 text-center"><i class="fas fa-calendar-alt"></i></div><span data-translate="sidebarEvents" class="ml-3">Events</span> <!-- MODIFIED -->
                 </a>
-                <div class="sidebar-section-heading"><p data-i18n-key="sidebarAnalytics" class="font-medium">ANALITIKA</p></div>
-                <a href="local_government.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100"> <!-- UPDATED HREF -->
-                    <div class="w-6 text-center"><i class="fas fa-university"></i></div> <!-- UPDATED ICON -->
-                    <span data-i18n-key="sidebarLocalGovernment" class="ml-3">Local Government</span> <!-- UPDATED KEY & TEXT -->
+                <div class="sidebar-section-heading"><p data-translate="sidebarAnalytics" class="font-medium">ANALITIKA</p></div> <!-- MODIFIED -->
+                <a href="local_government.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
+                    <div class="w-6 text-center"><i class="fas fa-university"></i></div>
+                    <span data-translate="sidebarLocalGovernment" class="ml-3">Local Government</span> <!-- MODIFIED -->
                 </a>
                 <a href="export_data.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
-                    <div class="w-6 text-center"><i class="fas fa-download"></i></div><span data-i18n-key="sidebarExportData" class="ml-3">Export Data</span>
+                    <div class="w-6 text-center"><i class="fas fa-download"></i></div><span data-translate="sidebarExportData" class="ml-3">Export Data</span> <!-- MODIFIED -->
+                </a>
+                 <a href="about.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
+                    <div class="w-6 text-center"><i class="fas fa-info-circle"></i></div><span data-translate="breadcrumbAboutUs" class="ml-3">About Us</span>
                 </a>
             </div>
         </nav>
@@ -95,15 +98,15 @@
         <div class="bg-white px-6 py-3 flex items-center text-sm border-b border-gray-200">
             <a href="index.html" class="text-gray-600 hover:text-blue-600" aria-label="Home"><i class="fas fa-home"></i></a>
             <span class="mx-2 text-gray-400">/</span>
-            <span data-i18n-key="breadcrumbEvents" class="text-gray-800 font-medium">Events</span>
+            <span data-translate="breadcrumbEvents" class="text-gray-800 font-medium">Events</span> <!-- MODIFIED -->
         </div>
         <!-- END: Breadcrumb Navigation -->
 
         <div class="px-6 py-5">
             <!-- START: Page Header -->
             <div class="mb-8">
-                <h2 data-i18n-key="pageTitleEvents" class="text-3xl font-bold text-gray-800">Upcoming Events & Workshops</h2>
-                <p data-i18n-key="pageSubtitleEvents" class="text-gray-600 mt-1">Discover public consultations, workshops, and civic engagement opportunities.</p>
+                <h2 data-translate="pageTitleEvents" class="text-3xl font-bold text-gray-800">Upcoming Events & Workshops</h2> <!-- MODIFIED -->
+                <p data-translate="pageSubtitleEvents" class="text-gray-600 mt-1">Discover public consultations, workshops, and civic engagement opportunities.</p> <!-- MODIFIED -->
             </div>
             <!-- END: Page Header -->
 
@@ -112,46 +115,46 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
                     <!-- Search Input -->
                     <div class="md:col-span-1">
-                        <label for="eventSearch" class="block text-sm font-medium text-gray-700 mb-1" data-i18n-key="eventSearchLabel">Search Events</label>
+                        <label for="eventSearch" class="block text-sm font-medium text-gray-700 mb-1" data-translate="eventSearchLabel">Search Events</label> <!-- MODIFIED -->
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <i class="fas fa-search text-gray-400"></i>
                             </div>
-                            <input type="text" name="eventSearch" id="eventSearch" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-2" data-i18n-key="eventSearchPlaceholder" placeholder="Event name or keyword...">
+                            <input type="text" name="eventSearch" id="eventSearch" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-2" data-translate="eventSearchPlaceholder" placeholder="Event name or keyword..."> <!-- MODIFIED -->
                         </div>
                     </div>
                     <!-- Filter by Event Type -->
                     <div>
-                        <label for="eventType" class="block text-sm font-medium text-gray-700 mb-1" data-i18n-key="eventTypeLabel">Event Type</label>
+                        <label for="eventType" class="block text-sm font-medium text-gray-700 mb-1" data-translate="eventTypeLabel">Event Type</label> <!-- MODIFIED -->
                         <select id="eventType" name="eventType" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                            <option data-i18n-key="eventTypeAll">All Types</option>
-                            <option data-i18n-key="eventTypeWorkshop">Workshop</option>
-                            <option data-i18n-key="eventTypeConference">Conference</option>
-                            <option data-i18n-key="eventTypeConsultation">Public Consultation</option>
-                            <option data-i18n-key="eventTypeWebinar">Webinar</option>
+                            <option data-translate="eventTypeAll">All Types</option> <!-- MODIFIED -->
+                            <option data-translate="eventTypeWorkshop">Workshop</option> <!-- MODIFIED -->
+                            <option data-translate="eventTypeConference">Conference</option> <!-- MODIFIED -->
+                            <option data-translate="eventTypeConsultation">Public Consultation</option> <!-- MODIFIED -->
+                            <option data-translate="eventTypeWebinar">Webinar</option> <!-- MODIFIED -->
                         </select>
                     </div>
                     <!-- Filter by Date (Simplified to Month/Year or a Date Range Picker if you integrate one) -->
                     <div>
-                        <label for="eventMonth" class="block text-sm font-medium text-gray-700 mb-1" data-i18n-key="eventDateLabel">Date</label>
+                        <label for="eventMonth" class="block text-sm font-medium text-gray-700 mb-1" data-translate="eventDateLabel">Date</label> <!-- MODIFIED -->
                         <div class="flex space-x-2">
                             <select id="eventMonth" name="eventMonth" class="mt-1 block w-1/2 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                                <option value="" data-i18n-key="eventMonthAll">All Months</option>
-                                <option value="01" data-i18n-key="eventMonthJan">January</option>
-                                <option value="02" data-i18n-key="eventMonthFeb">February</option>
-                                <option value="03" data-i18n-key="eventMonthMar">March</option>
-                                <option value="04" data-i18n-key="eventMonthApr">April</option>
-                                <option value="05" data-i18n-key="eventMonthMay">May</option>
-                                <option value="06" data-i18n-key="eventMonthJun">June</option>
-                                <option value="07" data-i18n-key="eventMonthJul">July</option>
-                                <option value="08" data-i18n-key="eventMonthAug">August</option>
-                                <option value="09" data-i18n-key="eventMonthSep">September</option>
-                                <option value="10" data-i18n-key="eventMonthOct">October</option>
-                                <option value="11" data-i18n-key="eventMonthNov">November</option>
-                                <option value="12" data-i18n-key="eventMonthDec">December</option>
+                                <option value="" data-translate="eventMonthAll">All Months</option> <!-- MODIFIED -->
+                                <option value="01" data-translate="eventMonthJan">January</option> <!-- MODIFIED -->
+                                <option value="02" data-translate="eventMonthFeb">February</option> <!-- MODIFIED -->
+                                <option value="03" data-translate="eventMonthMar">March</option> <!-- MODIFIED -->
+                                <option value="04" data-translate="eventMonthApr">April</option> <!-- MODIFIED -->
+                                <option value="05" data-translate="eventMonthMay">May</option> <!-- MODIFIED -->
+                                <option value="06" data-translate="eventMonthJun">June</option> <!-- MODIFIED -->
+                                <option value="07" data-translate="eventMonthJul">July</option> <!-- MODIFIED -->
+                                <option value="08" data-translate="eventMonthAug">August</option> <!-- MODIFIED -->
+                                <option value="09" data-translate="eventMonthSep">September</option> <!-- MODIFIED -->
+                                <option value="10" data-translate="eventMonthOct">October</option> <!-- MODIFIED -->
+                                <option value="11" data-translate="eventMonthNov">November</option> <!-- MODIFIED -->
+                                <option value="12" data-translate="eventMonthDec">December</option> <!-- MODIFIED -->
                             </select>
                             <select id="eventYear" name="eventYear" class="mt-1 block w-1/2 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                                <option value="" data-i18n-key="eventYearAll">All Years</option>
+                                <option value="" data-translate="eventYearAll">All Years</option> <!-- MODIFIED -->
                                 <option value="2024">2024</option>
                                 <option value="2025">2025</option>
                                 <option value="2026">2026</option>
@@ -160,8 +163,8 @@
                     </div>
                 </div>
                 <div class="mt-6 text-right">
-                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" data-i18n-key="eventApplyFiltersButton">
-                        <i class="fas fa-filter mr-2"></i> Apply Filters
+                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <i class="fas fa-filter mr-2"></i> <span data-translate="eventApplyFiltersButton">Apply Filters</span> <!-- MODIFIED -->
                     </button>
                 </div>
             </div>
@@ -173,28 +176,28 @@
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-200">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3">
-                            <h4 class="text-xl font-semibold text-gray-900 hover:text-blue-700 transition-colors duration-150"><a href="#" data-i18n-key="eventTitle1">Workshop on Digital Literacy for CSOs</a></h4>
-                            <span class="text-sm font-medium text-white bg-green-500 px-3 py-1 rounded-full" data-i18n-key="eventTypeWorkshop">Workshop</span>
+                            <h4 class="text-xl font-semibold text-gray-900 hover:text-blue-700 transition-colors duration-150"><a href="#" data-translate="eventTitle1">Workshop on Digital Literacy for CSOs</a></h4> <!-- MODIFIED -->
+                            <span class="text-sm font-medium text-white bg-green-500 px-3 py-1 rounded-full" data-translate="eventTypeWorkshop">Workshop</span> <!-- MODIFIED -->
                         </div>
-                        <p class="text-sm text-gray-600 mb-4" data-i18n-key="eventDesc1">Join us for an interactive workshop designed to enhance the digital skills of civil society organizations in Kosovo.</p>
+                        <p class="text-sm text-gray-600 mb-4" data-translate="eventDesc1">Join us for an interactive workshop designed to enhance the digital skills of civil society organizations in Kosovo.</p> <!-- MODIFIED -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-700">
                             <div class="flex items-center">
                                 <i class="fas fa-calendar-alt text-blue-500 mr-2"></i>
-                                <span data-i18n-key="eventDateInfo1">Date: October 28, 2024</span>
+                                <span data-translate="eventDateInfo1">Date: October 28, 2024</span> <!-- MODIFIED -->
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-clock text-blue-500 mr-2"></i>
-                                <span data-i18n-key="eventTimeInfo1">Time: 10:00 - 14:00</span>
+                                <span data-translate="eventTimeInfo1">Time: 10:00 - 14:00</span> <!-- MODIFIED -->
                             </div>
                             <div class="flex items-center sm:col-span-2">
                                 <i class="fas fa-map-marker-alt text-blue-500 mr-2"></i>
-                                <span data-i18n-key="eventLocationInfo1">Location: Innovation Centre Kosovo, Prishtina</span>
+                                <span data-translate="eventLocationInfo1">Location: Innovation Centre Kosovo, Prishtina</span> <!-- MODIFIED -->
                             </div>
                         </div>
                     </div>
                     <div class="bg-gray-50 px-6 py-4 text-right">
                         <a href="#" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                           <span data-i18n-key="eventLearnMoreButton">Learn More & Register</span> <i class="fas fa-arrow-right ml-2"></i>
+                           <span data-translate="eventLearnMoreButton">Learn More & Register</span> <i class="fas fa-arrow-right ml-2"></i> <!-- MODIFIED -->
                         </a>
                     </div>
                 </div>
@@ -203,28 +206,28 @@
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-200">
                      <div class="p-6">
                         <div class="flex items-center justify-between mb-3">
-                            <h4 class="text-xl font-semibold text-gray-900 hover:text-blue-700 transition-colors duration-150"><a href="#" data-i18n-key="eventTitle2">Conference on Open Government Data</a></h4>
-                            <span class="text-sm font-medium text-white bg-purple-500 px-3 py-1 rounded-full" data-i18n-key="eventTypeConference">Conference</span>
+                            <h4 class="text-xl font-semibold text-gray-900 hover:text-blue-700 transition-colors duration-150"><a href="#" data-translate="eventTitle2">Conference on Open Government Data</a></h4> <!-- MODIFIED -->
+                            <span class="text-sm font-medium text-white bg-purple-500 px-3 py-1 rounded-full" data-translate="eventTypeConference">Conference</span> <!-- MODIFIED -->
                         </div>
-                        <p class="text-sm text-gray-600 mb-4" data-i18n-key="eventDesc2">A national conference bringing together policymakers, CSOs, and tech enthusiasts to discuss the future of open data in Kosovo.</p>
+                        <p class="text-sm text-gray-600 mb-4" data-translate="eventDesc2">A national conference bringing together policymakers, CSOs, and tech enthusiasts to discuss the future of open data in Kosovo.</p> <!-- MODIFIED -->
                          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-700">
                             <div class="flex items-center">
                                 <i class="fas fa-calendar-alt text-blue-500 mr-2"></i>
-                                <span data-i18n-key="eventDateInfo2">Date: November 12-13, 2024</span>
+                                <span data-translate="eventDateInfo2">Date: November 12-13, 2024</span> <!-- MODIFIED -->
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-clock text-blue-500 mr-2"></i>
-                                <span data-i18n-key="eventTimeInfo2">Time: Full Day</span>
+                                <span data-translate="eventTimeInfo2">Time: Full Day</span> <!-- MODIFIED -->
                             </div>
                             <div class="flex items-center sm:col-span-2">
                                 <i class="fas fa-map-marker-alt text-blue-500 mr-2"></i>
-                                <span data-i18n-key="eventLocationInfo2">Location: Emerald Hotel, Prishtina</span>
+                                <span data-translate="eventLocationInfo2">Location: Emerald Hotel, Prishtina</span> <!-- MODIFIED -->
                             </div>
                         </div>
                     </div>
                     <div class="bg-gray-50 px-6 py-4 text-right">
                         <a href="#" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                           <span data-i18n-key="eventLearnMoreButton">Learn More & Register</span> <i class="fas fa-arrow-right ml-2"></i>
+                           <span data-translate="eventLearnMoreButton">Learn More & Register</span> <i class="fas fa-arrow-right ml-2"></i> <!-- MODIFIED (key is duplicated, but structure is good) -->
                         </a>
                     </div>
                 </div>
@@ -236,14 +239,14 @@
             <div class="mt-10 flex justify-center">
                 <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
                     <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                        <span class="sr-only" data-i18n-key="paginationPrevious">Previous</span>
+                        <span class="sr-only" data-translate="paginationPrevious">Previous</span> <!-- MODIFIED -->
                         <i class="fas fa-chevron-left h-5 w-5"></i>
                     </a>
                     <a href="#" aria-current="page" class="z-10 bg-blue-50 border-blue-500 text-blue-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">1</a>
                     <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">2</a>
                     <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium">3</a>
                     <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                        <span class="sr-only" data-i18n-key="paginationNext">Next</span>
+                        <span class="sr-only" data-translate="paginationNext">Next</span> <!-- MODIFIED -->
                         <i class="fas fa-chevron-right h-5 w-5"></i>
                     </a>
                 </nav>
@@ -262,98 +265,76 @@
 </div>
 <!-- END: Notification Banner -->
 
-<!-- START: Footer Section (Enhanced Design) -->
+<!-- START: Footer Section -->
 <footer class="bg-gray-800 text-gray-300 mt-auto">
-    <div class="max-w-7xl mx-auto pt-16 pb-8 px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12 mb-12">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <!-- Main Footer Content Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-12 mb-12">
             
-            <!-- Column 1: About -->
+            <!-- Column 1: About Public Pulse -->
             <div class="space-y-4">
-                <h3 class="text-lg font-semibold text-white tracking-tight" data-i18n-key="footerAboutTitleNew">About Public Pulse</h3>
-                <p class="text-sm text-gray-400 leading-relaxed" data-i18n-key="footerAboutTextNew">
-                    As an independent, non-partisan watchdog, Public Pulse is committed to strengthening democratic accountability across Kosovo. We meticulously analyze the transparency and effectiveness of public service delivery, providing citizens with the clear, evidence-based insights essential for holding power accountable. For Kosovo to thrive, every citizen must have the tools to engage, question, and drive progress.
-                </p>
-                <a href="about.html" class="text-sm text-blue-400 hover:text-blue-300 font-medium inline-flex items-center group" data-i18n-key="footerLearnMoreAboutUs">
-                    Learn more about us
-                    <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                <h3 class="text-lg font-semibold text-white tracking-tight" data-translate="footerAboutTitleNew">About Public Pulse</h3>
+                <p class="text-sm text-gray-400 leading-relaxed" data-translate="footerAboutTextShort">An independent, non-partisan watchdog strengthening democratic accountability across Kosovo by analyzing transparency and public service delivery.</p>
+                <a href="about.html" <!-- Corrected, was about.html -->
+                   class="inline-block px-5 py-2.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-blue-500 mt-2 group"> 
+                   <span data-translate="footerLearnMoreAboutUs">Learn more about us</span> 
+                   <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i> 
                 </a>
             </div>
 
-            <!-- Column 2: Explore / Quick Links -->
-            <div class="space-y-4">
-                <h3 class="text-lg font-semibold text-white tracking-tight" data-i18n-key="footerExploreTitle">Explore</h3>
-                <ul class="space-y-3 text-sm">
-                    <li><a href="index.html" data-i18n-key="sidebarDashboard" class="text-gray-400 hover:text-white transition-colors duration-150">Dashboard</a></li>
-                    <li><a href="documents.html" data-i18n-key="sidebarDocuments" class="text-gray-400 hover:text-white transition-colors duration-150">Documents</a></li>
-                    <li><a href="events.html" data-i18n-key="sidebarEvents" class="text-gray-400 hover:text-white transition-colors duration-150">Events</a></li>
-                    <li><a href="local_government.html" data-i18n-key="sidebarLocalGovernment" class="text-gray-400 hover:text-white transition-colors duration-150">Local Government</a></li>
-                    <li><a href="contact.html" data-i18n-key="footerContactPage" class="text-gray-400 hover:text-white transition-colors duration-150">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <!-- Column 3: Get in Touch & Follow Us -->
-            <div class="space-y-8">
-                <div>
-                    <h3 class="text-lg font-semibold text-white tracking-tight" data-i18n-key="footerContactInfoTitle">Get in Touch</h3>
-                    <address class="not-italic text-sm space-y-4 mt-4">
-                        <p class="flex items-center text-gray-400">
-                            <i class="fas fa-envelope mr-3 fa-fw text-blue-400"></i>
-                            <a href="mailto:shabanbala@gmail.com" class="hover:text-white transition-colors duration-150">shabanbala@gmail.com</a>
-                        </p>
-                        <p class="flex items-center text-gray-400">
-                            <i class="fas fa-phone mr-3 fa-fw text-blue-400"></i>
-                            <a href="tel:+38344987898" class="hover:text-white transition-colors duration-150">+383 44987898</a>
-                        </p>
-                        <p class="flex items-start text-gray-400">
-                            <i class="fas fa-map-marker-alt mr-3 fa-fw mt-1 text-blue-400"></i>
-                            <span>Data And Human Management<br>Prishtina, Kosovo</span>
-                        </p>
-                    </address>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-white tracking-tight" data-i18n-key="footerFollowUsTitle">Follow Us</h3>
-                    <div class="flex space-x-5 mt-4">
-                        <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-facebook-f fa-lg"></i></a>
-                        <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                        <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-instagram fa-lg"></i></a>
+            <!-- Column 2: Contact Info, Follow Us & Logo -->
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start space-y-8 md:space-y-0 md:space-x-8"> 
+                <!-- Left Sub-Column: Contact & Follow Us -->
+                <div class="space-y-8 flex-shrink-0">
+                    <!-- Get in Touch Section -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-white tracking-tight" data-translate="footerContactInfoTitle">Get in Touch</h3>
+                        <address class="not-italic text-sm space-y-4 mt-4">
+                            <p class="flex items-center text-gray-400"> <i class="fas fa-envelope mr-3 fa-fw text-blue-400"></i> <a href="mailto:shabanbala@gmail.com" class="hover:text-white transition-colors duration-150">shabanbala@gmail.com</a> </p>
+                            <p class="flex items-center text-gray-400"> <i class="fas fa-phone mr-3 fa-fw text-blue-400"></i> <a href="tel:+38344987898" class="hover:text-white transition-colors duration-150">+383 44987898</a> </p>
+                            <p class="flex items-start text-gray-400"> <i class="fas fa-map-marker-alt mr-3 fa-fw mt-1 text-blue-400"></i> <span>Data And Human Management<br>Prishtina, Kosovo</span> </p>
+                        </address>
                     </div>
+
+                    <!-- Follow Us Section -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-white tracking-tight" data-translate="footerFollowUsTitle">Follow Us</h3>
+                        <div class="flex space-x-5 mt-4">
+                            <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-facebook-f fa-lg"></i></a>
+                            <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-twitter fa-lg"></i></a>
+                            <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                            <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-instagram fa-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Sub-Column: Logo -->
+                <div class="flex justify-center md:justify-end items-center md:items-start pt-4 md:pt-0"> 
+                    <img src="{{ url_for('static', filename='images/logo_pulsi_publik.png') }}" alt="Pulsi Publik Logo" class="w-32 md:w-36 lg:w-40 h-auto"> 
                 </div>
             </div>
         </div>
 
-        <!-- Optional: Newsletter Signup Section -->
+        <!-- Newsletter Section -->
         <div class="mt-12 border-t border-gray-700 pt-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
-                    <h3 class="text-lg font-semibold text-white" data-i18n-key="footerNewsletterTitle">Stay Updated</h3>
-                    <p class="mt-2 text-sm text-gray-400" data-i18n-key="footerNewsletterText">Subscribe to our newsletter to get the latest updates and reports directly in your inbox.</p>
+                    <h3 class="text-lg font-semibold text-white" data-translate="footerNewsletterTitle">Stay Updated</h3>
+                    <p class="mt-2 text-sm text-gray-400" data-translate="footerNewsletterText">Subscribe to our newsletter to get the latest updates and reports directly in your inbox.</p>
                 </div>
                 <form class="flex sm:flex-row flex-col gap-2">
-                    <label for="email-address" class="sr-only" data-i18n-key="footerEmailLabel">Email address</label>
-                    <input id="email-address" name="email-address" type="email" autocomplete="email" required
-                           class="w-full px-4 py-2.5 text-sm text-gray-900 bg-white border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500"
-                           data-i18n-key-placeholder="footerEmailPlaceholder" placeholder="Enter your email">
-                    <button type="submit"
-                            class="flex-shrink-0 inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-blue-500"
-                            data-i18n-key="footerSubscribeButton">
-                        Subscribe
-                    </button>
+                    <label for="email-address" class="sr-only" data-translate="footerEmailLabel">Email address</label>
+                    <input id="email-address" name="email-address" type="email" autocomplete="email" required class="w-full px-4 py-2.5 text-sm text-gray-900 bg-white border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500" placeholder="Enter your email" data-translate="footerEmailPlaceholder">
+                    <button type="submit" class="flex-shrink-0 inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-blue-500" data-translate="footerSubscribeButton"> Subscribe </button>
                 </form>
             </div>
         </div>
-        <!-- End Optional Newsletter -->
 
-
-        <!-- Footer Bottom: Copyright & Legal Links -->
-        <div class="mt-12 pt-8 border-t border-gray-700 md:flex md:items-center md:justify-between">
-            <p class="text-sm text-gray-400 text-center md:text-left">
-                © <span id="currentYear"></span> <span data-i18n-key="footerCopyrightNew">Public Pulse Kosovo. All Rights Reserved.</span>
+        <!-- Copyright Section -->
+        <div class="mt-12 pt-8 border-t border-gray-700 text-center md:text-left">
+            <p class="text-sm text-gray-400"> 
+                © <span id="currentYear"></span> <span data-translate="footerCopyrightNew">Public Pulse Kosovo. All Rights Reserved.</span> 
             </p>
-            <div class="mt-4 md:mt-0 flex justify-center md:justify-start space-x-6">
-                <a href="privacy.html" data-i18n-key="footerPrivacyPolicyLink" class="text-sm text-gray-400 hover:text-white transition-colors duration-150">Privacy Policy</a>
-                <a href="terms.html" data-i18n-key="footerTermsLink" class="text-sm text-gray-400 hover:text-white transition-colors duration-150">Terms of Use</a>
-            </div>
         </div>
     </div>
 </footer>

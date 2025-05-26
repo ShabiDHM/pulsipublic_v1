@@ -4,11 +4,11 @@
     <!-- START: Document Head Section -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n-key="pageTitleLocalGovernment">Local Government - Kosovo Civic Monitor</title> <!-- UPDATED KEY AND TEXT -->
+    <title data-translate="pageTitleLocalGovernment">Local Government Performance - Kosovo Civic Monitor</title> <!-- MODIFIED -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
     <!-- Local Leaflet CSS -->
-    <link rel="stylesheet" href="/static/leaflet/leaflet.css"/>
+    <link rel="stylesheet" href="/static/leaflet/leaflet.css"/> <!-- Assuming this path is correct for your setup -->
     <link rel="stylesheet" href="style.css"> <!-- Your main stylesheet -->
     <style>
         /* Custom style for the map container */
@@ -54,20 +54,21 @@
                     <div class="text-green-500 text-xl"><i class="fas fa-heartbeat"></i></div>
                 </div>
                 <div class="ml-3">
-                    <h1 data-i18n-key="headerTitle" class="text-xl font-bold">Public Pulse</h1>
-                    <p data-i18n-key="headerSubtitle" class="text-sm text-gray-300">Kosovo Civic Monitor</p>
+                    <h1 data-translate="headerTitle" class="text-xl font-bold">Public Pulse</h1> <!-- MODIFIED -->
+                    <p data-translate="headerSubtitle" class="text-sm text-gray-300">Kosovo Civic Monitor</p> <!-- MODIFIED -->
                 </div>
             </div>
         </div>
         <div class="flex items-center space-x-3">
             <div class="relative">
                 <button id="languageSelector" class="bg-gray-700 hover:bg-gray-600 rounded px-3 py-1 flex items-center">
-                    <span class="mr-1">EN</span><i class="fas fa-chevron-down text-xs"></i>
+                    <span class="mr-1" data-translate="currentLangIndicator">EN</span> <!-- MODIFIED -->
+                    <i class="fas fa-chevron-down text-xs"></i>
                 </button>
                 <div id="languageDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden z-20">
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="en" data-i18n-key="languageEN">English (EN)</a>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sq" data-i18n-key="languageSQ">Albanian (SQ)</a>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sr" data-i18n-key="languageSR">Serbian (SR)</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="en" data-translate="languageEN">English (EN)</a> <!-- MODIFIED -->
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sq" data-translate="languageSQ">Albanian (SQ)</a> <!-- MODIFIED -->
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sr" data-translate="languageSR">Serbian (SR)</a> <!-- MODIFIED -->
                 </div>
             </div>
             <div class="relative">
@@ -75,10 +76,10 @@
                     <i class="fas fa-user"></i>
                 </button>
                 <div id="userDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden w-48 z-20">
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-user-circle mr-2"></i><span data-i18n-key="userMenuProfile">Profile</span></a>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-cog mr-2"></i><span data-i18n-key="userMenuSettings">Settings</span></a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-user-circle mr-2"></i><span data-translate="userMenuProfile">Profile</span></a> <!-- MODIFIED -->
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-cog mr-2"></i><span data-translate="userMenuSettings">Settings</span></a> <!-- MODIFIED -->
                     <div class="border-t border-gray-200"></div>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200 text-red-600"><i class="fas fa-sign-out-alt mr-2"></i><span data-i18n-key="userMenuSignOut">Sign out</span></a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200 text-red-600"><i class="fas fa-sign-out-alt mr-2"></i><span data-translate="userMenuSignOut">Sign out</span></a> <!-- MODIFIED -->
                 </div>
             </div>
         </div>
@@ -91,27 +92,30 @@
         <nav class="py-4 h-full flex flex-col">
             <div class="px-4 pb-4 mb-4 border-b border-gray-200">
                 <div class="flex items-center justify-between">
-                    <p data-i18n-key="sidebarMainNavigation" class="text-sm text-gray-500">MAIN NAVIGATION</p>
+                    <p data-translate="sidebarMainNavigation" class="text-sm text-gray-500">MAIN NAVIGATION</p> <!-- MODIFIED -->
                     <button id="toggleSidebar" class="md:hidden text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
                 </div>
             </div>
             <div class="flex-grow overflow-y-auto">
                 <a href="index.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
-                    <div class="w-6 text-center"><i class="fas fa-tachometer-alt"></i></div><span data-i18n-key="sidebarDashboard" class="ml-3">Dashboard</span>
+                    <div class="w-6 text-center"><i class="fas fa-tachometer-alt"></i></div><span data-translate="sidebarDashboard" class="ml-3">Dashboard</span> <!-- MODIFIED -->
                 </a>
                 <a href="documents.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
-                    <div class="w-6 text-center"><i class="fas fa-file-alt"></i></div><span data-i18n-key="sidebarDocuments" class="ml-3">Documents</span>
+                    <div class="w-6 text-center"><i class="fas fa-file-alt"></i></div><span data-translate="sidebarDocuments" class="ml-3">Documents</span> <!-- MODIFIED -->
                 </a>
                 <a href="events.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
-                    <div class="w-6 text-center"><i class="fas fa-calendar-alt"></i></div><span data-i18n-key="sidebarEvents" class="ml-3">Events</span>
+                    <div class="w-6 text-center"><i class="fas fa-calendar-alt"></i></div><span data-translate="sidebarEvents" class="ml-3">Events</span> <!-- MODIFIED -->
                 </a>
-                <div class="sidebar-section-heading"><p data-i18n-key="sidebarAnalytics" class="font-medium">ANALITIKA</p></div>
-                <a href="local_government.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100"> <!-- UPDATED HREF -->
-                    <div class="w-6 text-center"><i class="fas fa-university"></i></div> <!-- UPDATED ICON -->
-                    <span data-i18n-key="sidebarLocalGovernment" class="ml-3">Local Government</span> <!-- UPDATED KEY & TEXT -->
+                <div class="sidebar-section-heading"><p data-translate="sidebarAnalytics" class="font-medium">ANALITIKA</p></div> <!-- MODIFIED -->
+                <a href="local_government.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
+                    <div class="w-6 text-center"><i class="fas fa-university"></i></div>
+                    <span data-translate="sidebarLocalGovernment" class="ml-3">Local Government</span> <!-- MODIFIED -->
                 </a>
                 <a href="export_data.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
-                    <div class="w-6 text-center"><i class="fas fa-download"></i></div><span data-i18n-key="sidebarExportData" class="ml-3">Export Data</span>
+                    <div class="w-6 text-center"><i class="fas fa-download"></i></div><span data-translate="sidebarExportData" class="ml-3">Export Data</span> <!-- MODIFIED -->
+                </a>
+                 <a href="about.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
+                    <div class="w-6 text-center"><i class="fas fa-info-circle"></i></div><span data-translate="breadcrumbAboutUs" class="ml-3">About Us</span>
                 </a>
             </div>
         </nav>
@@ -130,15 +134,15 @@
         <div class="bg-white px-6 py-3 flex items-center text-sm border-b border-gray-200">
             <a href="index.html" class="text-gray-600 hover:text-blue-600" aria-label="Home"><i class="fas fa-home"></i></a>
             <span class="mx-2 text-gray-400">/</span>
-            <span data-i18n-key="breadcrumbLocalGovernment" class="text-gray-800 font-medium">Local Government</span> <!-- UPDATED KEY -->
+            <span data-translate="breadcrumbLocalGovernment" class="text-gray-800 font-medium">Local Government</span> <!-- MODIFIED -->
         </div>
         <!-- END: Breadcrumb Navigation -->
 
         <div class="px-6 py-5">
             <!-- START: Page Header -->
             <div class="mb-8">
-                <h2 data-i18n-key="pageTitleLocalGovernment" class="text-3xl font-bold text-gray-800">Local Government Performance</h2> <!-- UPDATED KEY -->
-                <p data-i18n-key="pageSubtitleLocalGovernment" class="text-gray-600 mt-1">Visualize transparency and performance metrics across Kosovo's municipalities.</p> <!-- UPDATED KEY -->
+                <h2 data-translate="pageTitleLocalGovernment" class="text-3xl font-bold text-gray-800">Local Government Performance</h2> <!-- MODIFIED -->
+                <p data-translate="pageSubtitleLocalGovernment" class="text-gray-600 mt-1">Visualize transparency and performance metrics across Kosovo's municipalities.</p> <!-- MODIFIED -->
             </div>
             <!-- END: Page Header -->
 
@@ -153,29 +157,29 @@
 
                 <!-- Legend and Info Panel -->
                 <div class="lg:col-span-1 bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4" data-i18n-key="mapLegendTitle">Map Legend & Info</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="mapLegendTitle">Map Legend & Info</h3> <!-- MODIFIED -->
                     <div class="space-y-3 mb-6">
                         <div>
                             <span class="inline-block w-4 h-4 bg-green-500 rounded-full mr-2 align-middle border-2 border-white shadow"></span>
-                            <span class="text-sm text-gray-700" data-i18n-key="mapLegendHighPerf">High Performance</span>
+                            <span class="text-sm text-gray-700" data-translate="mapLegendHighPerf">High Performance</span> <!-- MODIFIED -->
                         </div>
                         <div>
                             <span class="inline-block w-4 h-4 bg-yellow-400 rounded-full mr-2 align-middle border-2 border-white shadow"></span>
-                            <span class="text-sm text-gray-700" data-i18n-key="mapLegendMedPerf">Medium Performance</span>
+                            <span class="text-sm text-gray-700" data-translate="mapLegendMedPerf">Medium Performance</span> <!-- MODIFIED -->
                         </div>
                         <div>
                             <span class="inline-block w-4 h-4 bg-red-500 rounded-full mr-2 align-middle border-2 border-white shadow"></span>
-                            <span class="text-sm text-gray-700" data-i18n-key="mapLegendLowPerf">Low Performance</span>
+                            <span class="text-sm text-gray-700" data-translate="mapLegendLowPerf">Low Performance</span> <!-- MODIFIED -->
                         </div>
                          <div>
                             <span class="inline-block w-4 h-4 bg-blue-500 rounded-full mr-2 align-middle border-2 border-white shadow"></span>
-                            <span class="text-sm text-gray-700" data-i18n-key="mapLegendDefault">Default / No Data</span>
+                            <span class="text-sm text-gray-700" data-translate="mapLegendDefault">Default / No Data</span> <!-- MODIFIED -->
                         </div>
                     </div>
 
-                    <h4 class="text-lg font-semibold text-gray-700 mb-2" data-i18n-key="mapSelectedMunicipality">Selected Municipality:</h4>
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2" data-translate="mapSelectedMunicipality">Selected Municipality:</h4> <!-- MODIFIED -->
                     <div id="municipalityInfoPanel" class="bg-gray-50 p-4 rounded-md min-h-[150px] border border-gray-200">
-                        <p class="text-gray-500 text-sm italic" data-i18n-key="mapClickPrompt">Click on a marker to see details.</p>
+                        <p class="text-gray-500 text-sm italic" data-translate="mapClickPrompt">Click on a marker to see details.</p> <!-- MODIFIED -->
                         <!-- Details will be populated here by JavaScript -->
                     </div>
                 </div>
@@ -184,8 +188,8 @@
 
              <!-- START: Placeholder for Data Table/Further Details (Optional) -->
              <div class="mt-10 bg-white p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4" data-i18n-key="mapDataTableTitle">Regional Data Overview</h3>
-                <p class="text-gray-600" data-i18n-key="mapDataTableDesc">A table summarizing key indicators for all municipalities could be displayed here. For now, this is a placeholder.</p>
+                <h3 class="text-xl font-semibold text-gray-800 mb-4" data-translate="mapDataTableTitle">Regional Data Overview</h3> <!-- MODIFIED -->
+                <p class="text-gray-600" data-translate="mapDataTableDesc">A table summarizing key indicators for all municipalities could be displayed here. For now, this is a placeholder.</p> <!-- MODIFIED -->
             </div>
             <!-- END: Placeholder for Data Table/Further Details -->
         </div>
@@ -200,43 +204,84 @@
 </div>
 <!-- END: Notification Banner -->
 
-<!-- START: Footer Section (Logo removed and grid adjusted) -->
-<footer class="site-footer bg-gray-800 text-gray-300 py-10 px-4 sm:px-6 lg:px-8 mt-auto">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1.5fr_1fr] gap-8 items-start">
-        <div class="footer-section">
-            <h4 data-i18n-key="footerAboutTitleNew" class="text-lg font-semibold text-white mb-4">Rreth Pulsit Publik</h4>
-            <p data-i18n-key="footerAboutTextNew" class="text-sm leading-relaxed">Si një mbikëqyrës i pavarur dhe jo-partiak, Public Pulse është i përkushtuar për forcimin e llogaridhënies demokratike në mbarë Kosovën. Ne analizojmë me përpikëri transparencën dhe efektivitetin e ofrimit të shërbimeve publike, duke u ofruar qytetarëve njohuri të qarta, të bazuara në dëshmi, thelbësore për të kërkuar llogari nga pushteti. Që Kosova të përparojë, çdo qytetar duhet të ketë mjetet për t'u angazhuar, për të pyetur dhe për të nxitur progresin.</p>
-        </div>
-        <div class="footer-section">
-            <h4 data-i18n-key="footerContactInfoTitle" class="text-lg font-semibold text-white mb-4">Informacion Kontakti</h4>
-            <address class="not-italic text-sm space-y-3">
-                <p class="flex items-center"><i class="fas fa-envelope mr-3 text-blue-400 fa-fw"></i><a href="mailto:shabanbala@gmail.com" class="hover:text-blue-400 transition-colors">shabanbala@gmail.com</a></p>
-                <p class="flex items-center"><i class="fas fa-phone mr-3 text-blue-400 fa-fw"></i><a href="tel:+38344987898" class="hover:text-blue-400 transition-colors">+383 44987898</a></p>
-                <p class="flex items-start"><i class="fas fa-map-marker-alt mr-3 text-blue-400 fa-fw mt-1"></i><span>Data And Human Management<br>Prishtina, Kosovo</span></p>
-            </address>
-        </div>
-        <div class="footer-section">
-            <h4 data-i18n-key="footerFollowUsTitle" class="text-lg font-semibold text-white mb-4">Na Ndiqni</h4>
-            <div class="flex space-x-4">
-                <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-facebook-f fa-lg"></i></a>
-                <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-twitter fa-lg"></i></a>
-                <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-instagram fa-lg"></i></a>
+<!-- START: Footer Section (Consistent with other pages) -->
+<footer class="bg-gray-800 text-gray-300 mt-auto">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <!-- Main Footer Content Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-12 mb-12">
+            
+            <!-- Column 1: About Public Pulse -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-white tracking-tight" data-translate="footerAboutTitleNew">About Public Pulse</h3>
+                <p class="text-sm text-gray-400 leading-relaxed" data-translate="footerAboutTextShort"> An independent, non-partisan watchdog strengthening democratic accountability across Kosovo by analyzing transparency and public service delivery. </p>
+                <a href="about.html" 
+                   class="inline-block px-5 py-2.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-blue-500 mt-2 group"> 
+                   <span data-translate="footerLearnMoreAboutUs">Learn more about us</span> <!-- CORRECTED STRUCTURE -->
+                   <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i> 
+                </a>
+            </div>
+
+            <!-- Column 2: Contact Info, Follow Us & Logo -->
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start space-y-8 md:space-y-0 md:space-x-8"> 
+                <!-- Left Sub-Column: Contact & Follow Us -->
+                <div class="space-y-8 flex-shrink-0">
+                    <!-- Get in Touch Section -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-white tracking-tight" data-translate="footerContactInfoTitle">Get in Touch</h3>
+                        <address class="not-italic text-sm space-y-4 mt-4">
+                            <p class="flex items-center text-gray-400"> <i class="fas fa-envelope mr-3 fa-fw text-blue-400"></i> <a href="mailto:shabanbala@gmail.com" class="hover:text-white transition-colors duration-150">shabanbala@gmail.com</a> </p>
+                            <p class="flex items-center text-gray-400"> <i class="fas fa-phone mr-3 fa-fw text-blue-400"></i> <a href="tel:+38344987898" class="hover:text-white transition-colors duration-150">+383 44987898</a> </p>
+                            <p class="flex items-start text-gray-400"> <i class="fas fa-map-marker-alt mr-3 fa-fw mt-1 text-blue-400"></i> <span>Data And Human Management<br>Prishtina, Kosovo</span> </p>
+                        </address>
+                    </div>
+
+                    <!-- Follow Us Section -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-white tracking-tight" data-translate="footerFollowUsTitle">Follow Us</h3>
+                        <div class="flex space-x-5 mt-4">
+                            <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-facebook-f fa-lg"></i></a>
+                            <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-twitter fa-lg"></i></a>
+                            <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                            <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-instagram fa-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Sub-Column: Logo -->
+                <div class="flex justify-center md:justify-end items-center md:items-start pt-4 md:pt-0"> 
+                    <img src="{{ url_for('static', filename='images/logo_pulsi_publik.png') }}" alt="Pulsi Publik Logo" class="w-32 md:w-36 lg:w-40 h-auto"> <!-- CORRECTED LOGO PATH ASSUMPTION -->
+                </div>
             </div>
         </div>
-    </div>
-    <div class="footer-bottom mt-8 pt-8 border-t border-gray-700 text-center">
-        <p class="text-sm">© <span id="currentYear"></span> <span data-i18n-key="footerCopyrightNew">Pulsi Publik Kosovë. Të gjitha të drejtat e rezervuara.</span></p>
+
+        <!-- Newsletter Section -->
+        <div class="mt-12 border-t border-gray-700 pt-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-lg font-semibold text-white" data-translate="footerNewsletterTitle">Stay Updated</h3>
+                    <p class="mt-2 text-sm text-gray-400" data-translate="footerNewsletterText">Subscribe to our newsletter to get the latest updates and reports directly in your inbox.</p>
+                </div>
+                <form class="flex sm:flex-row flex-col gap-2">
+                    <label for="email-address" class="sr-only" data-translate="footerEmailLabel">Email address</label>
+                    <input id="email-address" name="email-address" type="email" autocomplete="email" required class="w-full px-4 py-2.5 text-sm text-gray-900 bg-white border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500" placeholder="Enter your email" data-translate="footerEmailPlaceholder">
+                    <button type="submit" class="flex-shrink-0 inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-blue-500" data-translate="footerSubscribeButton"> Subscribe </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="mt-12 pt-8 border-t border-gray-700 text-center md:text-left">
+            <p class="text-sm text-gray-400"> 
+                © <span id="currentYear"></span> <span data-translate="footerCopyrightNew">Public Pulse Kosovo. All Rights Reserved.</span> 
+            </p>
+        </div>
     </div>
 </footer>
 <!-- END: Footer Section -->
 
 <!-- START: JavaScript Libraries -->
 <!-- Local Leaflet JS -->
-<script src="/static/leaflet/leaflet.js"></script>
-<!-- Chart.js and Datalabels are likely not needed for this specific page unless you add charts -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script> -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script> -->
+<script src="/static/leaflet/leaflet.js"></script> <!-- Ensure this path is correct -->
 <!-- END: JavaScript Libraries -->
 
 <!-- START: Custom Scripts -->

@@ -4,7 +4,7 @@
     <!-- START: Document Head Section -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kosovo Civic Monitor - Interactive Prototype</title>
+    <title data-translate="pageTitle">Public Pulse Dashboard</title> <!-- MODIFIED: Added data-translate -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -22,8 +22,8 @@
                     </div>
                 </div>
                 <div class="ml-3">
-                    <h1 data-i18n-key="headerTitle" class="text-xl font-bold">Public Pulse</h1>
-                    <p data-i18n-key="headerSubtitle" class="text-sm text-gray-300">Kosovo Civic Monitor</p>
+                    <h1 data-translate="headerTitle" class="text-xl font-bold">Public Pulse</h1> <!-- MODIFIED: data-i18n-key to data-translate -->
+                    <p data-translate="headerSubtitle" class="text-sm text-gray-300">Kosovo Civic Monitor</p> <!-- MODIFIED: data-i18n-key to data-translate -->
                 </div>
             </div>
         </div>
@@ -34,13 +34,13 @@
             <!-- START: Language Selector -->
             <div class="relative">
                 <button id="languageSelector" class="bg-gray-700 hover:bg-gray-600 rounded px-3 py-1 flex items-center">
-                    <span class="mr-1">EN</span>
+                    <span class="mr-1" data-translate="currentLangIndicator">EN</span> <!-- MODIFIED: Added data-translate -->
                     <i class="fas fa-chevron-down text-xs"></i>
                 </button>
                 <div id="languageDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden z-20">
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="en" data-i18n-key="languageEN">English (EN)</a>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sq" data-i18n-key="languageSQ">Albanian (SQ)</a>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sr" data-i18n-key="languageSR">Serbian (SR)</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="en" data-translate="languageEN">English (EN)</a> <!-- MODIFIED: data-i18n-key to data-translate -->
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sq" data-translate="languageSQ">Albanian (SQ)</a> <!-- MODIFIED: data-i18n-key to data-translate -->
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sr" data-translate="languageSR">Serbian (SR)</a> <!-- MODIFIED: data-i18n-key to data-translate -->
                 </div>
             </div>
             <!-- END: Language Selector -->
@@ -51,10 +51,10 @@
                     <i class="fas fa-user"></i>
                 </button>
                 <div id="userDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden w-48 z-20">
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-user-circle mr-2"></i><span data-i18n-key="userMenuProfile">Profile</span></a>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-cog mr-2"></i><span data-i18n-key="userMenuSettings">Settings</span></a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-user-circle mr-2"></i><span data-translate="userMenuProfile">Profile</span></a> <!-- MODIFIED -->
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-cog mr-2"></i><span data-translate="userMenuSettings">Settings</span></a> <!-- MODIFIED -->
                     <div class="border-t border-gray-200"></div>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200 text-red-600"><i class="fas fa-sign-out-alt mr-2"></i><span data-i18n-key="userMenuSignOut">Sign out</span></a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200 text-red-600"><i class="fas fa-sign-out-alt mr-2"></i><span data-translate="userMenuSignOut">Sign out</span></a> <!-- MODIFIED -->
                 </div>
             </div>
             <!-- END: User Menu -->
@@ -70,7 +70,7 @@
             <!-- START: Sidebar Header -->
             <div class="px-4 pb-4 mb-4 border-b border-gray-200">
                 <div class="flex items-center justify-between">
-                    <p data-i18n-key="sidebarMainNavigation" class="text-sm text-gray-500">MAIN NAVIGATION</p>
+                    <p data-translate="sidebarMainNavigation" class="text-sm text-gray-500">MAIN NAVIGATION</p> <!-- MODIFIED -->
                     <button id="toggleSidebar" class="md:hidden text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
                 </div>
             </div>
@@ -80,26 +80,26 @@
             <div class="flex-grow overflow-y-auto">
                 <a href="index.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
                     <div class="w-6 text-center"><i class="fas fa-tachometer-alt"></i></div>
-                    <span data-i18n-key="sidebarDashboard" class="ml-3">Dashboard</span>
+                    <span data-translate="sidebarDashboard" class="ml-3">Dashboard</span> <!-- MODIFIED -->
                 </a>
                 <a href="documents.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
                     <div class="w-6 text-center"><i class="fas fa-file-alt"></i></div>
-                    <span data-i18n-key="sidebarDocuments" class="ml-3">Documents</span>
+                    <span data-translate="sidebarDocuments" class="ml-3">Documents</span> <!-- MODIFIED -->
                 </a>
                 <a href="events.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
                     <div class="w-6 text-center"><i class="fas fa-calendar-alt"></i></div>
-                    <span data-i18n-key="sidebarEvents" class="ml-3">Events</span>
+                    <span data-translate="sidebarEvents" class="ml-3">Events</span> <!-- MODIFIED -->
                 </a>
                 <div class="sidebar-section-heading">
-                    <p data-i18n-key="sidebarAnalytics" class="font-medium">ANALITIKA</p>
+                    <p data-translate="sidebarAnalytics" class="font-medium">ANALITIKA</p> <!-- MODIFIED -->
                 </div>
-                <a href="local_government.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100"> <!-- UPDATED HREF -->
-                    <div class="w-6 text-center"><i class="fas fa-university"></i></div> <!-- UPDATED ICON -->
-                    <span data-i18n-key="sidebarLocalGovernment" class="ml-3">Local Government</span> <!-- UPDATED KEY & TEXT -->
+                <a href="local_government.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
+                    <div class="w-6 text-center"><i class="fas fa-university"></i></div>
+                    <span data-translate="sidebarLocalGovernment" class="ml-3">Local Government</span> <!-- MODIFIED -->
                 </a>
                 <a href="export_data.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
                     <div class="w-6 text-center"><i class="fas fa-download"></i></div>
-                    <span data-i18n-key="sidebarExportData" class="ml-3">Export Data</span>
+                    <span data-translate="sidebarExportData" class="ml-3">Export Data</span> <!-- MODIFIED -->
                 </a>
             </div>
             <!-- END: Sidebar Navigation Links -->
@@ -119,17 +119,17 @@
         <div class="bg-white px-6 py-3 flex items-center text-sm border-b border-gray-200">
             <a href="index.html" class="text-gray-600 hover:text-blue-600" aria-label="Home"><i class="fas fa-home"></i></a>
             <span class="mx-2 text-gray-400">/</span>
-            <a href="index.html" data-i18n-key="breadcrumbDashboard" class="text-gray-600 hover:text-blue-600">Dashboard</a>
+            <a href="index.html" data-translate="breadcrumbDashboard" class="text-gray-600 hover:text-blue-600">Dashboard</a> <!-- MODIFIED -->
             <span class="mx-2 text-gray-400">/</span>
-            <span data-i18n-key="breadcrumbPublicPulse" class="text-gray-800 font-medium">Public Pulse</span>
+            <span data-translate="breadcrumbPublicPulse" class="text-gray-800 font-medium">Public Pulse</span> <!-- MODIFIED -->
         </div>
         <!-- END: Breadcrumb Navigation -->
 
         <div class="px-6 py-5">
             <!-- START: Page Header -->
             <div class="mb-6">
-                <h2 data-i18n-key="pageTitle" class="text-2xl font-bold text-gray-800">Public Pulse Dashboard</h2>
-                <p data-i18n-key="pageSubtitle" class="text-gray-600">Monitoring transparency and performance of Kosovo institutions</p>
+                <h2 data-translate="pageTitle" class="text-2xl font-bold text-gray-800">Public Pulse Dashboard</h2> <!-- MODIFIED -->
+                <p data-translate="pageSubtitle" class="text-gray-600">Monitoring transparency and performance of Kosovo institutions</p> <!-- MODIFIED -->
             </div>
             <!-- END: Page Header -->
 
@@ -138,10 +138,10 @@
                 <div class="bg-white rounded-lg shadow-md p-5">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p data-i18n-key="kpiAvgTransparency" class="text-sm text-gray-500 mb-1">Average Transparency</p>
+                            <p data-translate="kpiAvgTransparency" class="text-sm text-gray-500 mb-1">Average Transparency</p> <!-- MODIFIED -->
                             <h3 id="kpiAvgTransparencyValue" class="text-2xl font-bold text-gray-800">N/A</h3>
                             <p id="kpiAvgTransparencyChange" class="text-xs text-gray-600 mt-1">
-                                <i class="fas fa-minus mr-1"></i><span data-i18n-key="noChangeData">No change data</span>
+                                <i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span> <!-- MODIFIED -->
                             </p>
                         </div>
                         <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600"><i class="fas fa-eye"></i></div>
@@ -150,10 +150,10 @@
                 <div class="bg-white rounded-lg shadow-md p-5">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p data-i18n-key="kpiParticipationScore" class="text-sm text-gray-500 mb-1">Participation Score</p>
+                            <p data-translate="kpiParticipationScore" class="text-sm text-gray-500 mb-1">Participation Score</p> <!-- MODIFIED -->
                             <h3 id="kpiParticipationScoreValue" class="text-2xl font-bold text-gray-800">N/A</h3>
                             <p id="kpiParticipationScoreChange" class="text-xs text-gray-600 mt-1">
-                                <i class="fas fa-minus mr-1"></i><span data-i18n-key="noChangeData">No change data</span>
+                                <i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span> <!-- MODIFIED -->
                             </p>
                         </div>
                         <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600"><i class="fas fa-users"></i></div>
@@ -162,10 +162,10 @@
                 <div class="bg-white rounded-lg shadow-md p-5">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p data-i18n-key="kpiEfficiencyRating" class="text-sm text-gray-500 mb-1">Efficiency Rating</p>
+                            <p data-translate="kpiEfficiencyRating" class="text-sm text-gray-500 mb-1">Efficiency Rating</p> <!-- MODIFIED -->
                             <h3 id="kpiEfficiencyRatingValue" class="text-2xl font-bold text-gray-800">N/A</h3>
                             <p id="kpiEfficiencyRatingChange" class="text-xs text-gray-600 mt-1">
-                                <i class="fas fa-minus mr-1"></i><span data-i18n-key="noChangeData">No change data</span>
+                                <i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span> <!-- MODIFIED -->
                             </p>
                         </div>
                         <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600"><i class="fas fa-bolt"></i></div>
@@ -174,10 +174,10 @@
                 <div class="bg-white rounded-lg shadow-md p-5">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p data-i18n-key="kpiOverallOutcome" class="text-sm text-gray-500 mb-1">Overall Outcome</p>
+                            <p data-translate="kpiOverallOutcome" class="text-sm text-gray-500 mb-1">Overall Outcome</p> <!-- MODIFIED -->
                             <h3 id="kpiOverallOutcomeValue" class="text-2xl font-bold text-gray-800">N/A</h3>
                             <p id="kpiOverallOutcomeChange" class="text-xs text-gray-600 mt-1">
-                                <i class="fas fa-minus mr-1"></i><span data-i18n-key="noChangeData">No change data</span>
+                                <i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span> <!-- MODIFIED -->
                             </p>
                         </div>
                         <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600"><i class="fas fa-chart-pie"></i></div>
@@ -189,45 +189,45 @@
             <!-- START: Interactive Filters Section -->
             <div class="bg-white rounded-lg shadow-md p-5 mb-6">
                 <div class="flex flex-wrap items-center justify-between mb-4">
-                    <h3 data-i18n-key="filtersTitle" class="text-lg font-semibold text-gray-800">Interactive Filters</h3>
+                    <h3 data-translate="filtersTitle" class="text-lg font-semibold text-gray-800">Interactive Filters</h3> <!-- MODIFIED -->
                     <div class="flex space-x-2">
                         <button id="resetFiltersButton" class="text-sm text-blue-600 hover:text-blue-800">
-                            <i class="fas fa-undo mr-1"></i><span data-i18n-key="filtersReset">Reset Filters</span>
+                            <i class="fas fa-undo mr-1"></i><span data-translate="filtersReset">Reset Filters</span> <!-- MODIFIED -->
                         </button>
                         <div class="relative">
                             <button id="exportButton" class="text-sm text-gray-600 hover:text-gray-800 flex items-center">
-                                <i class="fas fa-download mr-1"></i><span data-i18n-key="filtersExport">Export</span><i class="fas fa-chevron-down ml-1 text-xs"></i>
+                                <i class="fas fa-download mr-1"></i><span data-translate="filtersExport">Export</span><i class="fas fa-chevron-down ml-1 text-xs"></i> <!-- MODIFIED -->
                             </button>
                             <div id="exportDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden w-40 z-10">
-                                <a href="#" class="exportOption block px-4 py-2 hover:bg-gray-200 text-sm" data-format="pdf"><i class="far fa-file-pdf mr-2 text-red-500"></i><span data-i18n-key="filtersExportPDF">Export as PDF</span></a>
-                                <a href="#" class="exportOption block px-4 py-2 hover:bg-gray-200 text-sm" data-format="excel"><i class="far fa-file-excel mr-2 text-green-600"></i><span data-i18n-key="filtersExportExcel">Export as Excel</span></a>
-                                <a href="#" class="exportOption block px-4 py-2 hover:bg-gray-200 text-sm" data-format="csv"><i class="far fa-file-alt mr-2 text-gray-600"></i><span data-i18n-key="filtersExportCSV">Export as CSV</span></a>
-                                <a href="#" class="exportOption block px-4 py-2 hover:bg-gray-200 text-sm" data-format="image"><i class="far fa-file-image mr-2 text-blue-500"></i><span data-i18n-key="filtersExportImage">Export as Image</span></a>
+                                <a href="#" class="exportOption block px-4 py-2 hover:bg-gray-200 text-sm" data-format="pdf"><i class="far fa-file-pdf mr-2 text-red-500"></i><span data-translate="filtersExportPDF">Export as PDF</span></a> <!-- MODIFIED -->
+                                <a href="#" class="exportOption block px-4 py-2 hover:bg-gray-200 text-sm" data-format="excel"><i class="far fa-file-excel mr-2 text-green-600"></i><span data-translate="filtersExportExcel">Export as Excel</span></a> <!-- MODIFIED -->
+                                <a href="#" class="exportOption block px-4 py-2 hover:bg-gray-200 text-sm" data-format="csv"><i class="far fa-file-alt mr-2 text-gray-600"></i><span data-translate="filtersExportCSV">Export as CSV</span></a> <!-- MODIFIED -->
+                                <a href="#" class="exportOption block px-4 py-2 hover:bg-gray-200 text-sm" data-format="image"><i class="far fa-file-image mr-2 text-blue-500"></i><span data-translate="filtersExportImage">Export as Image</span></a> <!-- MODIFIED -->
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div>
-                        <label for="timePeriod" data-i18n-key="filtersTimePeriod" class="block text-sm font-medium text-gray-700 mb-1">Time Period</label>
+                        <label for="timePeriod" data-translate="filtersTimePeriod" class="block text-sm font-medium text-gray-700 mb-1">Time Period</label> <!-- MODIFIED -->
                         <select id="timePeriod" name="timePeriod" class="w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
                             <option value="q2-2023">Q2 2023</option> <option value="q1-2023">Q1 2023</option> <option value="q4-2022">Q4 2022</option> <option value="q3-2022">Q3 2022</option> <option value="annual-2022">Annual 2022</option>
                         </select>
                     </div>
                     <div>
-                        <label for="compareWithFilter" data-i18n-key="filtersCompareWith" class="block text-sm font-medium text-gray-700 mb-1">Compare With</label>
+                        <label for="compareWithFilter" data-translate="filtersCompareWith" class="block text-sm font-medium text-gray-700 mb-1">Compare With</label> <!-- MODIFIED -->
                         <select id="compareWithFilter" name="compareWithFilter" class="w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
-                            <option value="none" data-i18n-key="optionNoComparison">No Comparison</option> <option value="q1-2023">Q1 2023</option> <option value="q4-2022">Q4 2022</option> <option value="q2-2022">Q2 2022 (YoY)</option> <option value="annual-2022">Annual 2022</option>
+                            <option value="none" data-translate="optionNoComparison">No Comparison</option> <option value="q1-2023">Q1 2023</option> <option value="q4-2022">Q4 2022</option> <option value="q2-2022">Q2 2022 (YoY)</option> <option value="annual-2022">Annual 2022</option> <!-- NOTE: Options inside select are not typically translated this way, their text is set by JS if dynamic, or hardcoded if static and translations are for labels -->
                         </select>
                     </div>
                     <div>
-                        <label for="ministryTypeFilter" data-i18n-key="filtersMinistryType" class="block text-sm font-medium text-gray-700 mb-1">Ministry Type</label>
+                        <label for="ministryTypeFilter" data-translate="filtersMinistryType" class="block text-sm font-medium text-gray-700 mb-1">Ministry Type</label> <!-- MODIFIED -->
                         <select id="ministryTypeFilter" name="ministryTypeFilter" class="w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
-                            <option value="all" data-i18n-key="optionAllMinistries">All Ministries</option> <option value="economic" data-i18n-key="categoryEconomic">Economic</option> <option value="social" data-i18n-key="categorySocial">Social</option> <option value="infrastructure" data-i18n-key="categoryInfrastructure">Infrastructure</option> <option value="governance" data-i18n-key="categoryGovernance">Governance</option>
+                            <option value="all" data-translate="optionAllMinistries">All Ministries</option> <option value="economic" data-translate="categoryEconomic">Economic</option> <option value="social" data-translate="categorySocial">Social</option> <option value="infrastructure" data-translate="categoryInfrastructure">Infrastructure</option> <option value="governance" data-translate="categoryGovernance">Governance</option>
                         </select>
                     </div>
                     <div>
-                        <label for="minScoreFilter" data-i18n-key="filtersScoreRange" class="block text-sm font-medium text-gray-700 mb-1">Score Range</label> 
+                        <label for="minScoreFilter" data-translate="filtersScoreRange" class="block text-sm font-medium text-gray-700 mb-1">Score Range</label> <!-- MODIFIED -->
                         <div class="flex items-center space-x-2">
                             <input id="minScoreFilter" type="number" min="0" max="100" value="0" class="w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
                             <span class="text-gray-500">-</span>
@@ -236,17 +236,17 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <label for="searchMinistryInput" data-i18n-key="filtersSearchMinistry" class="block text-sm font-medium text-gray-700 mb-1">Search Ministry</label>
+                    <label for="searchMinistryInput" data-translate="filtersSearchMinistry" class="block text-sm font-medium text-gray-700 mb-1">Search Ministry</label> <!-- MODIFIED -->
                     <div class="relative">
-                        <input id="searchMinistryInput" type="text" data-i18n-key="filtersSearchPlaceholder" placeholder="Type to search..." class="w-full rounded-md border border-gray-300 py-2 pl-10 pr-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+                        <input id="searchMinistryInput" type="text" data-translate="filtersSearchPlaceholder" placeholder="Type to search..." class="w-full rounded-md border border-gray-300 py-2 pl-10 pr-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"> <!-- MODIFIED -->
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><i class="fas fa-search text-gray-400"></i></div>
                     </div>
                 </div>
                 <div class="mt-4 flex items-center">
-                    <button id="applyFiltersButton" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium" data-i18n-key="filtersApply">Apply Filters</button>
+                    <button id="applyFiltersButton" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium" data-translate="filtersApply">Apply Filters</button> <!-- MODIFIED -->
                     <div class="ml-4 flex items-center">
                         <input id="showComparisonCheckbox" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                        <label for="showComparisonCheckbox" data-i18n-key="filtersShowComparison" class="ml-2 text-sm text-gray-700">Show comparison</label>
+                        <label for="showComparisonCheckbox" data-translate="filtersShowComparison" class="ml-2 text-sm text-gray-700">Show comparison</label> <!-- MODIFIED -->
                     </div>
                 </div>
             </div>
@@ -256,29 +256,29 @@
             <div class="bg-white rounded-lg shadow-md p-5 mb-6">
                 <div class="border-b border-gray-200 mb-4">
                     <nav class="-mb-px flex space-x-8 overflow-x-auto">
-                        <a href="#" class="tab-item tab-active whitespace-nowrap py-3 px-1 border-b-2 font-medium text-base" data-tab="transparency" data-i18n-key="tabTransparency">Transparency</a>
-                        <a href="#" class="tab-item whitespace-nowrap py-3 px-1 border-b-2 font-medium text-base text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="participation" data-i18n-key="tabParticipation">Participation</a>
-                        <a href="#" class="tab-item whitespace-nowrap py-3 px-1 border-b-2 font-medium text-base text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="efficiency" data-i18n-key="tabEfficiency">Efficiency</a>
-                        <a href="#" class="tab-item whitespace-nowrap py-3 px-1 border-b-2 font-medium text-base text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="outcome" data-i18n-key="tabOutcome">Outcome</a>
+                        <a href="#" class="tab-item tab-active whitespace-nowrap py-3 px-1 border-b-2 font-medium text-base" data-tab="transparency" data-translate="tabTransparency">Transparency</a> <!-- MODIFIED -->
+                        <a href="#" class="tab-item whitespace-nowrap py-3 px-1 border-b-2 font-medium text-base text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="participation" data-translate="tabParticipation">Participation</a> <!-- MODIFIED -->
+                        <a href="#" class="tab-item whitespace-nowrap py-3 px-1 border-b-2 font-medium text-base text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="efficiency" data-translate="tabEfficiency">Efficiency</a> <!-- MODIFIED -->
+                        <a href="#" class="tab-item whitespace-nowrap py-3 px-1 border-b-2 font-medium text-base text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="outcome" data-translate="tabOutcome">Outcome</a> <!-- MODIFIED -->
                     </nav>
                 </div>
                 <div class="flex flex-wrap items-center justify-between mb-4">
-                    <h3 id="currentView" class="text-xl font-semibold text-gray-800">Transparency Scores</h3>
+                    <h3 id="currentView" class="text-xl font-semibold text-gray-800">Transparency Scores</h3> <!-- This is updated by JS -->
                     <div class="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 mt-2 sm:mt-0">
                         <div class="flex items-center space-x-2 text-xs sm:text-sm">
-                            <span class="inline-block w-3 h-3 bg-green-500 rounded-full"></span><span data-i18n-key="legendHigh" class="text-gray-600">High (>70)</span>
-                            <span class="inline-block w-3 h-3 bg-yellow-500 rounded-full ml-2 sm:ml-3"></span><span data-i18n-key="legendMedium" class="text-gray-600">Medium (40-70)</span>
-                            <span class="inline-block w-3 h-3 bg-red-500 rounded-full ml-2 sm:ml-3"></span><span data-i18n-key="legendLow" class="text-gray-600">Low (<40)</span>
+                            <span class="inline-block w-3 h-3 bg-green-500 rounded-full"></span><span data-translate="legendHigh" class="text-gray-600">High (>70)</span> <!-- MODIFIED -->
+                            <span class="inline-block w-3 h-3 bg-yellow-500 rounded-full ml-2 sm:ml-3"></span><span data-translate="legendMedium" class="text-gray-600">Medium (40-70)</span> <!-- MODIFIED -->
+                            <span class="inline-block w-3 h-3 bg-red-500 rounded-full ml-2 sm:ml-3"></span><span data-translate="legendLow" class="text-gray-600">Low (<40)</span> <!-- MODIFIED -->
                         </div>
                         <div class="relative">
                             <button id="sortButton" class="text-sm flex items-center text-gray-600 hover:text-gray-800">
-                                <i class="fas fa-sort mr-1"></i> <span data-i18n-key="legendSortBy">Sort by</span> <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                                <i class="fas fa-sort mr-1"></i> <span data-translate="legendSortBy">Sort by</span><i class="fas fa-chevron-down ml-1 text-xs"></i> <!-- MODIFIED -->
                             </button>
                             <div id="sortDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden w-48 z-10">
-                                <a href="#" class="sortOption block px-4 py-2 hover:bg-gray-200 text-sm" data-sort="score-desc"><i class="fas fa-sort-amount-down mr-2"></i><span data-i18n-key="sortHighestScore">Highest Score</span></a>
-                                <a href="#" class="sortOption block px-4 py-2 hover:bg-gray-200 text-sm" data-sort="score-asc"><i class="fas fa-sort-amount-up mr-2"></i><span data-i18n-key="sortLowestScore">Lowest Score</span></a>
-                                <a href="#" class="sortOption block px-4 py-2 hover:bg-gray-200 text-sm" data-sort="name-asc"><i class="fas fa-sort-alpha-down mr-2"></i><span data-i18n-key="sortNameAZ">Name (A-Z)</span></a>
-                                <a href="#" class="sortOption block px-4 py-2 hover:bg-gray-200 text-sm" data-sort="name-desc"><i class="fas fa-sort-alpha-up mr-2"></i><span data-i18n-key="sortNameZA">Name (Z-A)</span></a>
+                                <a href="#" class="sortOption block px-4 py-2 hover:bg-gray-200 text-sm" data-sort="score-desc"><i class="fas fa-sort-amount-down mr-2"></i><span data-translate="sortHighestScore">Highest Score</span></a> <!-- MODIFIED -->
+                                <a href="#" class="sortOption block px-4 py-2 hover:bg-gray-200 text-sm" data-sort="score-asc"><i class="fas fa-sort-amount-up mr-2"></i><span data-translate="sortLowestScore">Lowest Score</span></a> <!-- MODIFIED -->
+                                <a href="#" class="sortOption block px-4 py-2 hover:bg-gray-200 text-sm" data-sort="name-asc"><i class="fas fa-sort-alpha-down mr-2"></i><span data-translate="sortNameAZ">Name (A-Z)</span></a> <!-- MODIFIED -->
+                                <a href="#" class="sortOption block px-4 py-2 hover:bg-gray-200 text-sm" data-sort="name-desc"><i class="fas fa-sort-alpha-up mr-2"></i><span data-translate="sortNameZA">Name (Z-A)</span></a> <!-- MODIFIED -->
                             </div>
                         </div>
                     </div>
@@ -293,49 +293,49 @@
             <!-- START: Ministry Details Section -->
             <div id="ministryDetails" class="bg-white rounded-lg shadow-md p-5 mb-6 hidden">
                 <div class="flex items-center justify-between mb-4">
-                    <h3 id="selectedMinistryName" class="text-xl font-semibold text-gray-800" data-i18n-key="detailsTitle">Ministry Details</h3>
+                    <h3 id="selectedMinistryName" class="text-xl font-semibold text-gray-800" data-translate="detailsTitle">Ministry Details</h3> <!-- MODIFIED -->
                     <button id="closeMinistryDetailsButton" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                     <div class="bg-gray-50 rounded-lg p-4">
-                        <p data-i18n-key="detailsTransparencyScore" class="text-sm text-gray-500 mb-1">Transparency Score</p>
+                        <p data-translate="detailsTransparencyScore" class="text-sm text-gray-500 mb-1">Transparency Score</p> <!-- MODIFIED -->
                         <h4 id="detailTransparency" class="text-3xl font-bold text-blue-600">N/A</h4>
-                        <p id="detailTransparencyChange" class="text-sm text-gray-600 mt-1"><i class="fas fa-minus mr-1"></i><span data-i18n-key="noChangeData">No change data</span></p> 
+                        <p id="detailTransparencyChange" class="text-sm text-gray-600 mt-1"><i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span></p>  <!-- MODIFIED -->
                     </div>
                     <div class="bg-gray-50 rounded-lg p-4">
-                        <p data-i18n-key="detailsInfoRequests" class="text-sm text-gray-500 mb-1">Information Requests</p>
+                        <p data-translate="detailsInfoRequests" class="text-sm text-gray-500 mb-1">Information Requests</p> <!-- MODIFIED -->
                         <h4 id="detailRequests" class="text-3xl font-bold text-gray-800">N/A</h4>
-                        <p id="detailRequestsProcessed" class="text-sm text-gray-600 mt-1"><i class="fas fa-info-circle mr-1"></i>N/A</p>
+                        <p id="detailRequestsProcessed" class="text-sm text-gray-600 mt-1"><i class="fas fa-info-circle mr-1"></i>N/A</p> <!-- JS handles this span -->
                     </div>
                     <div class="bg-gray-50 rounded-lg p-4">
-                        <p data-i18n-key="detailsResponseTime" class="text-sm text-gray-500 mb-1">Response Time</p>
+                        <p data-translate="detailsResponseTime" class="text-sm text-gray-500 mb-1">Response Time</p> <!-- MODIFIED -->
                         <h4 id="detailResponseTime" class="text-3xl font-bold text-gray-800">N/A</h4>
-                        <p id="detailResponseTimeChange" class="text-sm text-gray-600 mt-1"><i class="fas fa-minus mr-1"></i><span data-i18n-key="noChangeData">No change data</span></p> 
+                        <p id="detailResponseTimeChange" class="text-sm text-gray-600 mt-1"><i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span></p> <!-- MODIFIED -->
                     </div>
                 </div>
                 <div class="mb-6">
-                    <h4 data-i18n-key="detailsPerfBreakdown" class="text-lg font-semibold text-gray-800 mb-3">Performance Breakdown</h4>
+                    <h4 data-translate="detailsPerfBreakdown" class="text-lg font-semibold text-gray-800 mb-3">Performance Breakdown</h4> <!-- MODIFIED -->
                     <div class="space-y-4">
-                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel1" data-i18n-key="perfBreakdownWebsiteTransparency" class="text-sm font-medium text-gray-700">Website Transparency</span><span id="perfBreakdownValue1" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar1" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div></div></div>
-                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel2" data-i18n-key="perfBreakdownDocAccessibility" class="text-sm font-medium text-gray-700">Document Accessibility</span><span id="perfBreakdownValue2" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar2" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div></div></div>
-                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel3" data-i18n-key="perfBreakdownReqResponsiveness" class="text-sm font-medium text-gray-700">Request Responsiveness</span><span id="perfBreakdownValue3" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar3" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div></div></div>
-                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel4" data-i18n-key="perfBreakdownInfoCompleteness" class="text-sm font-medium text-gray-700">Information Completeness</span><span id="perfBreakdownValue4" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar4" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div></div></div>
-                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel5" data-i18n-key="perfBreakdownPublicEngagement" class="text-sm font-medium text-gray-700">Public Engagement</span><span id="perfBreakdownValue5" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar5" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div></div></div>
+                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel1" data-translate="perfBreakdownWebsiteTransparency" class="text-sm font-medium text-gray-700">Website Transparency</span><span id="perfBreakdownValue1" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar1" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div></div></div>
+                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel2" data-translate="perfBreakdownDocAccessibility" class="text-sm font-medium text-gray-700">Document Accessibility</span><span id="perfBreakdownValue2" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar2" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div></div></div>
+                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel3" data-translate="perfBreakdownReqResponsiveness" class="text-sm font-medium text-gray-700">Request Responsiveness</span><span id="perfBreakdownValue3" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar3" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div></div></div>
+                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel4" data-translate="perfBreakdownInfoCompleteness" class="text-sm font-medium text-gray-700">Information Completeness</span><span id="perfBreakdownValue4" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar4" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div></div></div>
+                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel5" data-translate="perfBreakdownPublicEngagement" class="text-sm font-medium text-gray-700">Public Engagement</span><span id="perfBreakdownValue5" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar5" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div></div></div>
                     </div>
                 </div>
                 <div>
-                    <h4 data-i18n-key="detailsRecentActivities" class="text-lg font-semibold text-gray-800 mb-3">Recent Activities</h4>
+                    <h4 data-translate="detailsRecentActivities" class="text-lg font-semibold text-gray-800 mb-3">Recent Activities</h4> <!-- MODIFIED -->
                     <div class="border rounded-lg overflow-hidden">
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
                                 <tr>
-                                    <th scope="col" data-i18n-key="tableHeaderDate" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                                    <th scope="col" data-i18n-key="tableHeaderActivity" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Activity</th>
-                                    <th scope="col" data-i18n-key="tableHeaderStatus" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th scope="col" data-translate="tableHeaderDate" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th> <!-- MODIFIED -->
+                                    <th scope="col" data-translate="tableHeaderActivity" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Activity</th> <!-- MODIFIED -->
+                                    <th scope="col" data-translate="tableHeaderStatus" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th> <!-- MODIFIED -->
                                 </tr>
                             </thead>
                             <tbody id="recentActivitiesBody" class="bg-white divide-y divide-gray-200">
-                                <tr><td colspan="3" data-i18n-key="tableNoRecentActivities" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">No recent activities to display.</td></tr>
+                                <tr><td colspan="3" data-translate="tableNoRecentActivities" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">No recent activities to display.</td></tr> <!-- MODIFIED -->
                             </tbody>
                         </table>
                     </div>
@@ -350,102 +350,78 @@
 <!-- START: Notification Banner -->
 <div id="notificationBanner" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-md shadow-lg flex items-center hidden z-50">
     <i class="fas fa-check-circle mr-2"></i>
-    <span id="notificationMessage">Action completed successfully!</span>
+    <span id="notificationMessage">Action completed successfully!</span> <!-- This text is set by JS directly -->
 </div>
-<!-- END: Notification Banner -->
-
-<!-- START: Footer Section (Enhanced Design) -->
+<!-- START: Footer Section -->
 <footer class="bg-gray-800 text-gray-300 mt-auto">
-    <div class="max-w-7xl mx-auto pt-16 pb-8 px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12 mb-12">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <!-- Main Footer Content Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-12 mb-12">
             
-            <!-- Column 1: About -->
+            <!-- Column 1: About Public Pulse -->
             <div class="space-y-4">
-                <h3 class="text-lg font-semibold text-white tracking-tight" data-i18n-key="footerAboutTitleNew">About Public Pulse</h3>
-                <p class="text-sm text-gray-400 leading-relaxed" data-i18n-key="footerAboutTextNew">
-                    As an independent, non-partisan watchdog, Public Pulse is committed to strengthening democratic accountability across Kosovo. We meticulously analyze the transparency and effectiveness of public service delivery, providing citizens with the clear, evidence-based insights essential for holding power accountable. For Kosovo to thrive, every citizen must have the tools to engage, question, and drive progress.
-                </p>
-                <a href="about.html" class="text-sm text-blue-400 hover:text-blue-300 font-medium inline-flex items-center group" data-i18n-key="footerLearnMoreAboutUs">
-                    Learn more about us
-                    <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                <h3 class="text-lg font-semibold text-white tracking-tight" data-translate="footerAboutTitleNew">About Public Pulse</h3>
+                <p class="text-sm text-gray-400 leading-relaxed" data-translate="footerAboutTextShort">An independent, non-partisan watchdog strengthening democratic accountability across Kosovo by analyzing transparency and public service delivery.</p>
+                <a href="{{ url_for('serve_page', page_name='about') }}" 
+                   class="inline-block px-5 py-2.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-blue-500 mt-2 group"> 
+                   <span data-translate="footerLearnMoreAboutUs">Learn more about us</span> 
+                   <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i> 
                 </a>
             </div>
 
-            <!-- Column 2: Explore / Quick Links -->
-            <div class="space-y-4">
-                <h3 class="text-lg font-semibold text-white tracking-tight" data-i18n-key="footerExploreTitle">Explore</h3>
-                <ul class="space-y-3 text-sm">
-                    <li><a href="index.html" data-i18n-key="sidebarDashboard" class="text-gray-400 hover:text-white transition-colors duration-150">Dashboard</a></li>
-                    <li><a href="documents.html" data-i18n-key="sidebarDocuments" class="text-gray-400 hover:text-white transition-colors duration-150">Documents</a></li>
-                    <li><a href="events.html" data-i18n-key="sidebarEvents" class="text-gray-400 hover:text-white transition-colors duration-150">Events</a></li>
-                    <li><a href="local_government.html" data-i18n-key="sidebarLocalGovernment" class="text-gray-400 hover:text-white transition-colors duration-150">Local Government</a></li>
-                    <li><a href="contact.html" data-i18n-key="footerContactPage" class="text-gray-400 hover:text-white transition-colors duration-150">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <!-- Column 3: Get in Touch & Follow Us -->
-            <div class="space-y-8">
-                <div>
-                    <h3 class="text-lg font-semibold text-white tracking-tight" data-i18n-key="footerContactInfoTitle">Get in Touch</h3>
-                    <address class="not-italic text-sm space-y-4 mt-4">
-                        <p class="flex items-center text-gray-400">
-                            <i class="fas fa-envelope mr-3 fa-fw text-blue-400"></i>
-                            <a href="mailto:shabanbala@gmail.com" class="hover:text-white transition-colors duration-150">shabanbala@gmail.com</a>
-                        </p>
-                        <p class="flex items-center text-gray-400">
-                            <i class="fas fa-phone mr-3 fa-fw text-blue-400"></i>
-                            <a href="tel:+38344987898" class="hover:text-white transition-colors duration-150">+383 44987898</a>
-                        </p>
-                        <p class="flex items-start text-gray-400">
-                            <i class="fas fa-map-marker-alt mr-3 fa-fw mt-1 text-blue-400"></i>
-                            <span>Data And Human Management<br>Prishtina, Kosovo</span>
-                        </p>
-                    </address>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-white tracking-tight" data-i18n-key="footerFollowUsTitle">Follow Us</h3>
-                    <div class="flex space-x-5 mt-4">
-                        <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-facebook-f fa-lg"></i></a>
-                        <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                        <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-instagram fa-lg"></i></a>
+            <!-- Column 2: Contact Info, Follow Us & Logo -->
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start space-y-8 md:space-y-0 md:space-x-8"> 
+                <!-- Left Sub-Column: Contact & Follow Us -->
+                <div class="space-y-8 flex-shrink-0">
+                    <!-- Get in Touch Section -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-white tracking-tight" data-translate="footerContactInfoTitle">Get in Touch</h3>
+                        <address class="not-italic text-sm space-y-4 mt-4">
+                            <p class="flex items-center text-gray-400"> <i class="fas fa-envelope mr-3 fa-fw text-blue-400"></i> <a href="mailto:shabanbala@gmail.com" class="hover:text-white transition-colors duration-150">shabanbala@gmail.com</a> </p>
+                            <p class="flex items-center text-gray-400"> <i class="fas fa-phone mr-3 fa-fw text-blue-400"></i> <a href="tel:+38344987898" class="hover:text-white transition-colors duration-150">+383 44987898</a> </p>
+                            <p class="flex items-start text-gray-400"> <i class="fas fa-map-marker-alt mr-3 fa-fw mt-1 text-blue-400"></i> <span>Data And Human Management<br>Prishtina, Kosovo</span> </p> <!-- Address part is usually static -->
+                        </address>
                     </div>
+
+                    <!-- Follow Us Section -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-white tracking-tight" data-translate="footerFollowUsTitle">Follow Us</h3>
+                        <div class="flex space-x-5 mt-4">
+                            <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-facebook-f fa-lg"></i></a>
+                            <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-twitter fa-lg"></i></a>
+                            <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                            <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white transition-colors duration-150"><i class="fab fa-instagram fa-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Sub-Column: Logo -->
+                <div class="flex justify-center md:justify-end items-center md:items-start pt-4 md:pt-0"> 
+                    <img src="{{ url_for('static', filename='images/logo_pulsi_publik.png') }}" alt="Pulsi Publik Logo" class="w-32 md:w-36 lg:w-40 h-auto"> 
                 </div>
             </div>
         </div>
 
-        <!-- Optional: Newsletter Signup Section -->
+        <!-- Newsletter Section -->
         <div class="mt-12 border-t border-gray-700 pt-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
-                    <h3 class="text-lg font-semibold text-white" data-i18n-key="footerNewsletterTitle">Stay Updated</h3>
-                    <p class="mt-2 text-sm text-gray-400" data-i18n-key="footerNewsletterText">Subscribe to our newsletter to get the latest updates and reports directly in your inbox.</p>
+                    <h3 class="text-lg font-semibold text-white" data-translate="footerNewsletterTitle">Stay Updated</h3>
+                    <p class="mt-2 text-sm text-gray-400" data-translate="footerNewsletterText">Subscribe to our newsletter to get the latest updates and reports directly in your inbox.</p>
                 </div>
                 <form class="flex sm:flex-row flex-col gap-2">
-                    <label for="email-address" class="sr-only" data-i18n-key="footerEmailLabel">Email address</label>
-                    <input id="email-address" name="email-address" type="email" autocomplete="email" required
-                           class="w-full px-4 py-2.5 text-sm text-gray-900 bg-white border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500"
-                           data-i18n-key-placeholder="footerEmailPlaceholder" placeholder="Enter your email">
-                    <button type="submit"
-                            class="flex-shrink-0 inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-blue-500"
-                            data-i18n-key="footerSubscribeButton">
-                        Subscribe
-                    </button>
+                    <label for="email-address" class="sr-only" data-translate="footerEmailLabel">Email address</label>
+                    <input id="email-address" name="email-address" type="email" autocomplete="email" required class="w-full px-4 py-2.5 text-sm text-gray-900 bg-white border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500" placeholder="Enter your email" data-translate="footerEmailPlaceholder">
+                    <button type="submit" class="flex-shrink-0 inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-blue-500" data-translate="footerSubscribeButton"> Subscribe </button>
                 </form>
             </div>
         </div>
-        <!-- End Optional Newsletter -->
 
-
-        <!-- Footer Bottom: Copyright & Legal Links -->
-        <div class="mt-12 pt-8 border-t border-gray-700 md:flex md:items-center md:justify-between">
-            <p class="text-sm text-gray-400 text-center md:text-left">
-                © <span id="currentYear"></span> <span data-i18n-key="footerCopyrightNew">Public Pulse Kosovo. All Rights Reserved.</span>
+        <!-- Copyright Section -->
+        <div class="mt-12 pt-8 border-t border-gray-700 text-center md:text-left">
+            <p class="text-sm text-gray-400"> 
+                © <span id="currentYear"></span> <span data-translate="footerCopyrightNew">Public Pulse Kosovo. All Rights Reserved.</span> 
             </p>
-            <div class="mt-4 md:mt-0 flex justify-center md:justify-start space-x-6">
-                <a href="privacy.html" data-i18n-key="footerPrivacyPolicyLink" class="text-sm text-gray-400 hover:text-white transition-colors duration-150">Privacy Policy</a>
-                <a href="terms.html" data-i18n-key="footerTermsLink" class="text-sm text-gray-400 hover:text-white transition-colors duration-150">Terms of Use</a>
-            </div>
         </div>
     </div>
 </footer>
