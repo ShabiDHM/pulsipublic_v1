@@ -4,7 +4,7 @@
     <!-- START: Document Head Section -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-translate="pageTitleDocuments">Documents - Kosovo Civic Monitor</title> <!-- MODIFIED -->
+    <title data-translate="pageTitleDocuments">Documents - Kosovo Civic Monitor</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -19,21 +19,21 @@
                     <div class="text-green-500 text-xl"><i class="fas fa-heartbeat"></i></div>
                 </div>
                 <div class="ml-3">
-                    <h1 data-translate="headerTitle" class="text-xl font-bold">Public Pulse</h1> <!-- MODIFIED -->
-                    <p data-translate="headerSubtitle" class="text-sm text-gray-300">Kosovo Civic Monitor</p> <!-- MODIFIED -->
+                    <h1 data-translate="headerTitle" class="text-xl font-bold">Public Pulse</h1>
+                    <p data-translate="headerSubtitle" class="text-sm text-gray-300">Kosovo Civic Monitor</p>
                 </div>
             </div>
         </div>
         <div class="flex items-center space-x-3">
             <div class="relative">
                 <button id="languageSelector" class="bg-gray-700 hover:bg-gray-600 rounded px-3 py-1 flex items-center">
-                    <span class="mr-1" data-translate="currentLangIndicator">EN</span> <!-- MODIFIED -->
+                    <span class="mr-1" data-translate="currentLangIndicator">EN</span>
                     <i class="fas fa-chevron-down text-xs"></i>
                 </button>
                 <div id="languageDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden z-20">
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="en" data-translate="languageEN">English (EN)</a> <!-- MODIFIED -->
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sq" data-translate="languageSQ">Albanian (SQ)</a> <!-- MODIFIED -->
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sr" data-translate="languageSR">Serbian (SR)</a> <!-- MODIFIED -->
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="en" data-translate="languageEN">English (EN)</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sq" data-translate="languageSQ">Albanian (SQ)</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sr" data-translate="languageSR">Serbian (SR)</a>
                 </div>
             </div>
             <div class="relative">
@@ -41,10 +41,10 @@
                     <i class="fas fa-user"></i>
                 </button>
                 <div id="userDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden w-48 z-20">
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-user-circle mr-2"></i><span data-translate="userMenuProfile">Profile</span></a> <!-- MODIFIED -->
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-cog mr-2"></i><span data-translate="userMenuSettings">Settings</span></a> <!-- MODIFIED -->
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-user-circle mr-2"></i><span data-translate="userMenuProfile">Profile</span></a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-cog mr-2"></i><span data-translate="userMenuSettings">Settings</span></a>
                     <div class="border-t border-gray-200"></div>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200 text-red-600"><i class="fas fa-sign-out-alt mr-2"></i><span data-translate="userMenuSignOut">Sign out</span></a> <!-- MODIFIED -->
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200 text-red-600"><i class="fas fa-sign-out-alt mr-2"></i><span data-translate="userMenuSignOut">Sign out</span></a>
                 </div>
             </div>
         </div>
@@ -52,32 +52,32 @@
     <!-- END: Header Navigation -->
 
 <div class="flex flex-1">
-    <!-- START: Sidebar Navigation (Corrected and Consistent) -->
-    <aside id="sidebar" class="bg-white shadow-md w-64 transition-all duration-300 hidden md:block">
+    <!-- START: Sidebar Navigation -->
+    <aside id="sidebar" class="bg-white shadow-md w-64 fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 ease-in-out z-50">
         <nav class="py-4 h-full flex flex-col">
             <div class="px-4 pb-4 mb-4 border-b border-gray-200">
                 <div class="flex items-center justify-between">
-                    <p data-translate="sidebarMainNavigation" class="text-sm text-gray-500">MAIN NAVIGATION</p> <!-- MODIFIED -->
+                    <p data-translate="sidebarMainNavigation" class="text-sm text-gray-500">MAIN NAVIGATION</p>
                     <button id="toggleSidebar" class="md:hidden text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
                 </div>
             </div>
             <div class="flex-grow overflow-y-auto">
                 <a href="index.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
-                    <div class="w-6 text-center"><i class="fas fa-tachometer-alt"></i></div><span data-translate="sidebarDashboard" class="ml-3">Dashboard</span> <!-- MODIFIED -->
+                    <div class="w-6 text-center"><i class="fas fa-tachometer-alt"></i></div><span data-translate="sidebarDashboard" class="ml-3">Dashboard</span>
                 </a>
                 <a href="documents.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
-                    <div class="w-6 text-center"><i class="fas fa-file-alt"></i></div><span data-translate="sidebarDocuments" class="ml-3">Documents</span> <!-- MODIFIED -->
+                    <div class="w-6 text-center"><i class="fas fa-file-alt"></i></div><span data-translate="sidebarDocuments" class="ml-3">Documents</span>
                 </a>
                 <a href="events.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
-                    <div class="w-6 text-center"><i class="fas fa-calendar-alt"></i></div><span data-translate="sidebarEvents" class="ml-3">Events</span> <!-- MODIFIED -->
+                    <div class="w-6 text-center"><i class="fas fa-calendar-alt"></i></div><span data-translate="sidebarEvents" class="ml-3">Events</span>
                 </a>
-                <div class="sidebar-section-heading"><p data-translate="sidebarAnalytics" class="font-medium">ANALITIKA</p></div> <!-- MODIFIED -->
+                <div class="sidebar-section-heading"><p data-translate="sidebarAnalytics" class="font-medium">ANALITIKA</p></div>
                 <a href="local_government.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
                     <div class="w-6 text-center"><i class="fas fa-university"></i></div>
-                    <span data-translate="sidebarLocalGovernment" class="ml-3">Local Government</span> <!-- MODIFIED -->
+                    <span data-translate="sidebarLocalGovernment" class="ml-3">Local Government</span>
                 </a>
                 <a href="export_data.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
-                    <div class="w-6 text-center"><i class="fas fa-download"></i></div><span data-translate="sidebarExportData" class="ml-3">Export Data</span> <!-- MODIFIED -->
+                    <div class="w-6 text-center"><i class="fas fa-download"></i></div><span data-translate="sidebarExportData" class="ml-3">Export Data</span>
                 </a>
                  <a href="about.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
                     <div class="w-6 text-center"><i class="fas fa-info-circle"></i></div><span data-translate="breadcrumbAboutUs" class="ml-3">About Us</span>
@@ -87,8 +87,12 @@
     </aside>
     <!-- END: Sidebar Navigation -->
 
+    <!-- START: Mobile Sidebar Overlay -->
+    <div id="mobileSidebarOverlay" class="fixed inset-0 bg-black bg-opacity-25 hidden z-40 md:hidden"></div>
+    <!-- END: Mobile Sidebar Overlay -->
+
     <!-- START: Mobile Sidebar Toggle Button (Same as index.html) -->
-    <button id="mobileSidebarToggle" class="md:hidden fixed top-4 left-4 bg-gray-800 text-white rounded-md w-10 h-10 flex items-center justify-center shadow-lg z-40">
+    <button id="mobileSidebarToggle" class="md:hidden fixed top-4 left-4 bg-gray-800 text-white rounded-md w-10 h-10 flex items-center justify-center shadow-lg z-40"> <!-- z-index adjusted if needed -->
         <i class="fas fa-bars"></i>
     </button>
     <!-- END: Mobile Sidebar Toggle Button -->
@@ -99,15 +103,15 @@
         <div class="bg-white px-6 py-3 flex items-center text-sm border-b border-gray-200">
             <a href="index.html" class="text-gray-600 hover:text-blue-600" aria-label="Home"><i class="fas fa-home"></i></a>
             <span class="mx-2 text-gray-400">/</span>
-            <span data-translate="breadcrumbDocuments" class="text-gray-800 font-medium">Documents</span> <!-- MODIFIED -->
+            <span data-translate="breadcrumbDocuments" class="text-gray-800 font-medium">Documents</span>
         </div>
         <!-- END: Breadcrumb Navigation -->
 
         <div class="px-6 py-5">
             <!-- START: Page Header -->
             <div class="mb-8">
-                <h2 data-translate="pageTitleDocuments" class="text-3xl font-bold text-gray-800">Document Repository</h2> <!-- MODIFIED -->
-                <p data-translate="pageSubtitleDocuments" class="text-gray-600 mt-1">Access official publications, reports, and legislative documents.</p> <!-- MODIFIED -->
+                <h2 data-translate="pageTitleDocuments" class="text-3xl font-bold text-gray-800">Document Repository</h2>
+                <p data-translate="pageSubtitleDocuments" class="text-gray-600 mt-1">Access official publications, reports, and legislative documents.</p>
             </div>
             <!-- END: Page Header -->
 
@@ -116,30 +120,30 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
                     <!-- Search Input -->
                     <div class="md:col-span-1">
-                        <label for="docSearch" class="block text-sm font-medium text-gray-700 mb-1" data-translate="docSearchLabel">Search Documents</label> <!-- MODIFIED -->
+                        <label for="docSearch" class="block text-sm font-medium text-gray-700 mb-1" data-translate="docSearchLabel">Search Documents</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <i class="fas fa-search text-gray-400"></i>
                             </div>
-                            <input type="text" name="docSearch" id="docSearch" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-2" data-translate="docSearchPlaceholder" placeholder="Enter keywords..."> <!-- MODIFIED -->
+                            <input type="text" name="docSearch" id="docSearch" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-2" data-translate="docSearchPlaceholder" placeholder="Enter keywords...">
                         </div>
                     </div>
                     <!-- Filter by Category -->
                     <div>
-                        <label for="docCategory" class="block text-sm font-medium text-gray-700 mb-1" data-translate="docCategoryLabel">Category</label> <!-- MODIFIED -->
+                        <label for="docCategory" class="block text-sm font-medium text-gray-700 mb-1" data-translate="docCategoryLabel">Category</label>
                         <select id="docCategory" name="docCategory" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                            <option data-translate="docCategoryAll">All Categories</option> <!-- MODIFIED -->
-                            <option data-translate="docCategoryReports">Annual Reports</option> <!-- MODIFIED -->
-                            <option data-translate="docCategoryLegislative">Legislative Acts</option> <!-- MODIFIED -->
-                            <option data-translate="docCategoryPolicy">Policy Briefs</option> <!-- MODIFIED -->
-                            <option data-translate="docCategoryResearch">Research Papers</option> <!-- MODIFIED -->
+                            <option data-translate="docCategoryAll">All Categories</option>
+                            <option data-translate="docCategoryReports">Annual Reports</option>
+                            <option data-translate="docCategoryLegislative">Legislative Acts</option>
+                            <option data-translate="docCategoryPolicy">Policy Briefs</option>
+                            <option data-translate="docCategoryResearch">Research Papers</option>
                         </select>
                     </div>
                     <!-- Filter by Year -->
                     <div>
-                        <label for="docYear" class="block text-sm font-medium text-gray-700 mb-1" data-translate="docYearLabel">Year</label> <!-- MODIFIED -->
+                        <label for="docYear" class="block text-sm font-medium text-gray-700 mb-1" data-translate="docYearLabel">Year</label>
                         <select id="docYear" name="docYear" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                            <option data-translate="docYearAll">All Years</option> <!-- MODIFIED -->
+                            <option data-translate="docYearAll">All Years</option>
                             <option>2024</option>
                             <option>2023</option>
                             <option>2022</option>
@@ -149,7 +153,7 @@
                 </div>
                 <div class="mt-6 text-right">
                     <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                        <i class="fas fa-filter mr-2"></i> <span data-translate="docApplyFiltersButton">Apply Filters</span> <!-- MODIFIED & span added -->
+                        <i class="fas fa-filter mr-2"></i> <span data-translate="docApplyFiltersButton">Apply Filters</span>
                     </button>
                 </div>
             </div>
@@ -164,17 +168,17 @@
                             <i class="fas fa-file-pdf"></i>
                         </div>
                         <div class="flex-grow">
-                            <h4 class="text-xl font-semibold text-gray-900 hover:text-blue-700 transition-colors duration-150"><a href="#" data-translate="docTitle1">Annual Transparency Report 2023</a></h4> <!-- MODIFIED -->
-                            <p class="text-sm text-gray-600 mt-1" data-translate="docDesc1">A comprehensive overview of institutional transparency throughout Kosovo in 2023, highlighting key findings and recommendations.</p> <!-- MODIFIED -->
+                            <h4 class="text-xl font-semibold text-gray-900 hover:text-blue-700 transition-colors duration-150"><a href="#" data-translate="docTitle1">Annual Transparency Report 2023</a></h4>
+                            <p class="text-sm text-gray-600 mt-1" data-translate="docDesc1">A comprehensive overview of institutional transparency throughout Kosovo in 2023, highlighting key findings and recommendations.</p>
                             <div class="mt-3 flex flex-wrap gap-2 items-center">
-                                <span class="text-xs bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-full font-medium" data-translate="docCategoryReports">Annual Reports</span> <!-- MODIFIED -->
-                                <span class="text-xs text-gray-500"><i class="far fa-calendar-alt mr-1"></i> <span data-translate="docDate1">Feb 15, 2024</span></span> <!-- MODIFIED & span added -->
+                                <span class="text-xs bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-full font-medium" data-translate="docCategoryReports">Annual Reports</span>
+                                <span class="text-xs text-gray-500"><i class="far fa-calendar-alt mr-1"></i> <span data-translate="docDate1">Feb 15, 2024</span></span>
                             </div>
                         </div>
                         <div class="sm:ml-6 mt-4 sm:mt-0 flex-shrink-0 flex flex-col items-start sm:items-end space-y-2">
-                            <span class="text-sm text-gray-500" data-translate="docFileInfo1">PDF, 3.2 MB</span> <!-- MODIFIED -->
+                            <span class="text-sm text-gray-500" data-translate="docFileInfo1">PDF, 3.2 MB</span>
                             <a href="#" class="inline-flex items-center px-4 py-2 border border-blue-600 text-sm font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                <i class="fas fa-download mr-2"></i> <span data-translate="docDownloadButton">Download</span> <!-- MODIFIED & span added -->
+                                <i class="fas fa-download mr-2"></i> <span data-translate="docDownloadButton">Download</span>
                             </a>
                         </div>
                     </div>
@@ -187,17 +191,17 @@
                             <i class="fas fa-file-word"></i>
                         </div>
                         <div class="flex-grow">
-                            <h4 class="text-xl font-semibold text-gray-900 hover:text-blue-700 transition-colors duration-150"><a href="#" data-translate="docTitle2">Draft Law on Public Information Access</a></h4> <!-- MODIFIED -->
-                            <p class="text-sm text-gray-600 mt-1" data-translate="docDesc2">The proposed legislative text for enhancing public access to information, open for public consultation.</p> <!-- MODIFIED -->
+                            <h4 class="text-xl font-semibold text-gray-900 hover:text-blue-700 transition-colors duration-150"><a href="#" data-translate="docTitle2">Draft Law on Public Information Access</a></h4>
+                            <p class="text-sm text-gray-600 mt-1" data-translate="docDesc2">The proposed legislative text for enhancing public access to information, open for public consultation.</p>
                             <div class="mt-3 flex flex-wrap gap-2 items-center">
-                                <span class="text-xs bg-green-100 text-green-800 px-2.5 py-0.5 rounded-full font-medium" data-translate="docCategoryLegislative">Legislative Acts</span> <!-- MODIFIED -->
-                                <span class="text-xs text-gray-500"><i class="far fa-calendar-alt mr-1"></i> <span data-translate="docDate2">Jan 20, 2024</span></span> <!-- MODIFIED & span added -->
+                                <span class="text-xs bg-green-100 text-green-800 px-2.5 py-0.5 rounded-full font-medium" data-translate="docCategoryLegislative">Legislative Acts</span>
+                                <span class="text-xs text-gray-500"><i class="far fa-calendar-alt mr-1"></i> <span data-translate="docDate2">Jan 20, 2024</span></span>
                             </div>
                         </div>
                         <div class="sm:ml-6 mt-4 sm:mt-0 flex-shrink-0 flex flex-col items-start sm:items-end space-y-2">
-                            <span class="text-sm text-gray-500" data-translate="docFileInfo2">DOCX, 1.1 MB</span> <!-- MODIFIED -->
+                            <span class="text-sm text-gray-500" data-translate="docFileInfo2">DOCX, 1.1 MB</span>
                             <a href="#" class="inline-flex items-center px-4 py-2 border border-blue-600 text-sm font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                <i class="fas fa-download mr-2"></i> <span data-translate="docDownloadButton">Download</span> <!-- MODIFIED & span added -->
+                                <i class="fas fa-download mr-2"></i> <span data-translate="docDownloadButton">Download</span>
                             </a>
                         </div>
                     </div>
@@ -210,17 +214,17 @@
                             <i class="fas fa-file-alt"></i>
                         </div>
                         <div class="flex-grow">
-                            <h4 class="text-xl font-semibold text-gray-900 hover:text-blue-700 transition-colors duration-150"><a href="#" data-translate="docTitle3">Policy Brief: Digital Governance</a></h4> <!-- MODIFIED -->
-                            <p class="text-sm text-gray-600 mt-1" data-translate="docDesc3">Analysis and recommendations for advancing digital governance practices in public institutions.</p> <!-- MODIFIED -->
+                            <h4 class="text-xl font-semibold text-gray-900 hover:text-blue-700 transition-colors duration-150"><a href="#" data-translate="docTitle3">Policy Brief: Digital Governance</a></h4>
+                            <p class="text-sm text-gray-600 mt-1" data-translate="docDesc3">Analysis and recommendations for advancing digital governance practices in public institutions.</p>
                             <div class="mt-3 flex flex-wrap gap-2 items-center">
-                                <span class="text-xs bg-yellow-100 text-yellow-800 px-2.5 py-0.5 rounded-full font-medium" data-translate="docCategoryPolicy">Policy Briefs</span> <!-- MODIFIED -->
-                                <span class="text-xs text-gray-500"><i class="far fa-calendar-alt mr-1"></i> <span data-translate="docDate3">Dec 05, 2023</span></span> <!-- MODIFIED & span added -->
+                                <span class="text-xs bg-yellow-100 text-yellow-800 px-2.5 py-0.5 rounded-full font-medium" data-translate="docCategoryPolicy">Policy Briefs</span>
+                                <span class="text-xs text-gray-500"><i class="far fa-calendar-alt mr-1"></i> <span data-translate="docDate3">Dec 05, 2023</span></span>
                             </div>
                         </div>
                         <div class="sm:ml-6 mt-4 sm:mt-0 flex-shrink-0 flex flex-col items-start sm:items-end space-y-2">
-                            <span class="text-sm text-gray-500" data-translate="docFileInfo3">PDF, 780 KB</span> <!-- MODIFIED -->
+                            <span class="text-sm text-gray-500" data-translate="docFileInfo3">PDF, 780 KB</span>
                             <a href="#" class="inline-flex items-center px-4 py-2 border border-blue-600 text-sm font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                <i class="fas fa-download mr-2"></i> <span data-translate="docDownloadButton">Download</span> <!-- MODIFIED & span added -->
+                                <i class="fas fa-download mr-2"></i> <span data-translate="docDownloadButton">Download</span>
                             </a>
                         </div>
                     </div>
@@ -233,10 +237,9 @@
             <div class="mt-8 flex justify-center">
                 <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
                     <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                        <span class="sr-only" data-translate="paginationPrevious">Previous</span> <!-- MODIFIED -->
+                        <span class="sr-only" data-translate="paginationPrevious">Previous</span>
                         <i class="fas fa-chevron-left h-5 w-5"></i>
                     </a>
-                    <!-- Pagination numbers are typically not translated unless they are words -->
                     <a href="#" aria-current="page" class="z-10 bg-blue-50 border-blue-500 text-blue-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">1</a>
                     <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">2</a>
                     <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium">3</a>
@@ -245,7 +248,7 @@
                     <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">9</a>
                     <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">10</a>
                     <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                        <span class="sr-only" data-translate="paginationNext">Next</span> <!-- MODIFIED -->
+                        <span class="sr-only" data-translate="paginationNext">Next</span>
                         <i class="fas fa-chevron-right h-5 w-5"></i>
                     </a>
                 </nav>
@@ -274,9 +277,9 @@
             <div class="space-y-4">
                 <h3 class="text-lg font-semibold text-white tracking-tight" data-translate="footerAboutTitleNew">About Public Pulse</h3>
                 <p class="text-sm text-gray-400 leading-relaxed" data-translate="footerAboutTextShort">An independent, non-partisan watchdog strengthening democratic accountability across Kosovo by analyzing transparency and public service delivery.</p>
-                <a href="{{ url_for('serve_page', page_name='about') }}"
+                <a href="about.html" 
                    class="inline-block px-5 py-2.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-blue-500 mt-2 group"> 
-                   <span data-translate="footerLearnMoreAboutUs">Learn more about us</span> <!-- CORRECTED STRUCTURE -->
+                   <span data-translate="footerLearnMoreAboutUs">Learn more about us</span>
                    <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i> 
                 </a>
             </div>
@@ -309,7 +312,7 @@
 
                 <!-- Right Sub-Column: Logo -->
                 <div class="flex justify-center md:justify-end items-center md:items-start pt-4 md:pt-0"> 
-                    <img src="{{ url_for('static', filename='images/logo_pulsi_publik.png') }}" alt="Pulsi Publik Logo" class="w-32 md:w-36 lg:w-40 h-auto"> <!-- CORRECTED LOGO PATH ASSUMPTION -->
+                    <img src="{{ url_for('static', filename='images/logo_pulsi_publik.png') }}" alt="Pulsi Publik Logo" class="w-32 md:w-36 lg:w-40 h-auto">
                 </div>
             </div>
         </div>
@@ -338,12 +341,6 @@
     </div>
 </footer>
 <!-- END: Footer Section -->
-
-<!-- START: JavaScript Libraries -->
-<!-- Chart.js and Datalabels are likely not needed for this specific page -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script> -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script> -->
-<!-- END: JavaScript Libraries -->
 
 <!-- START: Custom Scripts -->
 <script src="main_script.js" defer></script>

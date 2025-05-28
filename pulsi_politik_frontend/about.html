@@ -19,8 +19,8 @@
                     <div class="text-green-500 text-xl"><i class="fas fa-heartbeat"></i></div>
                 </div>
                 <div class="ml-3">
-                    <h1 data-translate="headerTitle" class="text-xl font-bold">Public Pulse</h1> <!-- CORRECTED -->
-                    <p data-translate="headerSubtitle" class="text-sm text-gray-300">Kosovo Civic Monitor</p> <!-- CORRECTED -->
+                    <h1 data-translate="headerTitle" class="text-xl font-bold">Public Pulse</h1>
+                    <p data-translate="headerSubtitle" class="text-sm text-gray-300">Kosovo Civic Monitor</p>
                 </div>
             </div>
         </div>
@@ -31,9 +31,9 @@
                     <i class="fas fa-chevron-down text-xs"></i>
                 </button>
                 <div id="languageDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden z-20">
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="en" data-translate="languageEN">English (EN)</a> <!-- CORRECTED -->
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sq" data-translate="languageSQ">Albanian (SQ)</a> <!-- CORRECTED -->
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sr" data-translate="languageSR">Serbian (SR)</a> <!-- CORRECTED -->
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="en" data-translate="languageEN">English (EN)</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sq" data-translate="languageSQ">Albanian (SQ)</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sr" data-translate="languageSR">Serbian (SR)</a>
                 </div>
             </div>
             <div class="relative">
@@ -52,8 +52,8 @@
     <!-- END: Header Navigation -->
 
 <div class="flex flex-1">
-    <!-- START: Sidebar Navigation (Consistent with other pages) -->
-    <aside id="sidebar" class="bg-white shadow-md w-64 transition-all duration-300 hidden md:block">
+    <!-- START: Sidebar Navigation -->
+    <aside id="sidebar" class="bg-white shadow-md w-64 fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 ease-in-out z-50">
         <nav class="py-4 h-full flex flex-col">
             <div class="px-4 pb-4 mb-4 border-b border-gray-200">
                 <div class="flex items-center justify-between">
@@ -86,6 +86,10 @@
         </nav>
     </aside>
     <!-- END: Sidebar Navigation -->
+
+    <!-- START: Mobile Sidebar Overlay -->
+    <div id="mobileSidebarOverlay" class="fixed inset-0 bg-black bg-opacity-25 hidden z-40 md:hidden"></div>
+    <!-- END: Mobile Sidebar Overlay -->
 
     <!-- START: Mobile Sidebar Toggle Button -->
     <button id="mobileSidebarToggle" class="md:hidden fixed top-4 left-4 bg-gray-800 text-white rounded-md w-10 h-10 flex items-center justify-center shadow-lg z-40">
@@ -202,7 +206,7 @@
             <div class="space-y-4">
                 <h3 class="text-lg font-semibold text-white tracking-tight" data-translate="footerAboutTitleNew">About Public Pulse</h3>
                 <p class="text-sm text-gray-400 leading-relaxed" data-translate="footerAboutTextShort">An independent, non-partisan watchdog strengthening democratic accountability across Kosovo by analyzing transparency and public service delivery.</p>
-                <a href="{{ url_for('serve_page', page_name='about') }}"
+                <a href="about.html"
                    class="inline-block px-5 py-2.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-blue-500 mt-2 group"> 
                    <span data-translate="footerLearnMoreAboutUs">Learn more about us</span> 
                    <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i> 
@@ -266,11 +270,6 @@
     </div>
 </footer>
 <!-- END: Footer Section -->
-
-<!-- START: JavaScript Libraries -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script> -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script> -->
-<!-- END: JavaScript Libraries -->
 
 <!-- START: Custom Scripts -->
 <script src="main_script.js" defer></script>

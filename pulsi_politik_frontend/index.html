@@ -4,7 +4,7 @@
     <!-- START: Document Head Section -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-translate="pageTitle">Public Pulse Dashboard</title> <!-- MODIFIED: Added data-translate -->
+    <title data-translate="pageTitle">Public Pulse Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -22,8 +22,8 @@
                     </div>
                 </div>
                 <div class="ml-3">
-                    <h1 data-translate="headerTitle" class="text-xl font-bold">Public Pulse</h1> <!-- MODIFIED: data-i18n-key to data-translate -->
-                    <p data-translate="headerSubtitle" class="text-sm text-gray-300">Kosovo Civic Monitor</p> <!-- MODIFIED: data-i18n-key to data-translate -->
+                    <h1 data-translate="headerTitle" class="text-xl font-bold">Public Pulse</h1>
+                    <p data-translate="headerSubtitle" class="text-sm text-gray-300">Kosovo Civic Monitor</p>
                 </div>
             </div>
         </div>
@@ -34,13 +34,13 @@
             <!-- START: Language Selector -->
             <div class="relative">
                 <button id="languageSelector" class="bg-gray-700 hover:bg-gray-600 rounded px-3 py-1 flex items-center">
-                    <span class="mr-1" data-translate="currentLangIndicator">EN</span> <!-- MODIFIED: Added data-translate -->
+                    <span class="mr-1" data-translate="currentLangIndicator">EN</span>
                     <i class="fas fa-chevron-down text-xs"></i>
                 </button>
                 <div id="languageDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden z-20">
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="en" data-translate="languageEN">English (EN)</a> <!-- MODIFIED: data-i18n-key to data-translate -->
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sq" data-translate="languageSQ">Albanian (SQ)</a> <!-- MODIFIED: data-i18n-key to data-translate -->
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sr" data-translate="languageSR">Serbian (SR)</a> <!-- MODIFIED: data-i18n-key to data-translate -->
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="en" data-translate="languageEN">English (EN)</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sq" data-translate="languageSQ">Albanian (SQ)</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200" data-lang="sr" data-translate="languageSR">Serbian (SR)</a>
                 </div>
             </div>
             <!-- END: Language Selector -->
@@ -51,10 +51,10 @@
                     <i class="fas fa-user"></i>
                 </button>
                 <div id="userDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden w-48 z-20">
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-user-circle mr-2"></i><span data-translate="userMenuProfile">Profile</span></a> <!-- MODIFIED -->
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-cog mr-2"></i><span data-translate="userMenuSettings">Settings</span></a> <!-- MODIFIED -->
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-user-circle mr-2"></i><span data-translate="userMenuProfile">Profile</span></a>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fas fa-cog mr-2"></i><span data-translate="userMenuSettings">Settings</span></a>
                     <div class="border-t border-gray-200"></div>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-200 text-red-600"><i class="fas fa-sign-out-alt mr-2"></i><span data-translate="userMenuSignOut">Sign out</span></a> <!-- MODIFIED -->
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-200 text-red-600"><i class="fas fa-sign-out-alt mr-2"></i><span data-translate="userMenuSignOut">Sign out</span></a>
                 </div>
             </div>
             <!-- END: User Menu -->
@@ -64,13 +64,13 @@
     <!-- END: Header Navigation -->
 
 <div class="flex flex-1">
-    <!-- START: Sidebar Navigation (Corrected and Consistent) -->
-    <aside id="sidebar" class="bg-white shadow-md w-64 transition-all duration-300 hidden md:block">
+    <!-- START: Sidebar Navigation -->
+    <aside id="sidebar" class="bg-white shadow-md w-64 fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 ease-in-out z-50">
         <nav class="py-4 h-full flex flex-col">
             <!-- START: Sidebar Header -->
             <div class="px-4 pb-4 mb-4 border-b border-gray-200">
                 <div class="flex items-center justify-between">
-                    <p data-translate="sidebarMainNavigation" class="text-sm text-gray-500">MAIN NAVIGATION</p> <!-- MODIFIED -->
+                    <p data-translate="sidebarMainNavigation" class="text-sm text-gray-500">MAIN NAVIGATION</p>
                     <button id="toggleSidebar" class="md:hidden text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
                 </div>
             </div>
@@ -80,26 +80,26 @@
             <div class="flex-grow overflow-y-auto">
                 <a href="index.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
                     <div class="w-6 text-center"><i class="fas fa-tachometer-alt"></i></div>
-                    <span data-translate="sidebarDashboard" class="ml-3">Dashboard</span> <!-- MODIFIED -->
+                    <span data-translate="sidebarDashboard" class="ml-3">Dashboard</span>
                 </a>
                 <a href="documents.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
                     <div class="w-6 text-center"><i class="fas fa-file-alt"></i></div>
-                    <span data-translate="sidebarDocuments" class="ml-3">Documents</span> <!-- MODIFIED -->
+                    <span data-translate="sidebarDocuments" class="ml-3">Documents</span>
                 </a>
                 <a href="events.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
                     <div class="w-6 text-center"><i class="fas fa-calendar-alt"></i></div>
-                    <span data-translate="sidebarEvents" class="ml-3">Events</span> <!-- MODIFIED -->
+                    <span data-translate="sidebarEvents" class="ml-3">Events</span>
                 </a>
                 <div class="sidebar-section-heading">
-                    <p data-translate="sidebarAnalytics" class="font-medium">ANALITIKA</p> <!-- MODIFIED -->
+                    <p data-translate="sidebarAnalytics" class="font-medium">ANALITIKA</p>
                 </div>
                 <a href="local_government.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
                     <div class="w-6 text-center"><i class="fas fa-university"></i></div>
-                    <span data-translate="sidebarLocalGovernment" class="ml-3">Local Government</span> <!-- MODIFIED -->
+                    <span data-translate="sidebarLocalGovernment" class="ml-3">Local Government</span>
                 </a>
                 <a href="export_data.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
                     <div class="w-6 text-center"><i class="fas fa-download"></i></div>
-                    <span data-translate="sidebarExportData" class="ml-3">Export Data</span> <!-- MODIFIED -->
+                    <span data-translate="sidebarExportData" class="ml-3">Export Data</span>
                 </a>
                  <a href="about.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
                     <div class="w-6 text-center"><i class="fas fa-info-circle"></i></div><span data-translate="breadcrumbAboutUs" class="ml-3">About Us</span>
@@ -110,8 +110,12 @@
     </aside>
     <!-- END: Sidebar Navigation -->
 
+    <!-- START: Mobile Sidebar Overlay -->
+    <div id="mobileSidebarOverlay" class="fixed inset-0 bg-black bg-opacity-25 hidden z-40 md:hidden"></div>
+    <!-- END: Mobile Sidebar Overlay -->
+
     <!-- START: Mobile Sidebar Toggle Button -->
-    <button id="mobileSidebarToggle" class="md:hidden fixed top-4 left-4 bg-gray-800 text-white rounded-md w-10 h-10 flex items-center justify-center shadow-lg z-40">
+    <button id="mobileSidebarToggle" class="md:hidden fixed top-4 left-4 bg-gray-800 text-white rounded-md w-10 h-10 flex items-center justify-center shadow-lg z-30"> <!-- z-index can be adjusted, ensure it's clickable -->
         <i class="fas fa-bars"></i>
     </button>
     <!-- END: Mobile Sidebar Toggle Button -->
@@ -122,17 +126,17 @@
         <div class="bg-white px-6 py-3 flex items-center text-sm border-b border-gray-200">
             <a href="index.html" class="text-gray-600 hover:text-blue-600" aria-label="Home"><i class="fas fa-home"></i></a>
             <span class="mx-2 text-gray-400">/</span>
-            <a href="index.html" data-translate="breadcrumbDashboard" class="text-gray-600 hover:text-blue-600">Dashboard</a> <!-- MODIFIED -->
+            <a href="index.html" data-translate="breadcrumbDashboard" class="text-gray-600 hover:text-blue-600">Dashboard</a>
             <span class="mx-2 text-gray-400">/</span>
-            <span data-translate="breadcrumbPublicPulse" class="text-gray-800 font-medium">Public Pulse</span> <!-- MODIFIED -->
+            <span data-translate="breadcrumbPublicPulse" class="text-gray-800 font-medium">Public Pulse</span>
         </div>
         <!-- END: Breadcrumb Navigation -->
 
         <div class="px-6 py-5">
             <!-- START: Page Header -->
             <div class="mb-6">
-                <h2 data-translate="pageTitle" class="text-2xl font-bold text-gray-800">Public Pulse Dashboard</h2> <!-- MODIFIED -->
-                <p data-translate="pageSubtitle" class="text-gray-600">Monitoring transparency and performance of Kosovo institutions</p> <!-- MODIFIED -->
+                <h2 data-translate="pageTitle" class="text-2xl font-bold text-gray-800">Public Pulse Dashboard</h2>
+                <p data-translate="pageSubtitle" class="text-gray-600">Monitoring transparency and performance of Kosovo institutions</p>
             </div>
             <!-- END: Page Header -->
 
@@ -141,10 +145,10 @@
                 <div class="bg-white rounded-lg shadow-md p-5">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p data-translate="kpiAvgTransparency" class="text-sm text-gray-500 mb-1">Average Transparency</p> <!-- MODIFIED -->
+                            <p data-translate="kpiAvgTransparency" class="text-sm text-gray-500 mb-1">Average Transparency</p>
                             <h3 id="kpiAvgTransparencyValue" class="text-2xl font-bold text-gray-800">N/A</h3>
                             <p id="kpiAvgTransparencyChange" class="text-xs text-gray-600 mt-1">
-                                <i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span> <!-- MODIFIED -->
+                                <i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span>
                             </p>
                         </div>
                         <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600"><i class="fas fa-eye"></i></div>
@@ -153,10 +157,10 @@
                 <div class="bg-white rounded-lg shadow-md p-5">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p data-translate="kpiParticipationScore" class="text-sm text-gray-500 mb-1">Participation Score</p> <!-- MODIFIED -->
+                            <p data-translate="kpiParticipationScore" class="text-sm text-gray-500 mb-1">Participation Score</p>
                             <h3 id="kpiParticipationScoreValue" class="text-2xl font-bold text-gray-800">N/A</h3>
                             <p id="kpiParticipationScoreChange" class="text-xs text-gray-600 mt-1">
-                                <i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span> <!-- MODIFIED -->
+                                <i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span>
                             </p>
                         </div>
                         <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600"><i class="fas fa-users"></i></div>
@@ -165,10 +169,10 @@
                 <div class="bg-white rounded-lg shadow-md p-5">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p data-translate="kpiEfficiencyRating" class="text-sm text-gray-500 mb-1">Efficiency Rating</p> <!-- MODIFIED -->
+                            <p data-translate="kpiEfficiencyRating" class="text-sm text-gray-500 mb-1">Efficiency Rating</p>
                             <h3 id="kpiEfficiencyRatingValue" class="text-2xl font-bold text-gray-800">N/A</h3>
                             <p id="kpiEfficiencyRatingChange" class="text-xs text-gray-600 mt-1">
-                                <i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span> <!-- MODIFIED -->
+                                <i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span>
                             </p>
                         </div>
                         <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600"><i class="fas fa-bolt"></i></div>
@@ -177,10 +181,10 @@
                 <div class="bg-white rounded-lg shadow-md p-5">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p data-translate="kpiOverallOutcome" class="text-sm text-gray-500 mb-1">Overall Outcome</p> <!-- MODIFIED -->
+                            <p data-translate="kpiOverallOutcome" class="text-sm text-gray-500 mb-1">Overall Outcome</p>
                             <h3 id="kpiOverallOutcomeValue" class="text-2xl font-bold text-gray-800">N/A</h3>
                             <p id="kpiOverallOutcomeChange" class="text-xs text-gray-600 mt-1">
-                                <i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span> <!-- MODIFIED -->
+                                <i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span>
                             </p>
                         </div>
                         <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600"><i class="fas fa-chart-pie"></i></div>
@@ -192,45 +196,53 @@
             <!-- START: Interactive Filters Section -->
             <div class="bg-white rounded-lg shadow-md p-5 mb-6">
                 <div class="flex flex-wrap items-center justify-between mb-4">
-                    <h3 data-translate="filtersTitle" class="text-lg font-semibold text-gray-800">Interactive Filters</h3> <!-- MODIFIED -->
+                    <h3 data-translate="filtersTitle" class="text-lg font-semibold text-gray-800">Interactive Filters</h3>
                     <div class="flex space-x-2">
                         <button id="resetFiltersButton" class="text-sm text-blue-600 hover:text-blue-800">
-                            <i class="fas fa-undo mr-1"></i><span data-translate="filtersReset">Reset Filters</span> <!-- MODIFIED -->
+                            <i class="fas fa-undo mr-1"></i><span data-translate="filtersReset">Reset Filters</span>
                         </button>
                         <div class="relative">
                             <button id="exportButton" class="text-sm text-gray-600 hover:text-gray-800 flex items-center">
-                                <i class="fas fa-download mr-1"></i><span data-translate="filtersExport">Export</span><i class="fas fa-chevron-down ml-1 text-xs"></i> <!-- MODIFIED -->
+                                <i class="fas fa-download mr-1"></i><span data-translate="filtersExport">Export</span><i class="fas fa-chevron-down ml-1 text-xs"></i>
                             </button>
                             <div id="exportDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden w-40 z-10">
-                                <a href="#" class="exportOption block px-4 py-2 hover:bg-gray-200 text-sm" data-format="pdf"><i class="far fa-file-pdf mr-2 text-red-500"></i><span data-translate="filtersExportPDF">Export as PDF</span></a> <!-- MODIFIED -->
-                                <a href="#" class="exportOption block px-4 py-2 hover:bg-gray-200 text-sm" data-format="excel"><i class="far fa-file-excel mr-2 text-green-600"></i><span data-translate="filtersExportExcel">Export as Excel</span></a> <!-- MODIFIED -->
-                                <a href="#" class="exportOption block px-4 py-2 hover:bg-gray-200 text-sm" data-format="csv"><i class="far fa-file-alt mr-2 text-gray-600"></i><span data-translate="filtersExportCSV">Export as CSV</span></a> <!-- MODIFIED -->
-                                <a href="#" class="exportOption block px-4 py-2 hover:bg-gray-200 text-sm" data-format="image"><i class="far fa-file-image mr-2 text-blue-500"></i><span data-translate="filtersExportImage">Export as Image</span></a> <!-- MODIFIED -->
+                                <a href="#" class="exportOption block px-4 py-2 hover:bg-gray-200 text-sm" data-format="pdf"><i class="far fa-file-pdf mr-2 text-red-500"></i><span data-translate="filtersExportPDF">Export as PDF</span></a>
+                                <a href="#" class="exportOption block px-4 py-2 hover:bg-gray-200 text-sm" data-format="excel"><i class="far fa-file-excel mr-2 text-green-600"></i><span data-translate="filtersExportExcel">Export as Excel</span></a>
+                                <a href="#" class="exportOption block px-4 py-2 hover:bg-gray-200 text-sm" data-format="csv"><i class="far fa-file-alt mr-2 text-gray-600"></i><span data-translate="filtersExportCSV">Export as CSV</span></a>
+                                <a href="#" class="exportOption block px-4 py-2 hover:bg-gray-200 text-sm" data-format="image"><i class="far fa-file-image mr-2 text-blue-500"></i><span data-translate="filtersExportImage">Export as Image</span></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div>
-                        <label for="timePeriod" data-translate="filtersTimePeriod" class="block text-sm font-medium text-gray-700 mb-1">Time Period</label> <!-- MODIFIED -->
+                        <label for="timePeriod" data-translate="filtersTimePeriod" class="block text-sm font-medium text-gray-700 mb-1">Time Period</label>
                         <select id="timePeriod" name="timePeriod" class="w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
-                            <option value="q2-2023">Q2 2023</option> <option value="q1-2023">Q1 2023</option> <option value="q4-2022">Q4 2022</option> <option value="q3-2022">Q3 2022</option> <option value="annual-2022">Annual 2022</option>
+                            <option value="q2-2023" data-translate="periodQ2_2023">Q2 2023</option>
+                            <option value="q1-2023" data-translate="periodQ1_2023">Q1 2023</option>
+                            <option value="q4-2022" data-translate="periodQ4_2022">Q4 2022</option>
+                            <option value="q3-2022" data-translate="periodQ3_2022">Q3 2022</option>
+                            <option value="annual-2022" data-translate="periodAnnual_2022">Annual 2022</option>
                         </select>
                     </div>
                     <div>
-                        <label for="compareWithFilter" data-translate="filtersCompareWith" class="block text-sm font-medium text-gray-700 mb-1">Compare With</label> <!-- MODIFIED -->
+                        <label for="compareWithFilter" data-translate="filtersCompareWith" class="block text-sm font-medium text-gray-700 mb-1">Compare With</label>
                         <select id="compareWithFilter" name="compareWithFilter" class="w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
-                            <option value="none" data-translate="optionNoComparison">No Comparison</option> <option value="q1-2023">Q1 2023</option> <option value="q4-2022">Q4 2022</option> <option value="q2-2022">Q2 2022 (YoY)</option> <option value="annual-2022">Annual 2022</option> <!-- NOTE: Options inside select are not typically translated this way, their text is set by JS if dynamic, or hardcoded if static and translations are for labels -->
+                            <!-- Options populated by JS -->
                         </select>
                     </div>
                     <div>
-                        <label for="ministryTypeFilter" data-translate="filtersMinistryType" class="block text-sm font-medium text-gray-700 mb-1">Ministry Type</label> <!-- MODIFIED -->
+                        <label for="ministryTypeFilter" data-translate="filtersMinistryType" class="block text-sm font-medium text-gray-700 mb-1">Ministry Type</label>
                         <select id="ministryTypeFilter" name="ministryTypeFilter" class="w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
-                            <option value="all" data-translate="optionAllMinistries">All Ministries</option> <option value="economic" data-translate="categoryEconomic">Economic</option> <option value="social" data-translate="categorySocial">Social</option> <option value="infrastructure" data-translate="categoryInfrastructure">Infrastructure</option> <option value="governance" data-translate="categoryGovernance">Governance</option>
+                            <option value="all" data-translate="optionAllMinistries">All Ministries</option>
+                            <option value="economic" data-translate="categoryEconomic">Economic</option>
+                            <option value="social" data-translate="categorySocial">Social</option>
+                            <option value="infrastructure" data-translate="categoryInfrastructure">Infrastructure</option>
+                            <option value="governance" data-translate="categoryGovernance">Governance</option>
                         </select>
                     </div>
                     <div>
-                        <label for="minScoreFilter" data-translate="filtersScoreRange" class="block text-sm font-medium text-gray-700 mb-1">Score Range</label> <!-- MODIFIED -->
+                        <label for="minScoreFilter" data-translate="filtersScoreRange" class="block text-sm font-medium text-gray-700 mb-1">Score Range</label>
                         <div class="flex items-center space-x-2">
                             <input id="minScoreFilter" type="number" min="0" max="100" value="0" class="w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
                             <span class="text-gray-500">-</span>
@@ -239,17 +251,17 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <label for="searchMinistryInput" data-translate="filtersSearchMinistry" class="block text-sm font-medium text-gray-700 mb-1">Search Ministry</label> <!-- MODIFIED -->
+                    <label for="searchMinistryInput" data-translate="filtersSearchMinistry" class="block text-sm font-medium text-gray-700 mb-1">Search Ministry</label>
                     <div class="relative">
-                        <input id="searchMinistryInput" type="text" data-translate="filtersSearchPlaceholder" placeholder="Type to search..." class="w-full rounded-md border border-gray-300 py-2 pl-10 pr-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"> <!-- MODIFIED -->
+                        <input id="searchMinistryInput" type="text" data-translate="filtersSearchPlaceholder" placeholder="Type to search..." class="w-full rounded-md border border-gray-300 py-2 pl-10 pr-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><i class="fas fa-search text-gray-400"></i></div>
                     </div>
                 </div>
                 <div class="mt-4 flex items-center">
-                    <button id="applyFiltersButton" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium" data-translate="filtersApply">Apply Filters</button> <!-- MODIFIED -->
+                    <button id="applyFiltersButton" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium" data-translate="filtersApply">Apply Filters</button>
                     <div class="ml-4 flex items-center">
                         <input id="showComparisonCheckbox" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                        <label for="showComparisonCheckbox" data-translate="filtersShowComparison" class="ml-2 text-sm text-gray-700">Show comparison</label> <!-- MODIFIED -->
+                        <label for="showComparisonCheckbox" data-translate="filtersShowComparison" class="ml-2 text-sm text-gray-700">Show comparison</label>
                     </div>
                 </div>
             </div>
@@ -259,29 +271,29 @@
             <div class="bg-white rounded-lg shadow-md p-5 mb-6">
                 <div class="border-b border-gray-200 mb-4">
                     <nav class="-mb-px flex space-x-8 overflow-x-auto">
-                        <a href="#" class="tab-item tab-active whitespace-nowrap py-3 px-1 border-b-2 font-medium text-base" data-tab="transparency" data-translate="tabTransparency">Transparency</a> <!-- MODIFIED -->
-                        <a href="#" class="tab-item whitespace-nowrap py-3 px-1 border-b-2 font-medium text-base text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="participation" data-translate="tabParticipation">Participation</a> <!-- MODIFIED -->
-                        <a href="#" class="tab-item whitespace-nowrap py-3 px-1 border-b-2 font-medium text-base text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="efficiency" data-translate="tabEfficiency">Efficiency</a> <!-- MODIFIED -->
-                        <a href="#" class="tab-item whitespace-nowrap py-3 px-1 border-b-2 font-medium text-base text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="outcome" data-translate="tabOutcome">Outcome</a> <!-- MODIFIED -->
+                        <a href="#" class="tab-item tab-active whitespace-nowrap py-3 px-1 border-b-2 font-medium text-base" data-tab="transparency" data-translate="tabTransparency">Transparency</a>
+                        <a href="#" class="tab-item whitespace-nowrap py-3 px-1 border-b-2 font-medium text-base text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="participation" data-translate="tabParticipation">Participation</a>
+                        <a href="#" class="tab-item whitespace-nowrap py-3 px-1 border-b-2 font-medium text-base text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="efficiency" data-translate="tabEfficiency">Efficiency</a>
+                        <a href="#" class="tab-item whitespace-nowrap py-3 px-1 border-b-2 font-medium text-base text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="outcome" data-translate="tabOutcome">Outcome</a>
                     </nav>
                 </div>
                 <div class="flex flex-wrap items-center justify-between mb-4">
                     <h3 id="currentView" class="text-xl font-semibold text-gray-800">Transparency Scores</h3> <!-- This is updated by JS -->
                     <div class="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 mt-2 sm:mt-0">
                         <div class="flex items-center space-x-2 text-xs sm:text-sm">
-                            <span class="inline-block w-3 h-3 bg-green-500 rounded-full"></span><span data-translate="legendHigh" class="text-gray-600">High (>70)</span> <!-- MODIFIED -->
-                            <span class="inline-block w-3 h-3 bg-yellow-500 rounded-full ml-2 sm:ml-3"></span><span data-translate="legendMedium" class="text-gray-600">Medium (40-70)</span> <!-- MODIFIED -->
-                            <span class="inline-block w-3 h-3 bg-red-500 rounded-full ml-2 sm:ml-3"></span><span data-translate="legendLow" class="text-gray-600">Low (<40)</span> <!-- MODIFIED -->
+                            <span class="inline-block w-3 h-3 bg-green-500 rounded-full"></span><span data-translate="legendHigh" class="text-gray-600">High (>70)</span>
+                            <span class="inline-block w-3 h-3 bg-yellow-500 rounded-full ml-2 sm:ml-3"></span><span data-translate="legendMedium" class="text-gray-600">Medium (40-70)</span>
+                            <span class="inline-block w-3 h-3 bg-red-500 rounded-full ml-2 sm:ml-3"></span><span data-translate="legendLow" class="text-gray-600">Low (<40)</span>
                         </div>
                         <div class="relative">
                             <button id="sortButton" class="text-sm flex items-center text-gray-600 hover:text-gray-800">
-                                <i class="fas fa-sort mr-1"></i> <span data-translate="legendSortBy">Sort by</span><i class="fas fa-chevron-down ml-1 text-xs"></i> <!-- MODIFIED -->
+                                <i class="fas fa-sort mr-1"></i> <span data-translate="legendSortBy">Sort by</span><i class="fas fa-chevron-down ml-1 text-xs"></i>
                             </button>
                             <div id="sortDropdown" class="absolute right-0 mt-1 bg-white text-gray-800 rounded shadow-lg hidden w-48 z-10">
-                                <a href="#" class="sortOption block px-4 py-2 hover:bg-gray-200 text-sm" data-sort="score-desc"><i class="fas fa-sort-amount-down mr-2"></i><span data-translate="sortHighestScore">Highest Score</span></a> <!-- MODIFIED -->
-                                <a href="#" class="sortOption block px-4 py-2 hover:bg-gray-200 text-sm" data-sort="score-asc"><i class="fas fa-sort-amount-up mr-2"></i><span data-translate="sortLowestScore">Lowest Score</span></a> <!-- MODIFIED -->
-                                <a href="#" class="sortOption block px-4 py-2 hover:bg-gray-200 text-sm" data-sort="name-asc"><i class="fas fa-sort-alpha-down mr-2"></i><span data-translate="sortNameAZ">Name (A-Z)</span></a> <!-- MODIFIED -->
-                                <a href="#" class="sortOption block px-4 py-2 hover:bg-gray-200 text-sm" data-sort="name-desc"><i class="fas fa-sort-alpha-up mr-2"></i><span data-translate="sortNameZA">Name (Z-A)</span></a> <!-- MODIFIED -->
+                                <a href="#" class="sortOption block px-4 py-2 hover:bg-gray-200 text-sm" data-sort="score-desc"><i class="fas fa-sort-amount-down mr-2"></i><span data-translate="sortHighestScore">Highest Score</span></a>
+                                <a href="#" class="sortOption block px-4 py-2 hover:bg-gray-200 text-sm" data-sort="score-asc"><i class="fas fa-sort-amount-up mr-2"></i><span data-translate="sortLowestScore">Lowest Score</span></a>
+                                <a href="#" class="sortOption block px-4 py-2 hover:bg-gray-200 text-sm" data-sort="name-asc"><i class="fas fa-sort-alpha-down mr-2"></i><span data-translate="sortNameAZ">Name (A-Z)</span></a>
+                                <a href="#" class="sortOption block px-4 py-2 hover:bg-gray-200 text-sm" data-sort="name-desc"><i class="fas fa-sort-alpha-up mr-2"></i><span data-translate="sortNameZA">Name (Z-A)</span></a>
                             </div>
                         </div>
                     </div>
@@ -296,28 +308,28 @@
             <!-- START: Ministry Details Section -->
             <div id="ministryDetails" class="bg-white rounded-lg shadow-md p-5 mb-6 hidden">
                 <div class="flex items-center justify-between mb-4">
-                    <h3 id="selectedMinistryName" class="text-xl font-semibold text-gray-800" data-translate="detailsTitle">Ministry Details</h3> <!-- MODIFIED -->
+                    <h3 id="selectedMinistryName" class="text-xl font-semibold text-gray-800" data-translate="detailsTitle">Ministry Details</h3>
                     <button id="closeMinistryDetailsButton" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                     <div class="bg-gray-50 rounded-lg p-4">
-                        <p data-translate="detailsTransparencyScore" class="text-sm text-gray-500 mb-1">Transparency Score</p> <!-- MODIFIED -->
+                        <p data-translate="detailsTransparencyScore" class="text-sm text-gray-500 mb-1">Transparency Score</p>
                         <h4 id="detailTransparency" class="text-3xl font-bold text-blue-600">N/A</h4>
-                        <p id="detailTransparencyChange" class="text-sm text-gray-600 mt-1"><i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span></p>  <!-- MODIFIED -->
+                        <p id="detailTransparencyChange" class="text-sm text-gray-600 mt-1"><i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span></p>
                     </div>
                     <div class="bg-gray-50 rounded-lg p-4">
-                        <p data-translate="detailsInfoRequests" class="text-sm text-gray-500 mb-1">Information Requests</p> <!-- MODIFIED -->
+                        <p data-translate="detailsInfoRequests" class="text-sm text-gray-500 mb-1">Information Requests</p>
                         <h4 id="detailRequests" class="text-3xl font-bold text-gray-800">N/A</h4>
-                        <p id="detailRequestsProcessed" class="text-sm text-gray-600 mt-1"><i class="fas fa-info-circle mr-1"></i>N/A</p> <!-- JS handles this span -->
+                        <p id="detailRequestsProcessed" class="text-sm text-gray-600 mt-1"><i class="fas fa-info-circle mr-1"></i>N/A</p>
                     </div>
                     <div class="bg-gray-50 rounded-lg p-4">
-                        <p data-translate="detailsResponseTime" class="text-sm text-gray-500 mb-1">Response Time</p> <!-- MODIFIED -->
+                        <p data-translate="detailsResponseTime" class="text-sm text-gray-500 mb-1">Response Time</p>
                         <h4 id="detailResponseTime" class="text-3xl font-bold text-gray-800">N/A</h4>
-                        <p id="detailResponseTimeChange" class="text-sm text-gray-600 mt-1"><i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span></p> <!-- MODIFIED -->
+                        <p id="detailResponseTimeChange" class="text-sm text-gray-600 mt-1"><i class="fas fa-minus mr-1"></i><span data-translate="noChangeData">No change data</span></p>
                     </div>
                 </div>
                 <div class="mb-6">
-                    <h4 data-translate="detailsPerfBreakdown" class="text-lg font-semibold text-gray-800 mb-3">Performance Breakdown</h4> <!-- MODIFIED -->
+                    <h4 data-translate="detailsPerfBreakdown" class="text-lg font-semibold text-gray-800 mb-3">Performance Breakdown</h4>
                     <div class="space-y-4">
                         <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel1" data-translate="perfBreakdownWebsiteTransparency" class="text-sm font-medium text-gray-700">Website Transparency</span><span id="perfBreakdownValue1" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar1" class="bg-blue-600 h-2.5 rounded-full js-dynamic-progress-bar"></div></div></div>
                         <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel2" data-translate="perfBreakdownDocAccessibility" class="text-sm font-medium text-gray-700">Document Accessibility</span><span id="perfBreakdownValue2" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar2" class="bg-blue-600 h-2.5 rounded-full js-dynamic-progress-bar"></div></div></div>
@@ -327,18 +339,18 @@
                     </div>
                 </div>
                 <div>
-                    <h4 data-translate="detailsRecentActivities" class="text-lg font-semibold text-gray-800 mb-3">Recent Activities</h4> <!-- MODIFIED -->
+                    <h4 data-translate="detailsRecentActivities" class="text-lg font-semibold text-gray-800 mb-3">Recent Activities</h4>
                     <div class="border rounded-lg overflow-hidden">
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
                                 <tr>
-                                    <th scope="col" data-translate="tableHeaderDate" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th> <!-- MODIFIED -->
-                                    <th scope="col" data-translate="tableHeaderActivity" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Activity</th> <!-- MODIFIED -->
-                                    <th scope="col" data-translate="tableHeaderStatus" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th> <!-- MODIFIED -->
+                                    <th scope="col" data-translate="tableHeaderDate" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                    <th scope="col" data-translate="tableHeaderActivity" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Activity</th>
+                                    <th scope="col" data-translate="tableHeaderStatus" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                                 </tr>
                             </thead>
                             <tbody id="recentActivitiesBody" class="bg-white divide-y divide-gray-200">
-                                <tr><td colspan="3" data-translate="tableNoRecentActivities" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">No recent activities to display.</td></tr> <!-- MODIFIED -->
+                                <tr><td colspan="3" data-translate="tableNoRecentActivities" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">No recent activities to display.</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -353,7 +365,7 @@
 <!-- START: Notification Banner -->
 <div id="notificationBanner" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-md shadow-lg flex items-center hidden z-50">
     <i class="fas fa-check-circle mr-2"></i>
-    <span id="notificationMessage">Action completed successfully!</span> <!-- This text is set by JS directly -->
+    <span id="notificationMessage">Action completed successfully!</span>
 </div>
 <!-- START: Footer Section -->
 <footer class="bg-gray-800 text-gray-300 mt-auto">
@@ -382,7 +394,7 @@
                         <address class="not-italic text-sm space-y-4 mt-4">
                             <p class="flex items-center text-gray-400"> <i class="fas fa-envelope mr-3 fa-fw text-blue-400"></i> <a href="mailto:shabanbala@gmail.com" class="hover:text-white transition-colors duration-150">shabanbala@gmail.com</a> </p>
                             <p class="flex items-center text-gray-400"> <i class="fas fa-phone mr-3 fa-fw text-blue-400"></i> <a href="tel:+38344987898" class="hover:text-white transition-colors duration-150">+383 44987898</a> </p>
-                            <p class="flex items-start text-gray-400"> <i class="fas fa-map-marker-alt mr-3 fa-fw mt-1 text-blue-400"></i> <span>Data And Human Management<br>Prishtina, Kosovo</span> </p> <!-- Address part is usually static -->
+                            <p class="flex items-start text-gray-400"> <i class="fas fa-map-marker-alt mr-3 fa-fw mt-1 text-blue-400"></i> <span>Data And Human Management<br>Prishtina, Kosovo</span> </p>
                         </address>
                     </div>
 
@@ -423,8 +435,7 @@
         <!-- Copyright Section -->
         <div class="mt-12 pt-8 border-t border-gray-700 text-center md:text-left">
             <p class="text-sm text-gray-400"> 
-                © <span id="currentYear"></span> <span data-translate="footerCopyrightNew">© <span id="currentYear"></span> <span data-translate="footerCopyrightNew">Public Pulse Kosovo. All Rights Reserved. Note Beta version, Mock Data.</span>
-.</span> 
+                © <span id="currentYear"></span> <span data-translate="footerCopyrightNew">Public Pulse Kosovo. All Rights Reserved. Note Beta version, Mock Data.</span>
             </p>
         </div>
     </div>
@@ -434,11 +445,9 @@
 <!-- START: JavaScript Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+<!-- NOTE: Only ONE inclusion of main_script.js -->
 <script src="main_script.js" defer></script>
 <!-- END: JavaScript Libraries -->
 
-<!-- START: Custom Scripts -->
-<script src="main_script.js" defer></script>
-<!-- END: Custom Scripts -->
 </body>
 </html>

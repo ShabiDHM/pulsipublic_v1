@@ -64,11 +64,10 @@ body {
 .width-pct-95 { width: 95%; } .width-pct-100 { width: 100%; }
 
 /* Print Styles */
-@media print { /* ... (Your existing print styles) ... */ }
+@media print { /* ... (Your existing print styles if any) ... */ }
 
 
 /* === NEW STYLES FOR DASHBOARD CARDS (Added based on Image 1 style and Legend colors) === */
-/* ... (your .styled-info-card and related theme classes) ... */
 .styled-info-card { border: 1px solid #eef0f2; display: flex !important; justify-content: space-between !important; align-items: center !important; box-sizing: border-box; }
 .styled-info-card .card-text-content { display: flex; flex-direction: column; justify-content: center; margin-right: 15px; flex-grow: 1; }
 .styled-info-card .card-text-content .title { font-size: 0.9em; color: #555; margin-bottom: 4px; line-height: 1.3; }
@@ -99,3 +98,13 @@ body {
 .js-dynamic-progress-bar {
     width: 0%;
 }
+
+/* === MOBILE SIDEBAR STYLES === */
+/*
+  No specific custom CSS rules are strictly required here if using Tailwind for positioning,
+  transitions, and z-index as described in the HTML and JS modifications.
+  If you need custom non-Tailwind styles for the mobile sidebar, they can be added below.
+  For example:
+  #sidebar.mobile-active { ... }
+  #mobileSidebarOverlay.visible { ... }
+*/
