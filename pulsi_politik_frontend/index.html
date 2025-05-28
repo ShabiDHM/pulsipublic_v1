@@ -101,6 +101,9 @@
                     <div class="w-6 text-center"><i class="fas fa-download"></i></div>
                     <span data-translate="sidebarExportData" class="ml-3">Export Data</span> <!-- MODIFIED -->
                 </a>
+                 <a href="about.html" class="sidebar-item flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
+                    <div class="w-6 text-center"><i class="fas fa-info-circle"></i></div><span data-translate="breadcrumbAboutUs" class="ml-3">About Us</span>
+                </a>
             </div>
             <!-- END: Sidebar Navigation Links -->
         </nav>
@@ -316,11 +319,11 @@
                 <div class="mb-6">
                     <h4 data-translate="detailsPerfBreakdown" class="text-lg font-semibold text-gray-800 mb-3">Performance Breakdown</h4> <!-- MODIFIED -->
                     <div class="space-y-4">
-                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel1" data-translate="perfBreakdownWebsiteTransparency" class="text-sm font-medium text-gray-700">Website Transparency</span><span id="perfBreakdownValue1" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar1" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div></div></div>
-                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel2" data-translate="perfBreakdownDocAccessibility" class="text-sm font-medium text-gray-700">Document Accessibility</span><span id="perfBreakdownValue2" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar2" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div></div></div>
-                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel3" data-translate="perfBreakdownReqResponsiveness" class="text-sm font-medium text-gray-700">Request Responsiveness</span><span id="perfBreakdownValue3" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar3" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div></div></div>
-                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel4" data-translate="perfBreakdownInfoCompleteness" class="text-sm font-medium text-gray-700">Information Completeness</span><span id="perfBreakdownValue4" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar4" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div></div></div>
-                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel5" data-translate="perfBreakdownPublicEngagement" class="text-sm font-medium text-gray-700">Public Engagement</span><span id="perfBreakdownValue5" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar5" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div></div></div>
+                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel1" data-translate="perfBreakdownWebsiteTransparency" class="text-sm font-medium text-gray-700">Website Transparency</span><span id="perfBreakdownValue1" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar1" class="bg-blue-600 h-2.5 rounded-full js-dynamic-progress-bar"></div></div></div>
+                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel2" data-translate="perfBreakdownDocAccessibility" class="text-sm font-medium text-gray-700">Document Accessibility</span><span id="perfBreakdownValue2" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar2" class="bg-blue-600 h-2.5 rounded-full js-dynamic-progress-bar"></div></div></div>
+                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel3" data-translate="perfBreakdownReqResponsiveness" class="text-sm font-medium text-gray-700">Request Responsiveness</span><span id="perfBreakdownValue3" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar3" class="bg-blue-600 h-2.5 rounded-full js-dynamic-progress-bar"></div></div></div>
+                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel4" data-translate="perfBreakdownInfoCompleteness" class="text-sm font-medium text-gray-700">Information Completeness</span><span id="perfBreakdownValue4" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar4" class="bg-blue-600 h-2.5 rounded-full js-dynamic-progress-bar"></div></div></div>
+                        <div><div class="flex items-center justify-between mb-1"><span id="perfBreakdownLabel5" data-translate="perfBreakdownPublicEngagement" class="text-sm font-medium text-gray-700">Public Engagement</span><span id="perfBreakdownValue5" class="text-sm font-medium text-gray-900">0%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div id="perfBreakdownBar5" class="bg-blue-600 h-2.5 rounded-full js-dynamic-progress-bar"></div></div></div>
                     </div>
                 </div>
                 <div>
@@ -362,7 +365,7 @@
             <div class="space-y-4">
                 <h3 class="text-lg font-semibold text-white tracking-tight" data-translate="footerAboutTitleNew">About Public Pulse</h3>
                 <p class="text-sm text-gray-400 leading-relaxed" data-translate="footerAboutTextShort">An independent, non-partisan watchdog strengthening democratic accountability across Kosovo by analyzing transparency and public service delivery.</p>
-                <a href="{{ url_for('serve_page', page_name='about') }}" 
+                <a href="about.html" 
                    class="inline-block px-5 py-2.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-blue-500 mt-2 group"> 
                    <span data-translate="footerLearnMoreAboutUs">Learn more about us</span> 
                    <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i> 
@@ -431,6 +434,7 @@
 <!-- START: JavaScript Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="main_script.js" defer></script>
 <!-- END: JavaScript Libraries -->
 
 <!-- START: Custom Scripts -->
